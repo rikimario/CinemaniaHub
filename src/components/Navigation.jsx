@@ -1,6 +1,6 @@
 export default function Navigation() {
   return (
-    <nav className="flex py-8 px-11">
+    <nav className="absolute inset-x-0 top-0 flex justify-between items-center py-8 px-11">
       <div className="font-bold text-xl">
         <button className="">CinemaniaHub</button>
       </div>
