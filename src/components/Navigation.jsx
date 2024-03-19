@@ -1,5 +1,4 @@
 import { useState } from "react";
-import DropMenu from "./DropMenu";
 import MenuButtons from "../assets/MenuButtons";
 
 export default function Navigation() {
@@ -18,31 +17,31 @@ export default function Navigation() {
   };
 
   return (
-    <div className="fixed inset-x-0 top-0 flex justify-between items-center py-8 px-11 backdrop-blur-sm backdrop-brightness-50">
+    <div className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-11 py-8 backdrop-blur-sm backdrop-brightness-50">
       <nav className="flex w-full">
-        <div className="font-bold text-2xl">
+        <div className="text-2xl font-bold">
           <button className="">CinemaniaHub</button>
         </div>
         <div className="flex-grow text-[1.3rem]">
           <ul
             onClick={handleClick}
-            className={`lg:flex gap-6 lg:gap-14 justify-center ${
+            className={`justify-center gap-6 lg:flex lg:gap-14 ${
               openNav
-                ? "show flex items-center flex-col pt-12 text-3xl lg:hidden"
+                ? "show flex flex-col items-center pt-12 text-3xl lg:hidden"
                 : "hidden"
             }
             `}
           >
-            <button className="text-[#9CA4AB] hover:text-white hover:scale-105">
+            <button className="text-[#9CA4AB] hover:scale-105 hover:text-white">
               <li>Home</li>
             </button>
-            <button className="text-[#9CA4AB] hover:text-white hover:scale-105">
+            <button className="text-[#9CA4AB] hover:scale-105 hover:text-white">
               <li>Discovery</li>
             </button>
-            <button className="text-[#9CA4AB] hover:text-white hover:scale-105">
+            <button className="text-[#9CA4AB] hover:scale-105 hover:text-white">
               <li>Movie Release</li>
             </button>
-            <button className="text-[#9CA4AB] hover:text-white hover:scale-105">
+            <button className="text-[#9CA4AB] hover:scale-105 hover:text-white">
               <li>About</li>
             </button>
 
@@ -50,7 +49,7 @@ export default function Navigation() {
           </ul>
         </div>
 
-        <div className="pr-4 space-x-4">
+        <div className="space-x-4 pr-4">
           <button>
             <ion-icon size="large" name="search-outline"></ion-icon>
           </button>
@@ -75,10 +74,10 @@ export default function Navigation() {
       </nav>
 
       <div className="hidden space-x-4 lg:flex">
-        <button className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-8 px-3 hover:scale-105">
+        <button className="focus-visible:ring-ring border-input bg-background hover:bg-accent hover:text-accent-foreground inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md border px-3 text-lg font-medium shadow-sm transition-colors hover:scale-105 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50">
           Sign Up
         </button>
-        <button className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-[#00925D] text-destructive-foreground shadow-sm hover:bg-destructive/90 h-8 px-3 hover:scale-105">
+        <button className="focus-visible:ring-ring text-destructive-foreground hover:bg-destructive/90 inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md bg-[#00925D] px-3 text-lg font-medium shadow-sm transition-colors hover:scale-105 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50">
           Login
         </button>
       </div>
