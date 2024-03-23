@@ -1,4 +1,5 @@
 import Home from "./components/Home";
+import MovieSwiper from "./components/MovieSwiper";
 import Navigation from "./components/Navigation";
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <>
       <Navigation />
       <Home />
+      {/* <MovieSwiper /> */}
     </>
   );
 }

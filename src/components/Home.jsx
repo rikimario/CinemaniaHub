@@ -11,7 +11,7 @@ export default function Home() {
       fetch(apiUrl)
         .then((res) => res.json())
         .then((data) => {
-          setMovie(data.results.slice(1, 2));
+          setMovie(data.results.slice(0, 5));
         });
     } catch (error) {
       console.error("Error fetching movies from TMDB:", error);
@@ -28,7 +28,7 @@ export default function Home() {
           >
             {console.log(movie)}
             <img
-              className="md:object-over absolute inset-0 h-full w-full lg:object-cover"
+              className="md:object-over absolute inset-0 h-full w-full bg-black opacity-50 lg:object-cover"
               src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
               alt={movie.title}
             />
