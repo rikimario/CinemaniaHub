@@ -20,14 +20,14 @@ export default function Navigation() {
     <div className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-11 py-8 backdrop-blur-sm backdrop-brightness-50">
       <nav className="flex w-full">
         <div className="text-2xl font-bold">
-          <button className="">CinemaniaHub</button>
+          <button className="">CinemaHub</button>
         </div>
         <div className="flex-grow text-[1.3rem]">
           <ul
             onClick={handleClick}
-            className={`justify-center gap-6 lg:flex lg:gap-14 ${
+            className={`left-0 right-0 justify-center gap-6 lg:flex lg:gap-14 ${
               openNav
-                ? "show flex flex-col items-center pt-12 text-3xl lg:hidden"
+                ? "show flex h-screen flex-col items-center text-3xl lg:hidden"
                 : "hidden"
             }
             `}
