@@ -1,9 +1,4 @@
-export default function MenuButtons({
-  toggleLogin,
-  toggleRegister,
-  loginVisible,
-  registerVisible,
-}) {
+export default function MenuButtons({ toggleLogin, toggleRegister }) {
   return (
     <>
       <div className="flex w-1/2 flex-col justify-center gap-4 lg:hidden ">
