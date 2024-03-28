@@ -1,7 +1,15 @@
-export default function Login() {
+export default function Login({ closeLogin }) {
   return (
-    <>
-      <h1>Login</h1>
-    </>
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-25 backdrop-blur-sm">
+      <div className="flex w-[600px] flex-col">
+        <button
+          onClick={closeLogin}
+          className="place-self-end text-xl text-white"
+        >
+          X
+        </button>
+        <div className="rounded bg-white p-2 text-black">Login</div>
+      </div>
+    </div>
   );
 }
