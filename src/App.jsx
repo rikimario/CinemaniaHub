@@ -13,18 +13,32 @@ function App() {
 
   const toggleLogin = () => {
     setLoginVisible(!loginVisible);
+    closeRegister(true);
   };
 
   const closeLogin = () => {
     setLoginVisible(false);
   };
 
+  const handleCloseLogin = (e) => {
+    if (e.target.id === "login") {
+      closeLogin();
+    }
+  };
+
   const toggleRegister = () => {
     setRegisterVisible(!registerVisible);
+    closeLogin(true);
   };
 
   const closeRegister = () => {
     setRegisterVisible(false);
+  };
+
+  const handleCloseRegister = (e) => {
+    if (e.target.id === "register") {
+      closeRegister();
+    }
   };
 
   return (
@@ -41,8 +55,20 @@ function App() {
           }
         />
       </Routes>
-      {loginVisible && <Login isVisible closeLogin={closeLogin} />}
-      {registerVisible && <Register isVisible closeRegister={closeRegister} />}
+      {loginVisible && (
+        <Login
+          isVisible
+          closeLogin={closeLogin}
+          handleCloseLogin={handleCloseLogin}
+        />
+      )}
+      {registerVisible && (
+        <Register
+          isVisible
+          closeRegister={closeRegister}
+          handleCloseRegister={handleCloseRegister}
+        />
+      )}
     </>
   );
 }
