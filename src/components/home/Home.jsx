@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
+
 import HomeButtons from "./HomeButtons";
+import Login from "../login/login";
+import Register from "../register/register";
 
 const apiUrl =
   "https://api.themoviedb.org/3/movie/popular?api_key=589f3d4f48689702b074a222aea6db87";
 
-export default function Home() {
+export default function Home({ loginVisible, registerVisible }) {
   const [movies, setMovies] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -49,7 +52,7 @@ export default function Home() {
               src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
               alt={movie.title}
             />
-            <div className="absolute bottom-20 z-40 pl-11 lg:bottom-24">
+            <div className="absolute bottom-20 pl-11 lg:bottom-24">
               <h1 className="text-3xl text-white md:text-4xl lg:text-6xl">
                 {movie.title}
               </h1>
@@ -81,6 +84,8 @@ export default function Home() {
           <ion-icon size="large" name="chevron-forward-outline"></ion-icon>
         </button>
       </div>
+      {loginVisible && <Login />}
+      {registerVisible && <Register />}
     </div>
   );
 }
