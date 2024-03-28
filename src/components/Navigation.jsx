@@ -43,9 +43,12 @@ export default function Navigation({ toggleLogin, toggleRegister }) {
             >
               <li>Home</li>
             </Link>
-            <button className="text-[#9CA4AB] hover:scale-105 hover:text-white">
+            <Link
+              to={Path.Discovery}
+              className="text-[#9CA4AB] hover:scale-105 hover:text-white"
+            >
               <li>Discovery</li>
-            </button>
+            </Link>
             <button className="text-[#9CA4AB] hover:scale-105 hover:text-white">
               <li>Movie Release</li>
             </button>
