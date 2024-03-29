@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import Path from "./paths/paths";
 import Login from "./components/login/login.jsx";
 import Register from "./components/register/register.jsx";
+import Upcoming from "./components/upcoming/Upcoming.jsx";
 
 function App() {
   const [loginVisible, setLoginVisible] = useState(false);
@@ -13,7 +14,6 @@ function App() {
 
   const toggleLogin = () => {
     setLoginVisible(!loginVisible);
-    closeRegister(true);
   };
 
   const closeLogin = () => {
@@ -28,7 +28,6 @@ function App() {
 
   const toggleRegister = () => {
     setRegisterVisible(!registerVisible);
-    closeLogin(true);
   };
 
   const closeRegister = () => {
@@ -55,6 +54,7 @@ function App() {
           }
         />
       </Routes>
+      <Upcoming />
       {loginVisible && (
         <Login
           isVisible
