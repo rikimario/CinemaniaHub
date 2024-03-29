@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 
 import HomeButtons from "./HomeButtons";
-import Login from "../login/login";
-import Register from "../register/register";
 
 const apiUrl =
   "https://api.themoviedb.org/3/movie/popular?api_key=589f3d4f48689702b074a222aea6db87";
@@ -24,6 +22,21 @@ export default function Home({ loginVisible, registerVisible }) {
     }
   }, []);
 
+  fetch(apiUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      // Extracting movie IDs from the response
+      const movieIds = data.results.map((movie) => movie.id);
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+    });
+
   const prevSlide = () => {
     setCurrentSlide((prevSlide) =>
       prevSlide === 0 ? movies.length - 1 : prevSlide - 1,
@@ -37,7 +50,7 @@ export default function Home({ loginVisible, registerVisible }) {
   };
 
   return (
-    <div className="relative flex overflow-hidden">
+    <div className="relative flex overflow-hidden backdrop-blur-2xl before:absolute before:bottom-[-20px] before:left-0 before:z-50 before:h-[50px] before:w-screen before:bg-[#0d0c0f] before:blur-xl">
       <div className="h-screen w-screen transition-transform duration-1000 ease-out">
         {movies.map((movie, index) => (
           <div
@@ -84,8 +97,8 @@ export default function Home({ loginVisible, registerVisible }) {
           <ion-icon size="large" name="chevron-forward-outline"></ion-icon>
         </button>
       </div>
-      {loginVisible && <Login />}
-      {registerVisible && <Register />}
+      {loginVisible}
+      {registerVisible}
     </div>
   );
 }
