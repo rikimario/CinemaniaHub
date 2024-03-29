@@ -1,8 +1,19 @@
+import { useEffect } from "react";
+
 export default function Login({ closeLogin, handleCloseLogin }) {
+  useEffect(() => {
+    // Disable scrolling when the modal is open
+    document.body.style.overflow = "hidden";
+
+    // Re-enable scrolling when the modal is closed
+    return () => {
+      document.body.style.overflow = "visible";
+    };
+  }, []); // Run this effect only once on component mount
   return (
     <div
       onClick={handleCloseLogin}
-      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-25 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-25 backdrop-blur-sm"
       id="login"
     >
       <div className="flex w-[600px] flex-col">
