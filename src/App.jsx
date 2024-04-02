@@ -7,6 +7,7 @@ import Path from "./paths/paths";
 import Login from "./components/login/login.jsx";
 import Register from "./components/register/register.jsx";
 import Upcoming from "./components/upcoming/Upcoming.jsx";
+import NowPlaying from "./components/now-playing/NowPlaying.jsx";
 
 function App() {
   const [loginVisible, setLoginVisible] = useState(false);
@@ -55,6 +56,7 @@ function App() {
         />
       </Routes>
       <Upcoming />
+      <NowPlaying />
       {loginVisible && (
         <Login
           isVisible
