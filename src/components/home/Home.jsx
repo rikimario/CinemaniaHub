@@ -61,7 +61,7 @@ export default function Home({ loginVisible, registerVisible }) {
             }}
           >
             <img
-              className="md:object-over absolute h-full w-full bg-black opacity-50 lg:object-cover"
+              className="absolute h-full w-full bg-black opacity-50 md:object-cover lg:object-cover"
               src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
               alt={movie.title}
             />

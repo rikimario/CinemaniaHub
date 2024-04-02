@@ -62,7 +62,7 @@ export default function Login({ closeLogin, handleCloseLogin }) {
               <div className="text-sm">
                 <a
                   href="#"
-                  className="pl-2 font-semibold font-semibold text-[#00925D] hover:text-[#00925de8]"
+                  className="pl-2 font-semibold text-[#00925D] hover:text-[#00925de8]"
                 >
                   Forgot password?
                 </a>
