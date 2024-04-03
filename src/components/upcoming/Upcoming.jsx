@@ -35,18 +35,17 @@ export default function Upcoming() {
     <div className="relative h-full w-full overflow-hidden px-11 pt-12">
       <h1 className="pb-4 text-2xl text-white">Upcoming</h1>
 
-      <div className="flex w-full gap-2">
+      <div className="grid w-full grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-5">
         {movies.map((movie, index) => (
           <div
-            className="relative h-[35rem] w-full "
+            className={`relative flex h-[30rem] w-full items-center justify-center ${
+              index === 0 ? "" : "hidden md:flex lg:block"
+            }`}
             key={index}
-            style={{
-              display: index === currentSlide ? "block" : "none",
-            }}
           >
             <img
-              className="absolute h-full w-full bg-black opacity-50 "
-              src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+              className="absolute h-full w-auto rounded-xl   bg-black object-fill opacity-50"
+              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
               alt={movie.title}
             />
           </div>
