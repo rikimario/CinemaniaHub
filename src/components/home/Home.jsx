@@ -54,14 +54,14 @@ export default function Home({ loginVisible, registerVisible }) {
       <div className="h-screen w-screen transition-transform duration-1000 ease-out">
         {movies.map((movie, index) => (
           <div
-            className="relative h-full w-screen bg-cover bg-center"
+            className="relative h-full w-auto bg-cover bg-center "
             key={index}
             style={{
               display: index === currentSlide ? "block" : "none",
             }}
           >
             <img
-              className="absolute h-full w-full bg-black opacity-50 md:object-cover lg:object-cover"
+              className="absolute h-full w-full bg-black opacity-50"
               src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
               alt={movie.title}
             />
