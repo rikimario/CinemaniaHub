@@ -8,6 +8,7 @@ import Login from "./components/login/login.jsx";
 import Register from "./components/register/register.jsx";
 import Upcoming from "./components/upcoming/Upcoming.jsx";
 import NowPlaying from "./components/now-playing/NowPlaying.jsx";
+import Discovery from "./components/discovery/Discovery.jsx";
 
 function App() {
   const [loginVisible, setLoginVisible] = useState(false);
@@ -54,6 +55,7 @@ function App() {
             />
           }
         />
+        <Route path={Path.Discovery} element={<Discovery />} />
       </Routes>
       <Upcoming />
       <NowPlaying />

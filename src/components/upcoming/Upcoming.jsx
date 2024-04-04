@@ -23,7 +23,7 @@ export default function Upcoming() {
   }, []);
 
   const settings = {
-    slidesToShow: 5, // Display 5 images in a row
+    slidesToShow: 5,
     slidesToScroll: 1,
     infinite: true,
     dots: true,
