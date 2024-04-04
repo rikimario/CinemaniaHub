@@ -6,3 +6,16 @@ body {
   color: #fff;
   background-color: #0d0c0f;
 }
+
+.slick-slide > div {
+  margin: 0 10px;
+}
+
+.slick-dots li button:before {
+  color: #fff;
+  font-size: 12px;
+}
+
+.slick-dots li.slick-active button:before {
+  color: white; /* Color for active slide */
+}
