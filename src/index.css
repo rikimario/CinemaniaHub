@@ -11,11 +11,15 @@ body {
   margin: 0 10px;
 }
 
+.slick-dots {
+  z-index: 9999;
+}
+
 .slick-dots li button:before {
   color: #fff;
   font-size: 12px;
 }
 
 .slick-dots li.slick-active button:before {
-  color: white; /* Color for active slide */
+  color: white;
 }
