@@ -1,15 +1,29 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function Register({ closeRegister, handleCloseRegister }) {
+  const [username, setUsername] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  const registerSubmitHandler = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:5000/register", { username, email, password })
+      .then((result) => {
+        console.log(result);
+        closeRegister();
+      })
+      .catch((err) => console.log(err));
+  };
+
   useEffect(() => {
-    // Disable scrolling when the modal is open
     document.body.style.overflow = "hidden";
 
-    // Re-enable scrolling when the modal is closed
     return () => {
       document.body.style.overflow = "visible";
     };
-  }, []); // Run this effect only once on component mount
+  }, []);
   return (
     <div
       onClick={handleCloseRegister}
@@ -24,6 +38,7 @@ export default function Register({ closeRegister, handleCloseRegister }) {
           X
         </button>
         <form
+          onSubmit={registerSubmitHandler}
           className="space-y-6 rounded-lg bg-[#28262D] p-8"
           action="#"
           method="POST"
@@ -47,6 +62,7 @@ export default function Register({ closeRegister, handleCloseRegister }) {
                 autoComplete="username"
                 required
                 className="block w-full rounded-md border-0 py-1.5 pl-2 font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#00925D] sm:text-sm sm:leading-6"
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
           </div>
@@ -66,6 +82,7 @@ export default function Register({ closeRegister, handleCloseRegister }) {
                 autoComplete="email"
                 required
                 className="block w-full rounded-md border-0 py-1.5 pl-2 font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#00925D] sm:text-sm sm:leading-6"
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
           </div>
@@ -88,6 +105,7 @@ export default function Register({ closeRegister, handleCloseRegister }) {
                 autoComplete="current-password"
                 required
                 className="block w-full rounded-md border-0 py-1.5 pl-2 font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#00925D] sm:text-sm sm:leading-6"
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
           </div>
