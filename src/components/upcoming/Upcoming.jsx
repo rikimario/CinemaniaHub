@@ -24,12 +24,14 @@ export default function Upcoming() {
   }, []);
 
   const settings = {
+    className: "center",
+    centerMode: true,
+    focusOnSelect: true,
+    centerPadding: "60px",
     slidesToShow: 5,
     slidesToScroll: 1,
     infinite: true,
     dots: true,
-    prevArrow: <button>Previous</button>,
-    nextArrow: <button>Next</button>,
   };
   return (
     <div className="px-11 pt-12">
