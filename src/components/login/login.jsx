@@ -1,15 +1,33 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Login({ closeLogin, handleCloseLogin }) {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const navigate = useNavigate();
+
+  const loginSubmitHandler = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:5000/login", { email, password })
+      .then((result) => {
+        console.log(result);
+        if (result.data === "Success") {
+          closeLogin();
+          navigate("/");
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
   useEffect(() => {
-    // Disable scrolling when the modal is open
     document.body.style.overflow = "hidden";
 
-    // Re-enable scrolling when the modal is closed
     return () => {
       document.body.style.overflow = "visible";
     };
-  }, []); // Run this effect only once on component mount
+  }, []);
   return (
     <div
       onClick={handleCloseLogin}
@@ -24,6 +42,7 @@ export default function Login({ closeLogin, handleCloseLogin }) {
           X
         </button>
         <form
+          onSubmit={loginSubmitHandler}
           className="space-y-6 rounded-lg bg-[#28262D] p-8"
           action="#"
           method="POST"
@@ -47,6 +66,7 @@ export default function Login({ closeLogin, handleCloseLogin }) {
                 autoComplete="email"
                 required
                 className="block w-full rounded-md border-0 py-1.5 pl-2 font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#00925D] sm:text-sm sm:leading-6"
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
           </div>
@@ -76,6 +96,7 @@ export default function Login({ closeLogin, handleCloseLogin }) {
                 autoComplete="current-password"
                 required
                 className="block w-full rounded-md border-0 py-1.5 pl-2 font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#00925D] sm:text-sm sm:leading-6"
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
           </div>
