@@ -40,7 +40,7 @@ export default function Upcoming() {
         <Slider {...settings}>
           {movies.map((movie, index) => (
             <div
-              className="h-[15rem] w-full md:h-[18rem] lg:h-[27rem]"
+              className="h-[12rem] w-full md:h-[18rem] lg:h-[27rem]"
               key={index}
             >
               <img

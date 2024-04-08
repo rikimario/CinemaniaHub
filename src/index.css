@@ -19,3 +19,14 @@ body {
 .slick-dots li.slick-active button:before {
   color: white;
 }
+
+.slick-slide {
+  transition: transform 0.5s ease;
+  transform: scale(0.9);
+  opacity: 0.8;
+}
+
+.slick-center {
+  transform: scale(1);
+  opacity: 1;
+}

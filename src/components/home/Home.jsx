@@ -57,7 +57,7 @@ export default function Home({ loginVisible, registerVisible }) {
   return (
     <>
       <div className="overflow-hidden backdrop-blur-2xl before:absolute before:bottom-[-20px] before:left-0 before:z-50 before:h-[50px] before:w-screen before:bg-[#0d0c0f] before:blur-xl">
-        <div className="h-full">
+        <div className="">
           <Slider {...settings}>
             {movies.map((movie, index) => (
               <div key={index}>
