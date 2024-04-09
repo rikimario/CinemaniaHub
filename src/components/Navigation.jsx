@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import MenuButtons from "../assets/MenuButtons";
 import Path from "../paths/paths";
 
 export default function Navigation({ toggleLogin, toggleRegister }) {
@@ -57,6 +56,11 @@ export default function Navigation({ toggleLogin, toggleRegister }) {
             </button>
 
             <div className="flex w-1/2 flex-col justify-center gap-4 lg:hidden ">
+              <img
+                className="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                alt=""
+              />
               <button
                 onClick={toggleRegister}
                 className="focus-visible:ring-ring border-input bg-background hover:bg-accent hover:text-accent-foreground inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md border px-3 text-sm font-medium shadow-sm transition-colors hover:scale-105 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
@@ -110,6 +114,11 @@ export default function Navigation({ toggleLogin, toggleRegister }) {
         >
           Login
         </button>
+        <img
+          className="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+          alt=""
+        />
       </div>
     </div>
   );
