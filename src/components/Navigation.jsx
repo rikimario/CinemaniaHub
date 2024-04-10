@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/authContext";
 
 import Path from "../paths/paths";
 
 export default function Navigation({ toggleLogin, toggleRegister }) {
+  const { user, logout } = useContext(AuthContext);
   const [openNav, setOpenNav] = useState(false);
 
   const toggleNav = () => {
@@ -56,31 +58,44 @@ export default function Navigation({ toggleLogin, toggleRegister }) {
             </button>
 
             <div className="flex w-1/2 flex-col justify-center gap-4 lg:hidden ">
-              <img
-                className="inline-block h-10 w-10 rounded-full ring-2 ring-white"
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt=""
-              />
-              <button
-                onClick={toggleRegister}
-                className="focus-visible:ring-ring border-input bg-background hover:bg-accent hover:text-accent-foreground inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md border px-3 text-sm font-medium shadow-sm transition-colors hover:scale-105 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
-              >
-                Sign Up
-              </button>
-              <button
-                onClick={toggleLogin}
-                className="focus-visible:ring-ring text-destructive-foreground hover:bg-destructive/90 inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md bg-[#00925D] px-3 text-sm font-medium shadow-sm transition-colors hover:scale-105 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
-              >
-                Login
-              </button>
+              {!user && (
+                <>
+                  <button
+                    onClick={toggleRegister}
+                    className="focus-visible:ring-ring border-input bg-background hover:bg-accent hover:text-accent-foreground inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md border px-3 text-sm font-medium shadow-sm transition-colors hover:scale-105 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
+                  >
+                    Sign Up
+                  </button>
+                  <button
+                    onClick={toggleLogin}
+                    className="focus-visible:ring-ring text-destructive-foreground hover:bg-destructive/90 inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md bg-[#00925D] px-3 text-sm font-medium shadow-sm transition-colors hover:scale-105 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
+                  >
+                    Login
+                  </button>
+                </>
+              )}
+              {user && (
+                <div className="item-center flex flex-col justify-center gap-4">
+                  <div className="item-center flex justify-center">
+                    <img
+                      className="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      alt=""
+                    />
+                  </div>
+                  <button
+                    onClick={logout}
+                    className="focus-visible:ring-ring border-input bg-background hover:bg-accent hover:text-accent-foreground inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md border px-3 text-sm font-medium shadow-sm transition-colors hover:scale-105 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
             </div>
           </ul>
         </div>
 
         <div className="space-x-4 pr-4">
-          <button>
-            <ion-icon size="large" name="search-outline"></ion-icon>
-          </button>
           <button
             onClick={toggleNav}
             className={`lg:hidden ${openNav ? "hidden" : "show"}`}
@@ -102,23 +117,37 @@ export default function Navigation({ toggleLogin, toggleRegister }) {
       </nav>
 
       <div className="hidden space-x-4 lg:flex">
-        <button
-          onClick={toggleRegister}
-          className="focus-visible:ring-ring border-input bg-background hover:bg-accent hover:text-accent-foreground inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md border px-3 text-lg font-medium shadow-sm transition-colors hover:scale-105 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
-        >
-          Sign Up
-        </button>
-        <button
-          onClick={toggleLogin}
-          className="focus-visible:ring-ring text-destructive-foreground hover:bg-destructive/90 inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md bg-[#00925D] px-3 text-lg font-medium shadow-sm transition-colors hover:scale-105 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
-        >
-          Login
-        </button>
-        <img
-          className="inline-block h-10 w-10 rounded-full ring-2 ring-white"
-          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-          alt=""
-        />
+        {!user && (
+          <>
+            <button
+              onClick={toggleRegister}
+              className="focus-visible:ring-ring border-input bg-background hover:bg-accent hover:text-accent-foreground inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md border px-3 text-lg font-medium shadow-sm transition-colors hover:scale-105 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
+            >
+              Sign Up
+            </button>
+            <button
+              onClick={toggleLogin}
+              className="focus-visible:ring-ring text-destructive-foreground hover:bg-destructive/90 inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md bg-[#00925D] px-3 text-lg font-medium shadow-sm transition-colors hover:scale-105 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
+            >
+              Login
+            </button>
+          </>
+        )}{" "}
+        {user && (
+          <>
+            <img
+              className="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+              alt=""
+            />
+            <button
+              onClick={logout}
+              className="focus-visible:ring-ring border-input bg-background hover:bg-accent hover:text-accent-foreground inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md border px-3 text-sm font-medium shadow-sm transition-colors hover:scale-105 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
+            >
+              Logout
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
