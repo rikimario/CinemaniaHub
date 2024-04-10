@@ -1,51 +1,34 @@
-import { createContext, useState } from "react";
+import axios from "axios";
+import { createContext, useState, useEffect } from "react";
 
-const AuthContext = createContext();
+export const AuthContext = createContext({});
 
-export const AuthProvider = ({ children }) => {
-  const [loginVisible, setLoginVisible] = useState(false);
-  const [registerVisible, setRegisterVisible] = useState(false);
-
-  const toggleLogin = () => {
-    setLoginVisible(!loginVisible);
-  };
-
-  const closeLogin = () => {
-    setLoginVisible(false);
-  };
-
-  const handleCloseLogin = (e) => {
-    if (e.target.id === "login") {
-      closeLogin();
+export function AuthContextProvider({ children }) {
+  const [user, setUser] = useState();
+  useEffect(() => {
+    if (!user) {
+      axios.get("/profile").then(({ data }) => {
+        setUser(data);
+      });
     }
+  }, []);
+
+  const logout = () => {
+    // Perform logout actions here, such as clearing user data and tokens
+    setUser(); // Assuming clearing user data
+    axios
+      .get("/logout")
+      .then(() => {
+        // Assuming logout API endpoint clears server-side session
+        console.log("Logged out successfully");
+      })
+      .catch((error) => {
+        console.error("Logout failed:", error);
+      });
   };
-
-  const toggleRegister = () => {
-    setRegisterVisible(!registerVisible);
-  };
-
-  const closeRegister = () => {
-    setRegisterVisible(false);
-  };
-
-  const handleCloseRegister = (e) => {
-    if (e.target.id === "register") {
-      closeRegister();
-    }
-  };
-
-  const values = {
-    toggleLogin,
-    closeLogin,
-    handleCloseLogin,
-    toggleRegister,
-    closeRegister,
-    handleCloseRegister,
-  };
-
-  return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
-};
-
-AuthContext.displayName = "AuthContext";
-
-export default AuthContext;
+  return (
+    <AuthContext.Provider value={{ user, setUser, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
