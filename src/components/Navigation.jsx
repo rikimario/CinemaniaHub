@@ -135,11 +135,11 @@ export default function Navigation({ toggleLogin, toggleRegister }) {
         )}{" "}
         {user && (
           <>
-            <img
-              className="inline-block h-10 w-10 rounded-full ring-2 ring-white"
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-              alt=""
-            />
+            <div className="relative inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
+              <span className="font-medium text-gray-600 dark:text-gray-300">
+                {user.username.charAt(0).toUpperCase()}
+              </span>
+            </div>
             <button
               onClick={logout}
               className="focus-visible:ring-ring border-input bg-background hover:bg-accent hover:text-accent-foreground inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md border px-3 text-sm font-medium shadow-sm transition-colors hover:scale-105 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
