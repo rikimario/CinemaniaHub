@@ -1,24 +1,33 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
+
 import axios from "axios";
 
 export default function Login({ closeLogin, handleCloseLogin }) {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+  });
   const navigate = useNavigate();
 
-  const loginSubmitHandler = (e) => {
+  const loginSubmitHandler = async (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:5000/login", { email, password })
-      .then((result) => {
-        console.log(result);
-        if (result.data === "Success") {
-          closeLogin();
-          navigate("/");
-        }
-      })
-      .catch((err) => console.log(err));
+    const { email, password } = data;
+    try {
+      const { data } = await axios.post("/login", {
+        email,
+        password,
+      });
+      if (data.error) {
+        toast.error(data.error);
+      } else {
+        setData({});
+        toast.success("Login Successful. Welcome!");
+        closeLogin();
+        navigate("/");
+      }
+    } catch (error) {}
   };
 
   useEffect(() => {
@@ -66,7 +75,8 @@ export default function Login({ closeLogin, handleCloseLogin }) {
                 autoComplete="email"
                 required
                 className="block w-full rounded-md border-0 py-1.5 pl-2 font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#00925D] sm:text-sm sm:leading-6"
-                onChange={(e) => setEmail(e.target.value)}
+                value={data.email}
+                onChange={(e) => setData({ ...data, email: e.target.value })}
               />
             </div>
           </div>
@@ -96,7 +106,8 @@ export default function Login({ closeLogin, handleCloseLogin }) {
                 autoComplete="current-password"
                 required
                 className="block w-full rounded-md border-0 py-1.5 pl-2 font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#00925D] sm:text-sm sm:leading-6"
-                onChange={(e) => setPassword(e.target.value)}
+                value={data.password}
+                onChange={(e) => setData({ ...data, password: e.target.value })}
               />
             </div>
           </div>
