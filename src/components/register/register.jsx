@@ -1,20 +1,36 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 import axios from "axios";
 
 export default function Register({ closeRegister, handleCloseRegister }) {
-  const [username, setUsername] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [data, setData] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const navigate = useNavigate();
 
-  const registerSubmitHandler = (e) => {
+  const registerSubmitHandler = async (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:5000/register", { username, email, password })
-      .then((result) => {
-        console.log(result);
+    const { username, email, password } = data;
+    try {
+      const { data } = await axios.post("/register", {
+        username,
+        email,
+        password,
+      });
+      if (data.error) {
+        toast.error(data.error);
+      } else {
+        setData({});
+        toast.success("Register Successful!");
         closeRegister();
-      })
-      .catch((err) => console.log(err));
+        navigate("/");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -62,7 +78,8 @@ export default function Register({ closeRegister, handleCloseRegister }) {
                 autoComplete="username"
                 required
                 className="block w-full rounded-md border-0 py-1.5 pl-2 font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#00925D] sm:text-sm sm:leading-6"
-                onChange={(e) => setUsername(e.target.value)}
+                value={data.username}
+                onChange={(e) => setData({ ...data, username: e.target.value })}
               />
             </div>
           </div>
@@ -82,7 +99,8 @@ export default function Register({ closeRegister, handleCloseRegister }) {
                 autoComplete="email"
                 required
                 className="block w-full rounded-md border-0 py-1.5 pl-2 font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#00925D] sm:text-sm sm:leading-6"
-                onChange={(e) => setEmail(e.target.value)}
+                value={data.email}
+                onChange={(e) => setData({ ...data, email: e.target.value })}
               />
             </div>
           </div>
@@ -105,7 +123,8 @@ export default function Register({ closeRegister, handleCloseRegister }) {
                 autoComplete="current-password"
                 required
                 className="block w-full rounded-md border-0 py-1.5 pl-2 font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#00925D] sm:text-sm sm:leading-6"
-                onChange={(e) => setPassword(e.target.value)}
+                value={data.password}
+                onChange={(e) => setData({ ...data, password: e.target.value })}
               />
             </div>
           </div>
