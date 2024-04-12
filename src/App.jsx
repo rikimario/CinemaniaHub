@@ -9,6 +9,8 @@ import Path from "./paths/paths";
 import Login from "./components/login/login.jsx";
 import Register from "./components/register/register.jsx";
 import Discovery from "./components/discovery/Discovery.jsx";
+import Profile from "./components/profile/Profile.jsx";
+
 import axios from "axios";
 
 axios.defaults.baseURL = "http://localhost:5000";
@@ -60,6 +62,7 @@ function App() {
             />
           }
         />
+        <Route path={Path.Profile} element={<Profile />} />
         <Route path={Path.Discovery} element={<Discovery />} />
       </Routes>
       {loginVisible && (
