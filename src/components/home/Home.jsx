@@ -59,8 +59,8 @@ export default function Home({ loginVisible, registerVisible }) {
       <div className="overflow-hidden backdrop-blur-2xl before:absolute before:bottom-[-20px] before:left-0 before:z-50 before:h-[50px] before:w-screen before:bg-[#0d0c0f] before:blur-xl">
         <div className="">
           <Slider {...settings}>
-            {movies.map((movie, index) => (
-              <div key={index}>
+            {movies.map((movie) => (
+              <div key={movie.id}>
                 <img
                   className="h-screen w-full bg-black opacity-50"
                   src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
@@ -78,7 +78,7 @@ export default function Home({ loginVisible, registerVisible }) {
                       {movie.overview}
                     </p>
 
-                    <HomeButtons />
+                    <HomeButtons id={movie.id} key={movie.id} {...movies} />
                   </div>
                 </div>
               </div>
