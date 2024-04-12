@@ -4,6 +4,7 @@ const Path = {
   Register: "/register",
   Profile: "/my-profile",
   Discovery: "/discovery",
+  MovieDetails: "/movie-details",
 };
 
 export default Path;
