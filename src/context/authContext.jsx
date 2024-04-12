@@ -1,26 +1,33 @@
 import axios from "axios";
 import { createContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext({});
 
 export function AuthContextProvider({ children }) {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(() => {
+    const storedUser = localStorage.getItem("user");
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (!user) {
       axios.get("/profile").then(({ data }) => {
         setUser(data);
+        localStorage.setItem("user", JSON.stringify(data));
       });
     }
   }, []);
 
   const logout = () => {
-    // Perform logout actions here, such as clearing user data and tokens
-    setUser(); // Assuming clearing user data
+    setUser();
+    localStorage.removeItem("user");
     axios
       .get("/logout")
       .then(() => {
-        // Assuming logout API endpoint clears server-side session
         console.log("Logged out successfully");
+        navigate("/");
       })
       .catch((error) => {
         console.error("Logout failed:", error);
