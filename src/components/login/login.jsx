@@ -26,6 +26,7 @@ export default function Login({ closeLogin, handleCloseLogin }) {
         toast.success("Login Successful. Welcome!");
         closeLogin();
         navigate("/");
+        window.location.reload();
       }
     } catch (error) {}
   };
