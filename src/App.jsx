@@ -10,6 +10,7 @@ import Login from "./components/login/login.jsx";
 import Register from "./components/register/register.jsx";
 import Discovery from "./components/discovery/Discovery.jsx";
 import Profile from "./components/profile/Profile.jsx";
+import MovieDetails from "./components/movie-details/MovieDetails.jsx";
 
 import axios from "axios";
 
@@ -64,6 +65,7 @@ function App() {
         />
         <Route path={Path.Profile} element={<Profile />} />
         <Route path={Path.Discovery} element={<Discovery />} />
+        <Route path={`${Path.MovieDetails}/:id`} element={<MovieDetails />} />
       </Routes>
       {loginVisible && (
         <Login
