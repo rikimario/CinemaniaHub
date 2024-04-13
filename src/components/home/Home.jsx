@@ -78,7 +78,12 @@ export default function Home({ loginVisible, registerVisible }) {
                       {movie.overview}
                     </p>
 
-                    <HomeButtons id={movie.id} key={movie.id} {...movies} />
+                    <HomeButtons
+                      id={movie.id}
+                      key={movie.id}
+                      {...movies}
+                      movie={movie}
+                    />
                   </div>
                 </div>
               </div>

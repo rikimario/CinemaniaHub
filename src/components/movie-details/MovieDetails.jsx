@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Button } from "../ui/button";
+import { StorageContext } from "@/context/storageContext";
 
 const apiKey = "589f3d4f48689702b074a222aea6db87";
 const apiUrl = "https://api.themoviedb.org/3/movie";
 
-export default function MovieDetails() {
-  const [movie, setMovie] = useState({});
+export default function MovieDetails({ movie }) {
+  const { addMovieToFavorite } = useContext(StorageContext);
+  const [movies, setMovies] = useState({});
   const { id: movieId } = useParams();
 
   useEffect(() => {
@@ -16,12 +19,18 @@ export default function MovieDetails() {
         }
         return res.json();
       })
-      .then(setMovie);
+      .then(setMovies);
   }, [movieId]);
   return (
     <>
       <div className="pt-44">
-        <h1>{movie.title}</h1>
+        <h1>{movies.title}</h1>
+
+        <div className="p-4">
+          <Button onClick={() => addMovieToFavorite(movie)}>
+            add Favorite
+          </Button>
+        </div>
       </div>
     </>
   );
