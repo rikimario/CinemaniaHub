@@ -5,14 +5,25 @@ import { Button } from "../ui/button";
 
 import FavoriteMovies from "../favoriteMovies/FavoriteMovies";
 import WatchList from "../watchList/WatchList";
-import MyRatings from "../my-ratings/MyRatings";
+import Watched from "../watched/Watched";
+import { StorageContext } from "@/context/storageContext";
 
 export default function Profile() {
   const { user } = useContext(AuthContext);
+  const { favorite, watched, watchlist } = useContext(StorageContext);
   const [activeTab, setActiveTab] = useState("favorite");
 
   if (!user) {
     return null;
+  }
+
+  let type = "";
+  if (activeTab === "favorite") {
+    type = "favorite";
+  } else if (activeTab === "watchlist") {
+    type = "watchlist";
+  } else if (activeTab === "watched") {
+    type = "watched";
   }
   return (
     <>
@@ -39,27 +50,31 @@ export default function Profile() {
             Favorite
           </Button>
           <Button
-            onClick={() => setActiveTab("watch-list")}
-            active={activeTab === "watch-list"}
+            onClick={() => setActiveTab("watchlist")}
+            active={activeTab === "watchlist"}
             variant="ghost"
           >
             Watch list
           </Button>
           <Button
-            onClick={() => setActiveTab("my-ratings")}
-            active={activeTab === "my-ratings"}
+            onClick={() => setActiveTab("watched")}
+            active={activeTab === "watched"}
             variant="ghost"
           >
-            Ratings
+            Watched
           </Button>
         </div>
         <Separator />
       </div>
 
       <div>
-        {activeTab === "favorite" && <FavoriteMovies />}
-        {activeTab === "watch-list" && <WatchList />}
-        {activeTab === "my-ratings" && <MyRatings />}
+        {activeTab === "favorite" && (
+          <FavoriteMovies type={type} movie={favorite} />
+        )}
+        {activeTab === "watchlist" && (
+          <WatchList type={type} movie={watchlist} />
+        )}
+        {activeTab === "watched" && <Watched type={type} movie={watched} />}
       </div>
     </>
   );
