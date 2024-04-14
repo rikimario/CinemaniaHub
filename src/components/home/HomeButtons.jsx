@@ -4,9 +4,9 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 export default function HomeButtons({ id, movie }) {
-  const { addMovieToFavorite, favorite } = useContext(StorageContext);
-  let storedMovies = favorite.find((f) => f.id === movie.id);
-  const favoriteDisabled = storedMovies ? true : false;
+  const { addMovieToWatchlist, watchlist } = useContext(StorageContext);
+  let storedMovies = watchlist.find((w) => w.id === movie.id);
+  const watchlistDisabled = storedMovies ? true : false;
   return (
     <div className="relative z-40 space-x-4 pt-8 lg:flex">
       <Link
@@ -16,11 +16,11 @@ export default function HomeButtons({ id, movie }) {
         Read More
       </Link>
       <button
-        onClick={() => addMovieToFavorite(movie)}
-        disabled={favoriteDisabled}
+        onClick={() => addMovieToWatchlist(movie)}
+        disabled={watchlistDisabled}
         className="focus-visible:ring-ring text-destructive-foreground hover:bg-destructive/90 inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md bg-[#00925D] px-3 text-lg font-medium shadow-sm transition-colors hover:scale-105 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
       >
-        Add to Favorite
+        Watchlist
       </button>
     </div>
   );
