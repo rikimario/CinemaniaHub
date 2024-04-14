@@ -19,7 +19,7 @@ export default function Home({ loginVisible, registerVisible }) {
       fetch(apiUrl)
         .then((res) => res.json())
         .then((data) => {
-          const firstFiveMovies = data.results.slice(0, 5);
+          const firstFiveMovies = data.results.slice(0, 6);
           setMovies(firstFiveMovies);
         });
     } catch (error) {
