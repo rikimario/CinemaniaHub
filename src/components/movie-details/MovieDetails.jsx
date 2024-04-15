@@ -39,7 +39,7 @@ export default function MovieDetails({ movie }) {
   }, [movieId]);
   return (
     <>
-      <div className="px-48 py-44">
+      <div className="p-44">
         <div className="pb-10">
           <YouTube
             videoId={trailer}
@@ -59,13 +59,13 @@ export default function MovieDetails({ movie }) {
             </div>
           </div>
 
-          <div className="pl-4 pr-24">
+          <div className="p-4 ">
             <h1 className="pb-4 text-2xl">{movies.title}</h1>
             <p>{movies.overview}</p>
 
-            <div className="grid grid-cols-2 pr-2">
+            <div className="grid grid-cols-2">
               <div>
-                <div className="flex items-center pt-6">
+                <div className="flex items-center pt-4">
                   <h2 className="self-center pr-2 text-xl">Genres:</h2>
                   {movies.genres && (
                     <p className="self-center text-lg text-[#266d5d]">
@@ -112,6 +112,14 @@ export default function MovieDetails({ movie }) {
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+          <div className="flex w-60 flex-col gap-4 p-6">
+            <div className="pt-2">
+              <Button className="w-full bg-[#266d5d]">Watchlist</Button>
+            </div>
+            <div className=" pt-2">
+              <Button className="w-full bg-[#266d5d]">Watched</Button>
             </div>
           </div>
         </div>
