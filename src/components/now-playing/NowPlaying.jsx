@@ -34,7 +34,7 @@ export default function NowPlaying() {
     dots: true,
   };
   return (
-    <div className="px-11 pt-12">
+    <div className="pt-12 lg:px-32">
       <h1 className="pb-4 text-2xl text-white">Now Playing</h1>
       <div className="">
         <Slider {...settings}>

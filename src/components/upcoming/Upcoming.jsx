@@ -34,7 +34,7 @@ export default function Upcoming() {
     dots: true,
   };
   return (
-    <div className="px-11 pt-12">
+    <div className="pt-12 lg:px-32">
       <h1 className="pb-4 text-2xl text-white">Upcoming</h1>
       <div className="">
         <Slider {...settings}>
