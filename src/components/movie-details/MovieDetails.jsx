@@ -19,6 +19,7 @@ export default function MovieDetails() {
   const [movies, setMovies] = useState({});
   const [trailer, setTrailer] = useState("");
   const [images, setImages] = useState([]);
+  const [casts, setCasts] = useState([]);
   const { id: movieId } = useParams();
 
   useEffect(() => {
@@ -57,7 +58,18 @@ export default function MovieDetails() {
         console.error("Error fetching movies from TMDB:", error),
       );
   }, [movieId]);
-  // console.log(data);
+
+  // Fetch movie cast
+  useEffect(() => {
+    fetch(
+      `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`,
+    )
+      .then((res) => res.json())
+      .then((data) => setCasts(data.cast.slice(0, 12)))
+      .catch((error) =>
+        console.error("Error fetching movies from TMDB:", error),
+      );
+  });
   return (
     <>
       <div className="px-44 pb-10 pt-44">
@@ -145,33 +157,55 @@ export default function MovieDetails() {
           </div>
         </div>
       </div>
-      <div>
-        <div className="px-44 pb-10">
-          <h2 className="p-4 text-2xl">
-            <span className="font-bold text-[#266d5d]">|</span> Photos
-          </h2>
-          <div className="bg-neutral-900">
-            <Carousel className="w-full">
-              <CarouselContent className="-ml-1">
-                {images &&
-                  images.map((image, index) => (
-                    <CarouselItem
-                      key={index}
-                      className="pl-1 md:basis-1/2 lg:basis-1/3"
-                    >
-                      <img
-                        className="flex w-full items-center justify-center p-6"
-                        key={image.file_path}
-                        src={`https://image.tmdb.org/t/p/w500${image.file_path}`}
-                        alt={movies.title}
-                      />
-                    </CarouselItem>
-                  ))}
-              </CarouselContent>
-              <CarouselNext />
-              <CarouselPrevious />
-            </Carousel>
-          </div>
+      <div className="px-44 pb-10">
+        <h2 className="p-4 text-2xl">
+          <span className="font-bold text-[#266d5d]">|</span> Photos
+        </h2>
+        <div className="rounded-lg bg-neutral-900">
+          <Carousel className="w-full">
+            <CarouselContent className="-ml-1">
+              {images &&
+                images.map((image, index) => (
+                  <CarouselItem
+                    key={index}
+                    className="pl-1 md:basis-1/2 lg:basis-1/3"
+                  >
+                    <img
+                      className="flex w-full items-center justify-center p-6"
+                      key={image.file_path}
+                      src={`https://image.tmdb.org/t/p/w500${image.file_path}`}
+                      alt={movies.title}
+                    />
+                  </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselNext />
+            <CarouselPrevious />
+          </Carousel>
+        </div>
+      </div>
+
+      <div className=" px-44 pb-10">
+        <h2 className="p-4 text-2xl">
+          <span className="font-bold text-[#266d5d]">|</span> Top Cast
+        </h2>
+
+        <div className="grid grid-cols-2 gap-4 rounded-lg bg-neutral-900 p-4">
+          {casts &&
+            casts.map((cast) => (
+              <div className="flex">
+                <img
+                  className="h-32 w-32 rounded-full object-cover p-1"
+                  key={cast.id}
+                  src={`https://image.tmdb.org/t/p/original${cast.profile_path}`}
+                  alt={cast.name}
+                />
+                <div className="flex flex-col items-center justify-center pl-2">
+                  <p className="text-xl">{cast.name}</p>
+                  <p className="text-md text-[#9CA4AB]">{cast.character}</p>
+                </div>
+              </div>
+            ))}
         </div>
       </div>
     </>
