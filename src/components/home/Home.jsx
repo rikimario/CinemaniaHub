@@ -27,21 +27,6 @@ export default function Home({ loginVisible, registerVisible }) {
     }
   }, []);
 
-  fetch(apiUrl)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      // Extracting movie IDs from the response
-      const movieIds = data.results.map((movie) => movie.id);
-    })
-    .catch((error) => {
-      console.error("Error fetching data:", error);
-    });
-
   const settings = {
     dots: true,
     fade: true,
@@ -53,7 +38,6 @@ export default function Home({ loginVisible, registerVisible }) {
     autoplaySpeed: 3000,
     waitForAnimate: false,
   };
-
   return (
     <>
       <div className="overflow-hidden backdrop-blur-2xl before:absolute before:bottom-[-20px] before:left-0 before:z-50 before:h-[50px] before:w-screen before:bg-[#0d0c0f] before:blur-xl">
@@ -63,7 +47,7 @@ export default function Home({ loginVisible, registerVisible }) {
               <div key={movie.id}>
                 <img
                   className="h-screen w-full bg-black opacity-50"
-                  src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+                  src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
                   alt={movie.title}
                 />
                 <div className="absolute bottom-20 pl-11 lg:bottom-24">
