@@ -2,15 +2,23 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button } from "../ui/button";
 import { StorageContext } from "@/context/storageContext";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "../ui/carousel";
 import YouTube from "react-youtube";
 
 const apiKey = "589f3d4f48689702b074a222aea6db87";
 const apiUrl = "https://api.themoviedb.org/3/movie";
 
-export default function MovieDetails({ movie }) {
+export default function MovieDetails() {
   const { addMovieToFavorite } = useContext(StorageContext);
   const [movies, setMovies] = useState({});
   const [trailer, setTrailer] = useState("");
+  const [images, setImages] = useState([]);
   const { id: movieId } = useParams();
 
   useEffect(() => {
@@ -37,9 +45,22 @@ export default function MovieDetails({ movie }) {
         setTrailer(trailer?.key);
       });
   }, [movieId]);
+
+  // Fetch movie images
+  useEffect(() => {
+    fetch(
+      `https://api.themoviedb.org/3/movie/${movieId}/images?api_key=${apiKey}`,
+    )
+      .then((res) => res.json())
+      .then((data) => setImages(data.backdrops))
+      .catch((error) =>
+        console.error("Error fetching movies from TMDB:", error),
+      );
+  }, [movieId]);
+  // console.log(data);
   return (
     <>
-      <div className="p-44">
+      <div className="px-44 pb-10 pt-44">
         <div className="pb-10">
           <YouTube
             videoId={trailer}
@@ -121,6 +142,35 @@ export default function MovieDetails({ movie }) {
             <div className=" pt-2">
               <Button className="w-full bg-[#266d5d]">Watched</Button>
             </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div className="px-44 pb-10">
+          <h2 className="p-4 text-2xl">
+            <span className="font-bold text-[#266d5d]">|</span> Photos
+          </h2>
+          <div className="bg-neutral-900">
+            <Carousel className="w-full">
+              <CarouselContent className="-ml-1">
+                {images &&
+                  images.map((image, index) => (
+                    <CarouselItem
+                      key={index}
+                      className="pl-1 md:basis-1/2 lg:basis-1/3"
+                    >
+                      <img
+                        className="flex w-full items-center justify-center p-6"
+                        key={image.file_path}
+                        src={`https://image.tmdb.org/t/p/w500${image.file_path}`}
+                        alt={movies.title}
+                      />
+                    </CarouselItem>
+                  ))}
+              </CarouselContent>
+              <CarouselNext />
+              <CarouselPrevious />
+            </Carousel>
           </div>
         </div>
       </div>
