@@ -12,6 +12,7 @@ import {
 import YouTube from "react-youtube";
 
 import MoreLikeThis from "./movie-details-sections/MoreLikeThis";
+import MovieReviews from "./movie-reviews/MovieReviews";
 
 const apiKey = "589f3d4f48689702b074a222aea6db87";
 const apiUrl = "https://api.themoviedb.org/3/movie";
@@ -212,6 +213,7 @@ export default function MovieDetails() {
       </div>
 
       <MoreLikeThis id={movieId} />
+      <MovieReviews id={movieId} />
     </>
   );
 }
