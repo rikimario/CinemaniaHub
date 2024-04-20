@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import { useState } from "react";
 import { AuthContextProvider } from "./context/authContext.jsx";
 import { StorageContextProvider } from "./context/storageContext.jsx";
 import { Toaster } from "react-hot-toast";
@@ -19,70 +18,19 @@ axios.defaults.baseURL = "http://localhost:5000";
 axios.defaults.withCredentials = true;
 
 function App() {
-  const [loginVisible, setLoginVisible] = useState(false);
-  const [registerVisible, setRegisterVisible] = useState(false);
-
-  const toggleLogin = () => {
-    setLoginVisible(!loginVisible);
-  };
-
-  const closeLogin = () => {
-    setLoginVisible(false);
-  };
-
-  const handleCloseLogin = (e) => {
-    if (e.target.id === "login") {
-      closeLogin();
-    }
-  };
-
-  const toggleRegister = () => {
-    setRegisterVisible(!registerVisible);
-  };
-
-  const closeRegister = () => {
-    setRegisterVisible(false);
-  };
-
-  const handleCloseRegister = (e) => {
-    if (e.target.id === "register") {
-      closeRegister();
-    }
-  };
-
   return (
     <AuthContextProvider>
       <StorageContextProvider>
-        <Navigation toggleLogin={toggleLogin} toggleRegister={toggleRegister} />
+        <Navigation />
         <Toaster position="bottom-right" toastOptions={{ duration: 2000 }} />
         <Routes>
-          <Route
-            path={Path.Home}
-            element={
-              <Home
-                loginVisible={loginVisible}
-                registerVisible={registerVisible}
-              />
-            }
-          />
+          <Route path={Path.Home} element={<Home />} />
+          <Route path={Path.Login} element={<Login />} />
+          <Route path={Path.Register} element={<Register />} />
           <Route path={Path.Profile} element={<Profile />} />
           <Route path={Path.Discovery} element={<Discovery />} />
           <Route path={`${Path.MovieDetails}/:id`} element={<MovieDetails />} />
         </Routes>
-        {loginVisible && (
-          <Login
-            isVisible
-            closeLogin={closeLogin}
-            handleCloseLogin={handleCloseLogin}
-          />
-        )}
-        {registerVisible && (
-          <Register
-            isVisible
-            closeRegister={closeRegister}
-            handleCloseRegister={handleCloseRegister}
-          />
-        )}
       </StorageContextProvider>
     </AuthContextProvider>
   );

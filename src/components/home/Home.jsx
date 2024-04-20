@@ -11,7 +11,7 @@ import "slick-carousel/slick/slick-theme.css";
 const apiUrl =
   "https://api.themoviedb.org/3/movie/popular?api_key=589f3d4f48689702b074a222aea6db87";
 
-export default function Home({ loginVisible, registerVisible }) {
+export default function Home() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -74,9 +74,6 @@ export default function Home({ loginVisible, registerVisible }) {
             ))}
           </Slider>
         </div>
-
-        {loginVisible}
-        {registerVisible}
       </div>
       <Upcoming />
       <NowPlaying />

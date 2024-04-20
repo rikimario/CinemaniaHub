@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 
 import axios from "axios";
 
-export default function Login({ closeLogin, handleCloseLogin }) {
+export default function Login() {
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -24,33 +24,18 @@ export default function Login({ closeLogin, handleCloseLogin }) {
       } else {
         setData({});
         toast.success("Login Successful. Welcome!");
-        closeLogin();
         navigate("/");
         window.location.reload();
       }
     } catch (error) {}
   };
 
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow = "visible";
-    };
-  }, []);
   return (
     <div
-      onClick={handleCloseLogin}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-25 backdrop-blur-sm"
+      className="inset-0 z-50 flex h-screen items-center justify-center bg-black bg-opacity-25 "
       id="login"
     >
       <div className="flex w-[600px] flex-col">
-        <button
-          onClick={closeLogin}
-          className="place-self-end text-xl text-white"
-        >
-          X
-        </button>
         <form
           onSubmit={loginSubmitHandler}
           className="space-y-6 rounded-lg bg-[#28262D] p-8"

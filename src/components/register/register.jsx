@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import Path from "@/paths/paths";
 
-export default function Register({ closeRegister, handleCloseRegister }) {
+export default function Register() {
   const [data, setData] = useState({
     username: "",
     email: "",
@@ -25,34 +26,19 @@ export default function Register({ closeRegister, handleCloseRegister }) {
       } else {
         setData({});
         toast.success("Register Successful!");
-        closeRegister();
-        navigate("/");
+        navigate(`${Path.Login}`);
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow = "visible";
-    };
-  }, []);
   return (
     <div
-      onClick={handleCloseRegister}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-25 backdrop-blur-sm"
+      className="inset-0 z-50 flex h-screen items-center justify-center bg-black bg-opacity-25 backdrop-blur-sm"
       id="register"
     >
       <div className="flex w-[600px] flex-col">
-        <button
-          onClick={closeRegister}
-          className="place-self-end text-xl text-white"
-        >
-          X
-        </button>
         <form
           onSubmit={registerSubmitHandler}
           className="space-y-6 rounded-lg bg-[#28262D] p-8"
