@@ -3,7 +3,11 @@ import Path from "@/paths/paths";
 
 export default function SearchResult({ id, result }) {
   return (
-    <Link to={`${Path.MovieDetails}/${id}`} className="flex">
+    <Link
+      // onClick={handleClick}
+      to={`${Path.MovieDetails}/${id}`}
+      className="flex"
+    >
       <div>
         {result.poster_path ? (
           <img
