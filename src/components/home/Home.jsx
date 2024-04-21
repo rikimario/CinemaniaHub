@@ -28,7 +28,6 @@ export default function Home() {
   }, []);
 
   const settings = {
-    dots: true,
     fade: true,
     infinite: true,
     speed: 500,
@@ -40,41 +39,40 @@ export default function Home() {
   };
   return (
     <>
-      <div className="overflow-hidden px-12 backdrop-blur-2xl before:absolute before:bottom-[-20px] before:left-0 before:z-50 before:h-[50px] before:w-screen before:bg-[#0d0c0f] before:blur-xl">
-        <div className="">
-          <Slider {...settings}>
-            {movies.map((movie) => (
-              <div key={movie.id}>
-                <img
-                  className="h-screen w-full bg-black opacity-50"
-                  src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-                  alt={movie.title}
-                />
-                <div className="absolute bottom-20 pl-11 lg:bottom-24">
-                  <h1 className="text-3xl text-white md:text-4xl lg:text-6xl">
-                    {movie.title}
-                  </h1>
-                  <p className="pt-2 text-[#9CA4AB]">
-                    Release Date: {movie.release_date}
+      <div className="relative overflow-hidden backdrop-blur-2xl before:absolute before:bottom-[-20px] before:left-0 before:z-50 before:h-[50px] before:w-screen before:bg-[#0d0c0f] before:blur-xl">
+        <Slider {...settings}>
+          {movies.map((movie) => (
+            <div className="" key={movie.id}>
+              <img
+                className="w-full bg-black opacity-50"
+                src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+                alt={movie.title}
+              />
+              <div className="absolute bottom-20 pl-11 lg:bottom-24">
+                <h1 className="text-3xl text-white md:text-4xl lg:text-6xl">
+                  {movie.title}
+                </h1>
+                <p className="pt-2 text-[#9CA4AB]">
+                  Release Date: {movie.release_date}
+                </p>
+                <div className="">
+                  <p className="lg:2/3 flex overflow-hidden pr-11 pt-8 text-lg leading-8 md:w-2/3 lg:text-xl">
+                    {movie.overview}
                   </p>
-                  <div className="">
-                    <p className="lg:2/3 flex overflow-hidden pr-11 pt-8 text-lg leading-8 md:w-2/3 lg:text-xl">
-                      {movie.overview}
-                    </p>
 
-                    <HomeButtons
-                      id={movie.id}
-                      key={movie.id}
-                      {...movies}
-                      movie={movie}
-                    />
-                  </div>
+                  <HomeButtons
+                    id={movie.id}
+                    key={movie.id}
+                    {...movies}
+                    movie={movie}
+                  />
                 </div>
               </div>
-            ))}
-          </Slider>
-        </div>
+            </div>
+          ))}
+        </Slider>
       </div>
+
       <Upcoming />
       <NowPlaying />
     </>
