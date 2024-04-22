@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
 const cookieParser = require("cookie-parser");
 
-const PORT = 5000;
+const PORT = process.env.PORT;
 
 const app = express();
 
@@ -16,7 +16,7 @@ app.use("/", require("./routes/authRoutes"));
 
 // * database connection //
 mongoose
-  .connect("mongodb://127.0.0.1:27017/cinema-hub")
+  .connect(process.env.MONGO_URL)
   .then(() => console.log("Database Connected"))
   .catch((err) => console.log("Database not Connected", err));
 
