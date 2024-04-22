@@ -1,6 +1,10 @@
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
-const { hashPassword, comparePassword } = require("../helpers/auth");
+const {
+  hashPassword,
+  comparePassword,
+  generateToken,
+} = require("../helpers/auth");
 
 const test = (req, res) => {
   res.json("test is working");
@@ -32,6 +36,18 @@ const register = async (req, res) => {
       email,
       password: hashedPassword,
     });
+
+    if (user) {
+      res.status(201).json({
+        _id: user._id,
+        username: user.username,
+        email: user.email,
+        token: generateToken(user._id),
+      });
+    } else {
+      res.status(400);
+      throw new Error("User not found");
+    }
 
     return res.json(user);
   } catch (error) {
@@ -76,10 +92,63 @@ const getProfile = (req, res) => {
   if (token) {
     jwt.verify(token, process.env.JWT_SECRET, {}, (err, user) => {
       if (err) throw err;
-      res.json(user);
+      res.json(user._id);
     });
   } else {
-    res.json(null);
+    res.json();
+    console.log("no token");
+  }
+};
+
+const getFavorite = async (req, res) => {
+  try {
+    const user = (await User.findById(req.user._id)).populate("favorite");
+    if (user) {
+      res.json(user.favorite);
+    } else {
+      res.status(400);
+      throw new Error("User not found");
+    }
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+const addMovieToFavorite = async (req, res) => {
+  const { movieId } = req.body;
+  try {
+    const user = await User.findById(req.user._id);
+    if (user) {
+      if (user.favorite.includes(movieId)) {
+        res.status(400);
+        throw new Error("Movie already exists in favorite list");
+      }
+      user.favorite.push(movieId);
+      await user.save();
+      res.json(user.favorite);
+    } else {
+      res.status(400);
+      throw new Error("Not found");
+    }
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+const deleteMovieFromFavorite = async (req, res) => {
+  const { movieId } = req.body;
+  try {
+    const user = await User.findById(req.user._id);
+    if (user) {
+      user.favorite = [];
+      await user.save();
+      res.json({ message: "deleted" });
+    } else {
+      res.status(400);
+      throw new Error("Not found");
+    }
+  } catch (error) {
+    res.status(400).json({ message: error.message });
   }
 };
 
@@ -95,4 +164,7 @@ module.exports = {
   login,
   getProfile,
   logout,
+  getFavorite,
+  addMovieToFavorite,
+  deleteMovieFromFavorite,
 };
