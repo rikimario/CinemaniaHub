@@ -24,7 +24,7 @@ export default function MoreLikeThis() {
       .catch((error) =>
         console.error("Error fetching movies from TMDB:", error),
       );
-  });
+  }, [movieId]);
   return (
     <div className="px-44 pb-10">
       <h2 className="p-4 text-2xl">
