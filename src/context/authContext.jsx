@@ -18,7 +18,7 @@ export function AuthContextProvider({ children }) {
         localStorage.setItem("user", JSON.stringify(data));
       });
     }
-  }, []);
+  }, [user]);
 
   const logout = () => {
     setUser();
