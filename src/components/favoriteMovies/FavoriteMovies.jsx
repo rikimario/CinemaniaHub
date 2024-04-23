@@ -9,16 +9,20 @@ export default function FavoriteMovies({ movie, type }) {
       <div className="pl-11 pt-6">
         <h1 className="text-2xl">Favorite movies</h1>
         <div className="grid grid-cols-5 py-10">
-          {favorite.map((movie) => (
-            <div key={movie.id} className="w-56 pb-6">
-              <img
-                className="h-full w-auto rounded-xl object-fill opacity-50"
-                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                alt={movie.title}
-              />
-              <MovieControlls type={type} movie={movie} />
-            </div>
-          ))}
+          {favorite.length === 0 ? (
+            <p className="text-2xl">No favorite movies</p>
+          ) : (
+            favorite.map((movie) => (
+              <div key={movie.id} className="w-56 pb-6">
+                <img
+                  className="h-full w-auto rounded-xl object-fill opacity-50"
+                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                  alt={movie.title}
+                />
+                <MovieControlls type={type} movie={movie} />
+              </div>
+            ))
+          )}
         </div>
       </div>
     </>
