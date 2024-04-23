@@ -6,10 +6,6 @@ const {
   generateToken,
 } = require("../helpers/auth");
 
-const test = (req, res) => {
-  res.json("test is working");
-};
-
 const register = async (req, res) => {
   try {
     const { username, email, password } = req.body;
@@ -96,75 +92,18 @@ const getProfile = (req, res) => {
     });
   } else {
     res.json();
-    console.log("no token");
-  }
-};
-
-const getFavorite = async (req, res) => {
-  try {
-    const user = (await User.findById(req.user._id)).populate("favorite");
-    if (user) {
-      res.json(user.favorite);
-    } else {
-      res.status(400);
-      throw new Error("User not found");
-    }
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-};
-
-const addMovieToFavorite = async (req, res) => {
-  const { movieId } = req.body;
-  try {
-    const user = await User.findById(req.user._id);
-    if (user) {
-      if (user.favorite.includes(movieId)) {
-        res.status(400);
-        throw new Error("Movie already exists in favorite list");
-      }
-      user.favorite.push(movieId);
-      await user.save();
-      res.json(user.favorite);
-    } else {
-      res.status(400);
-      throw new Error("Not found");
-    }
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-};
-
-const deleteMovieFromFavorite = async (req, res) => {
-  const { movieId } = req.body;
-  try {
-    const user = await User.findById(req.user._id);
-    if (user) {
-      user.favorite = [];
-      await user.save();
-      res.json({ message: "deleted" });
-    } else {
-      res.status(400);
-      throw new Error("Not found");
-    }
-  } catch (error) {
-    res.status(400).json({ message: error.message });
   }
 };
 
 const logout = (req, res) => {
   // Clear the token cookie
   res.clearCookie("token");
-  res.json({ message: "Logged out successfully" });
+  res.status(200).json({ message: "Logged out successfully", success: true });
 };
 
 module.exports = {
-  test,
   register,
   login,
   getProfile,
   logout,
-  getFavorite,
-  addMovieToFavorite,
-  deleteMovieFromFavorite,
 };
