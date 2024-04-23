@@ -3,7 +3,6 @@ const router = express.Router();
 const cors = require("cors");
 
 const {
-  test,
   register,
   login,
   logout,
@@ -18,7 +17,6 @@ router.use(
   }),
 );
 
-router.get("/", test);
 router.post("/register", register);
 router.post("/login", login);
 router.get("/logout", logout);
