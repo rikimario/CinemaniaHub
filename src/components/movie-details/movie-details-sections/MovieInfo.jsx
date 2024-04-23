@@ -1,32 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { AuthContext } from "@/context/authContext";
-import { StorageContext } from "@/context/storageContext";
-import { useContext, useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const apiKey = "589f3d4f48689702b074a222aea6db87";
 const apiUrl = "https://api.themoviedb.org/3/movie";
 export default function MovieInfo() {
-  const {
-    addMovieToFavorite,
-    addMovieToWatched,
-    addMovieToWatchlist,
-    favorite,
-    watched,
-    watchlist,
-  } = useContext(StorageContext);
-  const [movies, setMovies] = useState({});
-  const { user } = useContext(AuthContext);
-
-  let storedFavoriteMovies = favorite.find((f) => f.id === movies.id);
-  const favoriteDisabled = storedFavoriteMovies ? true : false;
-
-  let storedWatchedMovies = watched.find((w) => w.id === movies.id);
-  const watchedDisabled = storedWatchedMovies ? true : false;
-
-  let storedWatchlistMovies = watchlist.find((w) => w.id === movies.id);
-  const watchlistDisabled = storedWatchlistMovies ? true : false;
-
   const { id: movieId } = useParams();
 
   useEffect(() => {
@@ -39,6 +17,7 @@ export default function MovieInfo() {
       })
       .then(setMovies);
   }, [movieId]);
+
   return (
     <div className="px-44 pb-10">
       <div className="flex rounded-lg bg-neutral-900 p-2">
@@ -51,7 +30,7 @@ export default function MovieInfo() {
           {user && (
             <div className=" pt-2">
               <Button
-                onClick={() => addMovieToFavorite(movies)}
+                // onClick={() => addMovieToFavoriteHandler()}
                 disabled={favoriteDisabled}
                 className="w-full bg-[#266d5d]"
               >
