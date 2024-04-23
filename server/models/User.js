@@ -7,26 +7,9 @@ const UserSchema = new mongoose.Schema({
     unique: true,
   },
   password: String,
-  favorite: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Favorite",
-    },
-  ],
-  watchList: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Movie",
-    },
-  ],
-  watched: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Movie",
-    },
-  ],
+  favorite: [],
 });
 
-const User = mongoose.model("user", UserSchema);
+const User = mongoose.model("User", UserSchema);
 
 module.exports = User;
