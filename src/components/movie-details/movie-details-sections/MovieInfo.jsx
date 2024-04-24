@@ -1,10 +1,14 @@
 import { Button } from "@/components/ui/button";
-import { useEffect } from "react";
+import { AuthContext } from "@/context/authContext";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const apiKey = "589f3d4f48689702b074a222aea6db87";
 const apiUrl = "https://api.themoviedb.org/3/movie";
 export default function MovieInfo() {
+  const { user } = useContext(AuthContext);
+  const [movies, setMovies] = useState({});
   const { id: movieId } = useParams();
 
   useEffect(() => {
@@ -18,6 +22,39 @@ export default function MovieInfo() {
       .then(setMovies);
   }, [movieId]);
 
+  const addToFavorite = async () => {
+    try {
+      await axios.post("http://localhost:5000/user/favorite", {
+        email: user.email,
+        data: movies,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addToWatchlist = async () => {
+    try {
+      await axios.post("http://localhost:5000/user/watchlist", {
+        email: user.email,
+        data: movies,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addToWatched = async () => {
+    try {
+      await axios.post("http://localhost:5000/user/watched", {
+        email: user.email,
+        data: movies,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="px-44 pb-10">
       <div className="flex rounded-lg bg-neutral-900 p-2">
@@ -30,8 +67,7 @@ export default function MovieInfo() {
           {user && (
             <div className=" pt-2">
               <Button
-                // onClick={() => addMovieToFavoriteHandler()}
-                disabled={favoriteDisabled}
+                onClick={() => addToFavorite()}
                 className="w-full bg-[#266d5d]"
               >
                 Favorite
@@ -99,8 +135,7 @@ export default function MovieInfo() {
           <div className="flex w-60 flex-col gap-4 p-6">
             <div className="pt-2">
               <Button
-                onClick={() => addMovieToWatchlist(movies)}
-                disabled={watchlistDisabled}
+                onClick={() => addToWatchlist()}
                 className="w-full bg-[#266d5d]"
               >
                 Watchlist
@@ -108,8 +143,7 @@ export default function MovieInfo() {
             </div>
             <div className=" pt-2">
               <Button
-                onClick={() => addMovieToWatched(movies)}
-                disabled={watchedDisabled}
+                onClick={() => addToWatched()}
                 className="w-full bg-[#266d5d]"
               >
                 Watched
