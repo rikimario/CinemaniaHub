@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import { AuthContextProvider } from "./context/authContext.jsx";
-import { StorageContextProvider } from "./context/storageContext.jsx";
 import { Toaster } from "react-hot-toast";
 
 import Home from "./components/home/Home";
@@ -20,18 +19,16 @@ axios.defaults.withCredentials = true;
 function App() {
   return (
     <AuthContextProvider>
-      <StorageContextProvider>
-        <Navigation />
-        <Toaster position="bottom-right" toastOptions={{ duration: 2000 }} />
-        <Routes>
-          <Route path={Path.Home} element={<Home />} />
-          <Route path={Path.Login} element={<Login />} />
-          <Route path={Path.Register} element={<Register />} />
-          <Route path={`${Path.Profile}/:id`} element={<Profile />} />
-          <Route path={Path.Discovery} element={<Discovery />} />
-          <Route path={`${Path.MovieDetails}/:id`} element={<MovieDetails />} />
-        </Routes>
-      </StorageContextProvider>
+      <Navigation />
+      <Toaster position="bottom-right" toastOptions={{ duration: 2000 }} />
+      <Routes>
+        <Route path={Path.Home} element={<Home />} />
+        <Route path={Path.Login} element={<Login />} />
+        <Route path={Path.Register} element={<Register />} />
+        <Route path={`${Path.Profile}/:id`} element={<Profile />} />
+        <Route path={Path.Discovery} element={<Discovery />} />
+        <Route path={`${Path.MovieDetails}/:id`} element={<MovieDetails />} />
+      </Routes>
     </AuthContextProvider>
   );
 }
