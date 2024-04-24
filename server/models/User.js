@@ -8,6 +8,8 @@ const UserSchema = new mongoose.Schema({
   },
   password: String,
   favorite: [],
+  watchlist: [],
+  watched: [],
 });
 
 const User = mongoose.model("User", UserSchema);
