@@ -6,11 +6,9 @@ import { Button } from "../ui/button";
 import FavoriteMovies from "../favoriteMovies/FavoriteMovies";
 import WatchList from "../watchList/WatchList";
 import Watched from "../watched/Watched";
-import { StorageContext } from "@/context/storageContext";
 
 export default function Profile() {
   const { user } = useContext(AuthContext);
-  const { favorite, watched, watchlist } = useContext(StorageContext);
   const [activeTab, setActiveTab] = useState("favorite");
 
   if (!user) {
@@ -68,13 +66,9 @@ export default function Profile() {
       </div>
 
       <div>
-        {activeTab === "favorite" && (
-          <FavoriteMovies type={type} movie={favorite} />
-        )}
-        {activeTab === "watchlist" && (
-          <WatchList type={type} movie={watchlist} />
-        )}
-        {activeTab === "watched" && <Watched type={type} movie={watched} />}
+        {activeTab === "favorite" && <FavoriteMovies type={type} />}
+        {activeTab === "watchlist" && <WatchList type={type} />}
+        {activeTab === "watched" && <Watched type={type} />}
       </div>
     </>
   );
