@@ -10,6 +10,8 @@ import Register from "./components/register/register.jsx";
 import Discovery from "./components/discovery/Discovery.jsx";
 import Profile from "./components/profile/Profile.jsx";
 import MovieDetails from "./components/movie-details/MovieDetails.jsx";
+import AuthGuard from "./components/guards/AuthGuard.jsx";
+import NotFound from "./components/not-found/NotFound.jsx";
 
 import axios from "axios";
 
@@ -23,11 +25,15 @@ function App() {
       <Toaster position="bottom-right" toastOptions={{ duration: 2000 }} />
       <Routes>
         <Route path={Path.Home} element={<Home />} />
-        <Route path={Path.Login} element={<Login />} />
-        <Route path={Path.Register} element={<Register />} />
-        <Route path={`${Path.Profile}/:id`} element={<Profile />} />
         <Route path={Path.Discovery} element={<Discovery />} />
         <Route path={`${Path.MovieDetails}/:id`} element={<MovieDetails />} />
+
+        <Route element={<AuthGuard />}>
+          <Route path={Path.Login} element={<Login />} />
+          <Route path={Path.Register} element={<Register />} />
+          <Route path={`${Path.Profile}/:username`} element={<Profile />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </AuthContextProvider>
   );
