@@ -13,7 +13,7 @@ export default function AuthGuard() {
       if (location.pathname.startsWith(Path.Profile)) {
         navigate(Path.Login);
       }
-    } else if (location.pathname === Path.Login) {
+    } else if (location.pathname === Path.Login || Path.Register) {
       navigate(Path.Home);
     }
   }, [user, navigate, location]);
