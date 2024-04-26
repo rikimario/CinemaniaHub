@@ -1,7 +1,7 @@
 import { AuthContext } from "@/context/authContext";
-import Path from "@/paths/paths";
 import { useContext, useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import Path from "@/paths/paths";
 
 export default function AuthGuard() {
   const { user } = useContext(AuthContext);
@@ -13,7 +13,10 @@ export default function AuthGuard() {
       if (location.pathname.startsWith(Path.Profile)) {
         navigate(Path.Login);
       }
-    } else if (location.pathname === Path.Login || Path.Register) {
+    } else if (
+      location.pathname === Path.Login ||
+      location.pathname === Path.Register
+    ) {
       navigate(Path.Home);
     }
   }, [user, navigate, location]);
