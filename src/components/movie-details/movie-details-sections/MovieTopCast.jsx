@@ -30,7 +30,11 @@ export default function MovieTopCast() {
               <img
                 className="h-32 w-32 rounded-full object-cover p-1"
                 key={cast.id}
-                src={`https://image.tmdb.org/t/p/original${cast.profile_path}`}
+                src={
+                  cast.profile_path
+                    ? `https://image.tmdb.org/t/p/original${cast.profile_path}`
+                    : "https://upload.wikimedia.org/wikipedia/commons/a/af/Default_avatar_profile.jpg"
+                }
                 alt={cast.name}
               />
               <div className="flex flex-col items-center justify-center pl-2">
