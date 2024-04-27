@@ -12,6 +12,7 @@ import Profile from "./components/profile/Profile.jsx";
 import MovieDetails from "./components/movie-details/MovieDetails.jsx";
 import AuthGuard from "./components/guards/AuthGuard.jsx";
 import NotFound from "./components/not-found/NotFound.jsx";
+import Footer from "./components/footer/Footer.jsx";
 
 import axios from "axios";
 
@@ -35,6 +36,7 @@ function App() {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </AuthContextProvider>
   );
 }
