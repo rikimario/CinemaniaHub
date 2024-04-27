@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const apiKey = "589f3d4f48689702b074a222aea6db87";
-const apiUrl = "https://api.themoviedb.org/3/movie";
-
 export default function MovieTopCast() {
   const [casts, setCasts] = useState([]);
   const { id: movieId } = useParams();
 
   // Fetch movie cast
   useEffect(() => {
-    fetch(`${apiUrl}/${movieId}/credits?api_key=${apiKey}`)
+    fetch(
+      `${import.meta.env.VITE_DATABASE_URL}/${movieId}/credits?api_key=${import.meta.env.VITE_API_KEY}`,
+    )
       .then((res) => res.json())
       .then((data) => setCasts(data.cast.slice(0, 12)))
       .catch((error) =>

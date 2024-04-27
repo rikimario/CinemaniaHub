@@ -13,12 +13,11 @@ export default function MovieImgSlider() {
   const [images, setImages] = useState([]);
   const { id: movieId } = useParams();
 
-  const apiKey = "589f3d4f48689702b074a222aea6db87";
-  const apiUrl = "https://api.themoviedb.org/3/movie";
-
   // Fetch movie images
   useEffect(() => {
-    fetch(`${apiUrl}/${movieId}/images?api_key=${apiKey}`)
+    fetch(
+      `${import.meta.env.VITE_DATABASE_URL}/${movieId}/images?api_key=${import.meta.env.VITE_API_KEY}`,
+    )
       .then((res) => res.json())
       .then((data) => setImages(data.backdrops))
       .catch((error) =>

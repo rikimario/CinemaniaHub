@@ -6,7 +6,6 @@ import { Input } from "./ui/input";
 import Path from "../paths/paths";
 import SearchResult from "./search-result-card/SearchResult";
 
-const apiKey = "589f3d4f48689702b074a222aea6db87";
 export default function Navigation() {
   const { user, logout } = useContext(AuthContext);
   const [query, setQuery] = useState("");
@@ -17,7 +16,7 @@ export default function Navigation() {
     setQuery(e.target.value);
 
     fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&page=1&include_adult=false&query=${e.target.value}`,
+      `https://api.themoviedb.org/3/search/movie?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&page=1&include_adult=false&query=${e.target.value}`,
     )
       .then((res) => res.json())
       .then((data) => {

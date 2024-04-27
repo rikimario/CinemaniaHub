@@ -4,15 +4,14 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const apiUrl =
-  "https://api.themoviedb.org/3/movie/now_playing?api_key=589f3d4f48689702b074a222aea6db87";
-
 export default function NowPlaying() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     try {
-      fetch(apiUrl)
+      fetch(
+        `${import.meta.env.VITE_DATABASE_URL}/now_playing?api_key=${import.meta.env.VITE_API_KEY}`,
+      )
         .then((res) => res.json())
         .then((data) => {
           const firstFiveMovies = data.results.slice(10, 20);

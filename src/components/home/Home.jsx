@@ -8,14 +8,14 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_API_KEY}`;
-
 export default function Home() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     try {
-      fetch(apiUrl)
+      fetch(
+        `${import.meta.env.VITE_DATABASE_URL}/popular?api_key=${import.meta.env.VITE_API_KEY}`,
+      )
         .then((res) => res.json())
         .then((data) => {
           const firstFiveMovies = data.results.slice(0, 6);

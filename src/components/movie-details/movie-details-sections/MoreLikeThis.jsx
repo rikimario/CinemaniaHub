@@ -11,16 +11,15 @@ import Path from "@/paths/paths";
 import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-const apiKey = "589f3d4f48689702b074a222aea6db87";
-const apiUrl = "https://api.themoviedb.org/3/movie";
-
 export default function MoreLikeThis() {
   const { user } = useContext(AuthContext);
   const { id: movieId } = useParams();
   const [similars, setSimilars] = useState([]);
 
   useEffect(() => {
-    fetch(`${apiUrl}/${movieId}/similar?api_key=${apiKey}`)
+    fetch(
+      `${import.meta.env.VITE_DATABASE_URL}}/${movieId}/similar?api_key=${import.meta.env.VITE_API_KEY}`,
+    )
       .then((res) => res.json())
       .then((data) => setSimilars(data.results))
       .catch((error) =>

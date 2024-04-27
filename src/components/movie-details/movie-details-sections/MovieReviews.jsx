@@ -2,14 +2,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const apiKey = "589f3d4f48689702b074a222aea6db87";
-const apiUrl = "https://api.themoviedb.org/3/movie";
 export default function MovieReviews() {
   const { id: movieId } = useParams();
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch(`${apiUrl}/${movieId}/reviews?api_key=${apiKey}`)
+    fetch(
+      `${import.meta.env.VITE_DATABASE_URL}/${movieId}/reviews?api_key=${import.meta.env.VITE_API_KEY}`,
+    )
       .then((res) => res.json())
       .then((data) => setReviews(data.results))
       .catch((error) =>

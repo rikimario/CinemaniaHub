@@ -4,15 +4,15 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-const apiKey = "589f3d4f48689702b074a222aea6db87";
-const apiUrl = "https://api.themoviedb.org/3/movie";
 export default function MovieInfo() {
   const { user } = useContext(AuthContext);
   const [movies, setMovies] = useState({});
   const { id: movieId } = useParams();
 
   useEffect(() => {
-    fetch(`${apiUrl}/${movieId}?api_key=${apiKey}`)
+    fetch(
+      `${import.meta.env.VITE_DATABASE_URL}/${movieId}?api_key=${import.meta.env.VITE_API_KEY}`,
+    )
       .then((res) => {
         if (!res.ok) {
           throw new Error("Not Found!");
