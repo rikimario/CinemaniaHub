@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../context/authContext";
-import { Input } from "./ui/input";
+import { AuthContext } from "../../context/authContext";
+import { Input } from "../ui/input";
 
-import Path from "../paths/paths";
-import SearchResult from "./search-result-card/SearchResult";
+import Path from "../../paths/paths";
+import SearchResult from "../search-result-card/SearchResult";
 
 export default function Navigation() {
   const { user, logout } = useContext(AuthContext);

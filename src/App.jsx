@@ -3,7 +3,7 @@ import { AuthContextProvider } from "./context/authContext.jsx";
 import { Toaster } from "react-hot-toast";
 
 import Home from "./components/home/Home";
-import Navigation from "./components/Navigation";
+import Navigation from "./components/navigation/Navigation.jsx";
 import Path from "./paths/paths";
 import Login from "./components/login/login.jsx";
 import Register from "./components/register/register.jsx";
