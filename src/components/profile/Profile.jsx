@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import { Separator } from "../ui/separator";
 import { Button } from "../ui/button";
+import { ToggleGroup, ToggleGroupItem } from "../ui/toggle-group";
 
 import FavoriteMovies from "../favoriteMovies/FavoriteMovies";
 import WatchList from "../watchList/WatchList";
@@ -15,14 +16,9 @@ export default function Profile() {
     return null;
   }
 
-  let type = "";
-  if (activeTab === "favorite") {
-    type = "favorite";
-  } else if (activeTab === "watchlist") {
-    type = "watchlist";
-  } else if (activeTab === "watched") {
-    type = "watched";
-  }
+  const handleTabClick = (tab) => {
+    setActiveTab(tab === activeTab ? null : tab);
+  };
   return (
     <>
       <div className="flex gap-4 px-11 pt-32">
@@ -40,35 +36,42 @@ export default function Profile() {
 
       <div className="pt-4">
         <div className="flex gap-2 pb-2 pl-11">
-          <Button
-            onClick={() => setActiveTab("favorite")}
-            active={activeTab === "favorite"}
-            variant="ghost"
-          >
-            Favorite
-          </Button>
-          <Button
-            onClick={() => setActiveTab("watchlist")}
-            active={activeTab === "watchlist"}
-            variant="ghost"
-          >
-            Watch list
-          </Button>
-          <Button
-            onClick={() => setActiveTab("watched")}
-            active={activeTab === "watched"}
-            variant="ghost"
-          >
-            Watched
-          </Button>
+          <ToggleGroup type="single">
+            <ToggleGroupItem value="favorite">
+              <Button
+                onClick={() => handleTabClick("favorite")}
+                variant={"ghost"}
+              >
+                Favorite
+              </Button>
+            </ToggleGroupItem>
+
+            <ToggleGroupItem value="watchlist">
+              <Button
+                onClick={() => handleTabClick("watchlist")}
+                variant={"ghost"}
+              >
+                Watch list
+              </Button>
+            </ToggleGroupItem>
+
+            <ToggleGroupItem value="watched">
+              <Button
+                onClick={() => handleTabClick("watched")}
+                variant={"ghost"}
+              >
+                Watched
+              </Button>
+            </ToggleGroupItem>
+          </ToggleGroup>
         </div>
         <Separator />
       </div>
 
       <div>
-        {activeTab === "favorite" && <FavoriteMovies type={type} />}
-        {activeTab === "watchlist" && <WatchList type={type} />}
-        {activeTab === "watched" && <Watched type={type} />}
+        {activeTab === "favorite" && <FavoriteMovies type="favorite" />}
+        {activeTab === "watchlist" && <WatchList type="watchlist" />}
+        {activeTab === "watched" && <Watched type="watched" />}
       </div>
     </>
   );
