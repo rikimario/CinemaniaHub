@@ -34,11 +34,11 @@ export default function Navigation() {
   };
 
   return (
-    <div className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-11 py-8 backdrop-blur-sm backdrop-brightness-50">
+    <div className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-11 py-4 backdrop-blur-sm backdrop-brightness-50">
       <nav className="flex w-full justify-between ">
         <div className="text-2xl font-bold">
-          <Link to={Path.Home} className="">
-            CinemaHub
+          <Link to={Path.Home} className="text-[#00925D]">
+            Cinema<span className="font-mono text-4xl">Hub</span>
           </Link>
         </div>
         <div className="flex text-[1.3rem]">
