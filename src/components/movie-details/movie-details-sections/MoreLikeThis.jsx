@@ -18,7 +18,7 @@ export default function MoreLikeThis() {
 
   useEffect(() => {
     fetch(
-      `${import.meta.env.VITE_DATABASE_URL}}/${movieId}/similar?api_key=${import.meta.env.VITE_API_KEY}`,
+      `${import.meta.env.VITE_DATABASE_URL}/${movieId}/similar?api_key=${import.meta.env.VITE_API_KEY}`,
     )
       .then((res) => res.json())
       .then((data) => setSimilars(data.results))
