@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "../ui/carousel";
 
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import Path from "@/paths/paths";
 
 export default function NowPlaying() {
   const [movies, setMovies] = useState([]);
@@ -22,34 +28,43 @@ export default function NowPlaying() {
     }
   }, []);
 
-  const settings = {
-    className: "center",
-    centerMode: true,
-    focusOnSelect: true,
-    centerPadding: "60px",
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    infinite: true,
-    dots: true,
-  };
   return (
     <div className="pt-12 lg:px-32">
-      <h1 className="pb-4 text-2xl text-white">Now Playing</h1>
+      <h1 className="pb-4 text-2xl text-white">
+        <span className="font-bold text-[#266d5d]">|</span> Now Playing
+      </h1>
       <div className="">
-        <Slider {...settings}>
-          {movies.map((movie, index) => (
-            <div
-              className="h-[15rem] w-full md:h-[18rem] lg:h-[27rem]"
-              key={index}
-            >
-              <img
-                className="h-full w-auto rounded-xl bg-black object-fill opacity-50"
-                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                alt={movie.title}
-              />
-            </div>
-          ))}
-        </Slider>
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+            slidesToScroll: 1,
+          }}
+        >
+          <CarouselContent className="-ml-1 w-3/5">
+            {movies.map((movie, index) => (
+              <CarouselItem
+                className="px-6 pl-1 md:basis-1/2 lg:basis-1/3"
+                key={index}
+              >
+                <div
+                  className="h-[12rem] md:h-[18rem] lg:h-[27rem]"
+                  key={index}
+                >
+                  <Link to={`${Path.MovieDetails}/${movie.id}`}>
+                    <img
+                      className="h-full w-auto rounded-xl bg-black object-fill opacity-50 duration-300  hover:transform hover:opacity-80"
+                      src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                      alt={movie.title}
+                    />
+                  </Link>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselNext />
+          <CarouselPrevious />
+        </Carousel>
       </div>
     </div>
   );
