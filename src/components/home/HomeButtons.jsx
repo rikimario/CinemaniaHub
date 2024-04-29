@@ -39,28 +39,35 @@ export default function HomeButtons({ id, movie }) {
 
   return (
     <div className="relative z-40 space-x-4 pt-8 lg:flex">
-      <Link
-        to={`${Path.MovieDetails}/${id}`}
-        className="focus-visible:ring-ring border-input bg-background hover:bg-accent hover:text-accent-foreground inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md border px-3 text-lg font-medium shadow-sm transition-colors hover:scale-105 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
-      >
-        Read More
+      <Link to={`${Path.MovieDetails}/${id}`} className="text-black">
+        <Button variant="outline">Read More</Button>
       </Link>
       {user && (
         <>
           {isInWatchlist ? (
-            <Button
-              disabled
-              className="focus-visible:ring-ring text-destructive-foreground hover:bg-destructive/90 inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md bg-[#00925d6e] px-3 text-lg font-medium shadow-sm transition-colors hover:scale-105 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
-            >
-              In Watchlist
-            </Button>
+            <div className="relative">
+              <Button
+                disabled
+                className="bg-[#ffc107] text-black hover:text-white"
+              >
+                In Watchlist
+                <div className="absolute right-0 top-0 text-[#555]">
+                  <ion-icon name="bookmark" size="small"></ion-icon>
+                </div>
+              </Button>
+            </div>
           ) : (
-            <Button
-              onClick={() => handleAddToWatchlist()}
-              className="focus-visible:ring-ring text-destructive-foreground hover:bg-destructive/90 inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md bg-[#00925D] px-3 text-lg font-medium shadow-sm transition-colors hover:scale-105 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
-            >
-              Watchlist
-            </Button>
+            <div className="relative">
+              <Button
+                onClick={() => handleAddToWatchlist()}
+                className="bg-[#ffc107] text-black hover:text-white"
+              >
+                Add to Watchlist
+                <div className="absolute right-0 top-0 ">
+                  <ion-icon name="bookmark-outline" size="small"></ion-icon>
+                </div>
+              </Button>
+            </div>
           )}
         </>
       )}
