@@ -42,18 +42,27 @@ export default function MovieInfoPoster({ movies, user }) {
       {user && (
         <>
           {isInFavorite ? (
-            <div className=" pt-2">
-              <Button disabled className="w-full bg-[#266d5d] opacity-50">
+            <div className="relative pt-2">
+              <Button
+                disabled
+                className="w-full bg-[#ffc107] text-black opacity-50 hover:text-white"
+              >
                 In Favorite
+                <div className="absolute right-0 top-[0.4rem] text-[#555]">
+                  <ion-icon name="bookmark" size="large"></ion-icon>
+                </div>
               </Button>
             </div>
           ) : (
-            <div className=" pt-2">
+            <div className="relative pt-2">
               <Button
                 onClick={() => handleAddToFavorite()}
-                className="w-full bg-[#266d5d]"
+                className="w-full bg-[#ffc107] text-black hover:text-white"
               >
-                Favorite
+                Add to Favorite
+                <div className="absolute right-0 top-[0.4rem] ">
+                  <ion-icon name="bookmark-outline" size="large"></ion-icon>
+                </div>
               </Button>
             </div>
           )}

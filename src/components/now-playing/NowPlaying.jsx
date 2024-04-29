@@ -31,7 +31,7 @@ export default function NowPlaying() {
   return (
     <div className="pt-12 lg:px-32">
       <h1 className="pb-4 text-2xl text-white">
-        <span className="font-bold text-[#266d5d]">|</span> Now Playing
+        <span className="font-bold text-[#ffc107]">|</span> Now Playing
       </h1>
       <div className="">
         <Carousel

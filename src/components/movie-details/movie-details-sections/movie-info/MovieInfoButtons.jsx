@@ -64,18 +64,27 @@ export default function MovieInfoButtons({ user, movies }) {
       {user && (
         <>
           {isInWatchlist ? (
-            <div className="pt-2">
-              <Button disabled className="w-full bg-[#266d5d] opacity-50">
+            <div className="relative pt-2">
+              <Button
+                disabled
+                className="w-full bg-[#ffc107] text-black opacity-50 hover:text-white"
+              >
                 In Watchlist
+                <div className="absolute right-0 top-[0.4rem] text-[#555]">
+                  <ion-icon name="bookmark" size="small"></ion-icon>
+                </div>
               </Button>
             </div>
           ) : (
-            <div className="pt-2">
+            <div className="relative pt-2">
               <Button
                 onClick={() => handleAddToWatchlist()}
-                className="w-full bg-[#266d5d]"
+                className="w-full bg-[#ffc107] text-black hover:text-white"
               >
-                Watchlist
+                Add to Watchlist
+                <div className="absolute right-0 top-[0.4rem] ">
+                  <ion-icon name="bookmark-outline" size="small"></ion-icon>
+                </div>
               </Button>
             </div>
           )}
@@ -84,18 +93,27 @@ export default function MovieInfoButtons({ user, movies }) {
       {user && (
         <>
           {isInWatched ? (
-            <div className="pt-2">
-              <Button disabled className="w-full bg-[#266d5d] opacity-50">
+            <div className="relative pt-2">
+              <Button
+                disabled
+                className="w-full bg-[#ffc107] text-black opacity-50 hover:text-white"
+              >
                 In Watched
+                <div className="absolute right-0 top-[0.4rem] text-[#555]">
+                  <ion-icon name="bookmark" size="small"></ion-icon>
+                </div>
               </Button>
             </div>
           ) : (
-            <div className="pt-2">
+            <div className="relative pt-2">
               <Button
                 onClick={() => handleAddToWatched()}
-                className="w-full bg-[#266d5d]"
+                className="w-full bg-[#ffc107] text-black hover:text-white"
               >
-                Watched
+                Add to Watched
+                <div className="absolute right-0 top-[0.4rem] ">
+                  <ion-icon name="bookmark-outline" size="small"></ion-icon>
+                </div>
               </Button>
             </div>
           )}

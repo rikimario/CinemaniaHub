@@ -29,7 +29,7 @@ export default function MoreLikeThis() {
   return (
     <div className="px-44 pb-10">
       <h2 className="p-4 text-2xl">
-        <span className="font-bold text-[#266d5d]">|</span> More Like This
+        <span className="font-bold text-[#ffc107]">|</span> More Like This
       </h2>
       <div className="">
         <Carousel
@@ -65,7 +65,9 @@ export default function MoreLikeThis() {
                   </div>
                   {user && (
                     <div className="mt-auto flex flex-col justify-end bg-neutral-900 px-2 py-2">
-                      <Button className="bg-[#266d5d]">Watchlist</Button>
+                      <Button className="bg-[#ffc107] text-black hover:text-white">
+                        Watchlist
+                      </Button>
                     </div>
                   )}
                   <div className="flex justify-center rounded-b-2xl bg-neutral-900 px-2 py-2 text-black">

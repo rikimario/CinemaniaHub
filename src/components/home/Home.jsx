@@ -72,8 +72,8 @@ export default function Home() {
         </Carousel>
       </div>
 
-      <Upcoming />
       <NowPlaying />
+      <Upcoming />
     </>
   );
 }

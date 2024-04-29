@@ -19,7 +19,7 @@ export default function MovieTopCast() {
   return (
     <div className=" px-44 pb-10">
       <h2 className="p-4 text-2xl">
-        <span className="font-bold text-[#266d5d]">|</span> Top Cast
+        <span className="font-bold text-[#ffc107]">|</span> Top Cast
       </h2>
 
       <div className="grid grid-cols-2 gap-4 rounded-lg bg-neutral-900 p-4">

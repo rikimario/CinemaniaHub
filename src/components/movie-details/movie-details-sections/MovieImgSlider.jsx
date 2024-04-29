@@ -27,7 +27,7 @@ export default function MovieImgSlider() {
   return (
     <div className="px-44 pb-10">
       <h2 className="p-4 text-2xl">
-        <span className="font-bold text-[#266d5d]">|</span> Photos
+        <span className="font-bold text-[#ffc107]">|</span> Photos
       </h2>
       <div className="rounded-lg bg-neutral-900">
         <Carousel className="w-full">

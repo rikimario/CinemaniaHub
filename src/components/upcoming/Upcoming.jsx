@@ -31,7 +31,7 @@ export default function Upcoming() {
   return (
     <div className="pt-12 lg:px-32">
       <h1 className="pb-4 text-2xl text-white">
-        <span className="font-bold text-[#266d5d]">|</span> Upcoming
+        <span className="font-bold text-[#ffc107]">|</span> Upcoming
       </h1>
       <div className="">
         <Carousel

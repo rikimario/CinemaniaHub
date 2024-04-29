@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/authContext";
 import { Input } from "../ui/input";
+import { Button } from "../ui/button";
 
 import Path from "../../paths/paths";
 import SearchResult from "../search-result-card/SearchResult";
@@ -35,10 +36,19 @@ export default function Navigation() {
 
   return (
     <div className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-11 py-4 backdrop-blur-sm backdrop-brightness-50">
-      <nav className="flex w-full justify-between ">
-        <div className="text-2xl font-bold">
-          <Link to={Path.Home} className="text-[#00925D]">
-            Cinema<span className="font-mono text-4xl">Hub</span>
+      <nav className="flex w-full justify-between">
+        <div className="flex text-2xl font-bold">
+          <Link to={Path.Home} className="text-[#ffc107]">
+            Cinema<span className="text-3xl">Hub</span>
+          </Link>
+          <Link to={Path.Home}>
+            <div className="h-8 w-8">
+              <img
+                src="public\cinema-svgrepo-com.svg"
+                alt="cinema-svg"
+                style={{ transform: "scaleX(-1)" }}
+              />
+            </div>
           </Link>
         </div>
         <div className="flex text-[1.3rem]">
@@ -73,36 +83,27 @@ export default function Navigation() {
 
         <div className="flex space-x-4">
           {!user && (
-            <>
-              <Link
-                to={Path.Register}
-                className="focus-visible:ring-ring border-input bg-background hover:bg-accent hover:text-accent-foreground inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md border px-3 text-lg font-medium shadow-sm transition-colors hover:scale-105 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
-              >
-                Sign Up
-              </Link>
-              <Link
-                to={Path.Login}
-                className="focus-visible:ring-ring text-destructive-foreground hover:bg-destructive/90 inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md bg-[#00925D] px-3 text-lg font-medium shadow-sm transition-colors hover:scale-105 focus-visible:outline-none focus-visible:ring-1"
+            <Link to={Path.Login}>
+              <Button
+                variant="outline"
+                className="border-none bg-[#333] text-white"
               >
                 Login
-              </Link>
-            </>
+              </Button>
+            </Link>
           )}{" "}
           {user && (
             <>
-              <div className="relative inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
-                <Link to={`${Path.Profile}/@${user.username}`}>
+              <Link to={`${Path.Profile}/@${user.username}`}>
+                <div className="relative inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
                   <span className="text-xl font-bold text-gray-600 dark:text-gray-300">
                     {user.username.charAt(0).toUpperCase()}
                   </span>
-                </Link>
-              </div>
-              <button
-                onClick={logout}
-                className="focus-visible:ring-ring border-input bg-background hover:bg-accent hover:text-accent-foreground inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md border px-3 text-sm font-medium shadow-sm transition-colors hover:scale-105 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
-              >
+                </div>
+              </Link>
+              <Button onClick={logout} variant="outline" className="text-black">
                 Sign out
-              </button>
+              </Button>
             </>
           )}
         </div>
