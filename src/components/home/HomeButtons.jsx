@@ -1,22 +1,42 @@
 import { AuthContext } from "@/context/authContext";
-import Path from "@/paths/paths";
-import axios from "axios";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "../ui/button";
+import * as listServices from "@/services/listServices";
+
+import Path from "@/paths/paths";
+import toast from "react-hot-toast";
 
 export default function HomeButtons({ id, movie }) {
   const { user } = useContext(AuthContext);
+  const [isInWatchlist, setIsInWatchlist] = useState(false);
 
-  const addToWatchlist = async () => {
-    try {
-      await axios.post("http://localhost:5000/user/watchlist", {
-        email: user.email,
-        data: movie,
-      });
-    } catch (error) {
-      console.log(error);
+  useEffect(() => {
+    const fetchData = async () => {
+      if (user) {
+        const watchlistData = await listServices.fetchWatchlistData(user.email);
+        if (watchlistData) {
+          const isInWatchlist =
+            watchlistData.find((item) => item.id === movie.id) !== undefined;
+          setIsInWatchlist(isInWatchlist);
+          localStorage.setItem("watchlist", JSON.stringify(watchlistData));
+        }
+      }
+    };
+
+    fetchData();
+  }, [user, movie.id]);
+
+  const handleAddToWatchlist = async () => {
+    if (user) {
+      const success = await listServices.addToWatchlist(user.email, movie);
+      if (success) {
+        setIsInWatchlist(true);
+        toast.success("Added to Watchlist");
+      }
     }
   };
+
   return (
     <div className="relative z-40 space-x-4 pt-8 lg:flex">
       <Link
@@ -26,12 +46,23 @@ export default function HomeButtons({ id, movie }) {
         Read More
       </Link>
       {user && (
-        <button
-          onClick={() => addToWatchlist()}
-          className="focus-visible:ring-ring text-destructive-foreground hover:bg-destructive/90 inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md bg-[#00925D] px-3 text-lg font-medium shadow-sm transition-colors hover:scale-105 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
-        >
-          Watchlist
-        </button>
+        <>
+          {isInWatchlist ? (
+            <Button
+              disabled
+              className="focus-visible:ring-ring text-destructive-foreground hover:bg-destructive/90 inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md bg-[#00925d6e] px-3 text-lg font-medium shadow-sm transition-colors hover:scale-105 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
+            >
+              In Watchlist
+            </Button>
+          ) : (
+            <Button
+              onClick={() => handleAddToWatchlist()}
+              className="focus-visible:ring-ring text-destructive-foreground hover:bg-destructive/90 inline-flex h-8 items-center justify-center whitespace-nowrap rounded-md bg-[#00925D] px-3 text-lg font-medium shadow-sm transition-colors hover:scale-105 focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
+            >
+              Watchlist
+            </Button>
+          )}
+        </>
       )}
     </div>
   );
