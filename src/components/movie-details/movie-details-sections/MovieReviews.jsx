@@ -20,10 +20,14 @@ export default function MovieReviews() {
   return (
     <div className="px-44 pb-10">
       <h2 className="p-4 text-2xl">
-        <span className="font-bold text-[#266d5d]">|</span> Users reviews
+        <span className="font-bold text-[#ffc107]">|</span> Users reviews
       </h2>
 
-      {reviews &&
+      {reviews.length === 0 ? (
+        <div className="p-4 text-center text-xl text-[#9CA4AB]">
+          There are no reviews for this movie.
+        </div>
+      ) : (
         reviews.map((review, index) => (
           <Card className="my-6 flex gap-4 bg-neutral-900 pt-4" key={index}>
             <CardContent>
@@ -46,7 +50,8 @@ export default function MovieReviews() {
               </div>
             </CardContent>
           </Card>
-        ))}
+        ))
+      )}
     </div>
   );
 }
