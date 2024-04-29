@@ -4,7 +4,7 @@ import MoreLikeThis from "./movie-details-sections/MoreLikeThis";
 import MovieReviews from "./movie-details-sections/MovieReviews";
 import MovieTopCast from "./movie-details-sections/MovieTopCast";
 import MovieImgSlider from "./movie-details-sections/MovieImgSlider";
-import MovieInfo from "./movie-details-sections/MovieInfo";
+import MovieInfo from "./movie-details-sections/movie-info/MovieInfo";
 import MovieTrailer from "./movie-details-sections/MovieTrailer";
 
 export default function MovieDetails() {
