@@ -134,7 +134,7 @@ export default function Register() {
           <div>
             <button
               type="submit"
-              className="flex w-full justify-center rounded-md bg-[#ffc107] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#f7d263] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ffc107]"
+              className="flex w-full justify-center rounded-md bg-[#ffc107] px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm hover:bg-[#f7d263] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ffc107]"
             >
               Sign Up
             </button>
