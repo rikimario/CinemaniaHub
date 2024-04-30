@@ -5,6 +5,7 @@ const Path = {
   Profile: "/my-profile",
   Discovery: "/discovery",
   MovieDetails: "/movie-details",
+  TvDetails: "/tv-details",
 };
 
 export default Path;
