@@ -161,10 +161,10 @@ const removeFromFavorite = async (req, res) => {
         },
         { new: true },
       );
-      return res.json({ msg: "Movie successfully removed.", movies });
+      return res.json({ msg: "Successfully removed.", movies });
     } else return res.json({ msg: "User with given email not found." });
   } catch (error) {
-    return res.json({ msg: "Error removing movie to the liked list" });
+    return res.json({ msg: "Error removing from the liked list" });
   }
 };
 
@@ -224,7 +224,7 @@ const removeFromWatchlist = async (req, res) => {
         },
         { new: true },
       );
-      return res.json({ msg: "Movie successfully removed.", movies });
+      return res.json({ msg: "Successfully removed.", movies });
     } else return res.json({ msg: "User with given email not found." });
   } catch (error) {
     return res.json({ msg: "Error removing movie to the watchlist" });
@@ -287,7 +287,7 @@ const removeFromWatched = async (req, res) => {
         },
         { new: true },
       );
-      return res.json({ msg: "Movie successfully removed.", movies });
+      return res.json({ msg: "Successfully removed.", movies });
     } else return res.json({ msg: "User with given email not found." });
   } catch (error) {
     return res.json({ msg: "Error removing movie to the watched" });
