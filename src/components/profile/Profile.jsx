@@ -17,7 +17,7 @@ export default function Profile() {
   }
 
   const handleTabClick = (tab) => {
-    setActiveTab(tab === activeTab ? null : tab);
+    setActiveTab(tab === activeTab ? activeTab : tab);
   };
   return (
     <>
