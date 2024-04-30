@@ -1,10 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
+import { Separator } from "../ui/separator";
 
 import HomeButtons from "./HomeButtons";
 import Upcoming from "../upcoming/Upcoming";
 import NowPlaying from "../now-playing/NowPlaying";
 import Autoplay from "embla-carousel-autoplay";
+import NowPlayingTv from "../TV/NowPlayingTv";
+import AirToday from "../TV/AirToday";
+import PopularTv from "../TV/PopularTv";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
@@ -74,6 +78,12 @@ export default function Home() {
 
       <NowPlaying />
       <Upcoming />
+      <div className="px-32">
+        <Separator />
+      </div>
+      <NowPlayingTv />
+      <PopularTv />
+      <AirToday />
     </>
   );
 }
