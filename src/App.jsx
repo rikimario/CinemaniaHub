@@ -12,6 +12,7 @@ import MovieDetails from "./components/movie-details/MovieDetails.jsx";
 import AuthGuard from "./components/guards/AuthGuard.jsx";
 import NotFound from "./components/not-found/NotFound.jsx";
 import Footer from "./components/footer/Footer.jsx";
+import TvDetails from "./components/TV/tv-details/TvDetails.jsx";
 
 import axios from "axios";
 
@@ -26,6 +27,7 @@ function App() {
       <Routes>
         <Route path={Path.Home} element={<Home />} />
         <Route path={`${Path.MovieDetails}/:id`} element={<MovieDetails />} />
+        <Route path={`${Path.TvDetails}/:id`} element={<TvDetails />} />
 
         <Route element={<AuthGuard />}>
           <Route path={Path.Login} element={<Login />} />
