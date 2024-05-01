@@ -15,17 +15,30 @@ export default function SearchResult({ id, result }) {
                 alt=""
               />
             ) : (
-              <div>Image not found</div>
+              <img
+                className="w-32 rounded-lg"
+                key={result.id}
+                src={`https://eticketsolutions.com/demo/themes/e-ticket/img/movie.jpg`}
+                alt=""
+              />
             )}
           </div>
 
           <div className="p-4">
-            <div>
-              <h3 className="text-sm font-bold">{result.name}</h3>
-            </div>
-            <p className="text-sm text-[#9CA4AB]">
-              {new Date(result.first_air_date).getFullYear()}
-            </p>
+            {result.name ? (
+              <div>
+                <h3 className="text-sm font-bold">{result.name}</h3>
+              </div>
+            ) : (
+              <h3 className="text-sm font-bold">N/A</h3>
+            )}
+            {result.first_air_date ? (
+              <p className="text-sm text-[#9CA4AB]">
+                {new Date(result.first_air_date).getFullYear()}
+              </p>
+            ) : (
+              <p className="text-sm text-[#9CA4AB]">N/A</p>
+            )}
           </div>
         </Link>
       ) : (
@@ -39,7 +52,12 @@ export default function SearchResult({ id, result }) {
                 alt=""
               />
             ) : (
-              <div>Image not found</div>
+              <img
+                className="w-32 rounded-lg"
+                key={result.id}
+                src={`https://eticketsolutions.com/demo/themes/e-ticket/img/movie.jpg`}
+                alt=""
+              />
             )}
           </div>
 
