@@ -58,7 +58,7 @@ const login = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) {
       return res.json({
-        error: "No user found",
+        error: "Incorrect email or password",
       });
     }
 
@@ -80,7 +80,7 @@ const login = async (req, res) => {
     }
     if (!match) {
       return res.json({
-        error: "password do not match!",
+        error: "Incorrect email or password",
       });
     }
   } catch (error) {
