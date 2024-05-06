@@ -10,17 +10,19 @@ export default function Watched({ movie, type }) {
 
   useEffect(() => {
     try {
-      fetch(`http://localhost:5000/user/watched/${user.email}`)
-        .then((res) => res.json())
-        .then((data) => {
-          const watchedMovies = data.movies;
-          setMovies(watchedMovies);
-        });
+      const watched = async () => {
+        const response = await fetch(
+          `http://localhost:5000/user/watched/${user.email}`,
+        );
+        const data = await response.json();
+        setMovies(data.movies);
+      };
+
+      watched();
     } catch (error) {
       console.log(error);
     }
   }, [user.email]);
-
   const removeMovie = (movieId) => {
     setMovies(movies.filter((m) => m.id !== movieId));
   };

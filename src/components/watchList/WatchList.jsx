@@ -10,12 +10,15 @@ export default function WatchList({ type }) {
 
   useEffect(() => {
     try {
-      fetch(`http://localhost:5000/user/watchlist/${user.email}`)
-        .then((res) => res.json())
-        .then((data) => {
-          const watchlistMovies = data.movies;
-          setMovies(watchlistMovies);
-        });
+      const watchlist = async () => {
+        const response = await fetch(
+          `http://localhost:5000/user/watchlist/${user.email}`,
+        );
+        const data = await response.json();
+        setMovies(data.movies);
+      };
+
+      watchlist();
     } catch (error) {
       console.log(error);
     }
