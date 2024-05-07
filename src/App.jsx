@@ -16,7 +16,8 @@ import TvDetails from "./components/TV/tv-details/TvDetails.jsx";
 
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL =
+  "https://cinema-bneralsye-marios-projects-624972af.vercel.app";
 axios.defaults.withCredentials = true;
 
 function App() {
