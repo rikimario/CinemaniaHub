@@ -3,7 +3,7 @@ import axios from "axios";
 export const fetchWatchlistData = async (userEmail) => {
   try {
     const response = await axios.get(
-      `http://localhost:5000/user/watchlist/${userEmail}`,
+      `https://cinema-bneralsye-marios-projects-624972af.vercel.app/user/watchlist/${userEmail}`,
     );
     const { movies } = response.data;
 
@@ -25,10 +25,13 @@ export const fetchWatchlistData = async (userEmail) => {
 
 export const addToWatchlist = async (userEmail, movie) => {
   try {
-    await axios.post("http://localhost:5000/user/watchlist", {
-      email: userEmail,
-      data: movie,
-    });
+    await axios.post(
+      "https://cinema-bneralsye-marios-projects-624972af.vercel.app/user/watchlist",
+      {
+        email: userEmail,
+        data: movie,
+      },
+    );
 
     return true;
   } catch (error) {
@@ -40,7 +43,7 @@ export const addToWatchlist = async (userEmail, movie) => {
 export const fetchFavoriteData = async (userEmail) => {
   try {
     const response = await axios.get(
-      `http://localhost:5000/user/favorite/${userEmail}`,
+      `https://cinema-bneralsye-marios-projects-624972af.vercel.app/user/favorite/${userEmail}`,
     );
     const { movies } = response.data;
 
@@ -62,10 +65,13 @@ export const fetchFavoriteData = async (userEmail) => {
 
 export const addToFavorite = async (userEmail, movie) => {
   try {
-    await axios.post("http://localhost:5000/user/favorite", {
-      email: userEmail,
-      data: movie,
-    });
+    await axios.post(
+      "https://cinema-bneralsye-marios-projects-624972af.vercel.app/user/favorite",
+      {
+        email: userEmail,
+        data: movie,
+      },
+    );
 
     return true;
   } catch (error) {
@@ -77,7 +83,7 @@ export const addToFavorite = async (userEmail, movie) => {
 export const fetchWatchedData = async (userEmail) => {
   try {
     const response = await axios.get(
-      `http://localhost:5000/user/watched/${userEmail}`,
+      `https://cinema-bneralsye-marios-projects-624972af.vercel.app/user/watched/${userEmail}`,
     );
     const { movies } = response.data;
 
@@ -99,10 +105,13 @@ export const fetchWatchedData = async (userEmail) => {
 
 export const addToWatched = async (userEmail, movie) => {
   try {
-    await axios.post("http://localhost:5000/user/watched", {
-      email: userEmail,
-      data: movie,
-    });
+    await axios.post(
+      "https://cinema-bneralsye-marios-projects-624972af.vercel.app/user/watched",
+      {
+        email: userEmail,
+        data: movie,
+      },
+    );
 
     return true;
   } catch (error) {

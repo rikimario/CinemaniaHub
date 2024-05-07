@@ -22,7 +22,7 @@ const {
 router.use(
   cors({
     credentials: true,
-    origin: "http://localhost:5173",
+    origin: "https://cinema-bneralsye-marios-projects-624972af.vercel.app",
   }),
 );
 // * User
