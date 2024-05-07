@@ -7,11 +7,16 @@ const PORT = process.env.PORT;
 
 const app = express();
 
-// app.use(
-//   cors({
-//     origin: "https://cinema-bneralsye-marios-projects-624972af.vercel.app/",
-//   }),
-// );
+app.options("/login", function (req, res) {
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://cinema-ki1xsnznb-marios-projects-624972af.vercel.app",
+  );
+  res.header("Access-Control-Allow-Methods", "POST");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+
+  res.sendStatus(200);
+});
 
 //* middleware //
 app.use(express.json());
