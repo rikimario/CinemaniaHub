@@ -12,7 +12,7 @@ export default function WatchList({ type }) {
     try {
       const watchlist = async () => {
         const response = await fetch(
-          `https://cinema-bneralsye-marios-projects-624972af.vercel.app/user/watchlist/${user.email}`,
+          `http://localhost:5000/user/watchlist/${user.email}`,
         );
         const data = await response.json();
         setMovies(data.movies);

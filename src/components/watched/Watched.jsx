@@ -12,7 +12,7 @@ export default function Watched({ movie, type }) {
     try {
       const watched = async () => {
         const response = await fetch(
-          `https://cinema-bneralsye-marios-projects-624972af.vercel.app/user/watched/${user.email}`,
+          `http://localhost:5000/user/watched/${user.email}`,
         );
         const data = await response.json();
         setMovies(data.movies);

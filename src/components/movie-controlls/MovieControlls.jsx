@@ -10,7 +10,7 @@ export default function MovieControlls({ movie, type, onRemove }) {
   const removeFavorite = async () => {
     try {
       const response = await axios.put(
-        `https://cinema-bneralsye-marios-projects-624972af.vercel.app/user/favorite/remove`,
+        `http://localhost:5000/user/favorite/remove`,
         {
           data: { email: user.email, movieId: movie.id },
         },
@@ -31,7 +31,7 @@ export default function MovieControlls({ movie, type, onRemove }) {
   const removeWatchlist = async () => {
     try {
       const response = await axios.put(
-        `https://cinema-bneralsye-marios-projects-624972af.vercel.app/user/watchlist/remove`,
+        `http://localhost:5000/user/watchlist/remove`,
         {
           data: { email: user.email, movieId: movie.id },
         },
@@ -52,7 +52,7 @@ export default function MovieControlls({ movie, type, onRemove }) {
   const removeWatched = async () => {
     try {
       const response = await axios.put(
-        `https://cinema-bneralsye-marios-projects-624972af.vercel.app/user/watched/remove`,
+        `http://localhost:5000/user/watched/remove`,
         {
           data: { email: user.email, movieId: movie.id },
         },
