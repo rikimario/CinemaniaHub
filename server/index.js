@@ -8,10 +8,7 @@ const PORT = process.env.PORT;
 const app = express();
 
 app.use(function (req, res, next) {
-  res.header(
-    "Access-Control-Allow-Origin",
-    "https://cinema-l4c01cr3e-marios-projects-624972af.vercel.app",
-  );
+  res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept",
