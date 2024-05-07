@@ -9,7 +9,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://cinema-bneralsye-marios-projects-624972af.vercel.app",
+    origin: "https://cinema-bneralsye-marios-projects-624972af.vercel.app/",
   }),
 );
 
