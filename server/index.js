@@ -7,16 +7,23 @@ const PORT = process.env.PORT;
 
 const app = express();
 
-app.options("/login", function (req, res) {
-  res.header(
-    "Access-Control-Allow-Origin",
-    "https://cinema-ki1xsnznb-marios-projects-624972af.vercel.app",
-  );
-  res.header("Access-Control-Allow-Methods", "POST");
-  res.header("Access-Control-Allow-Headers", "Content-Type");
+app.use(
+  cors({
+    origin: "https://cinema-hub-phi.vercel.app",
+    credentials: true,
+  }),
+);
 
-  res.sendStatus(200);
-});
+// app.options("/login", function (req, res) {
+//   res.header(
+//     "Access-Control-Allow-Origin",
+//     "https://cinema-ki1xsnznb-marios-projects-624972af.vercel.app",
+//   );
+//   res.header("Access-Control-Allow-Methods", "POST");
+//   res.header("Access-Control-Allow-Headers", "Content-Type");
+
+//   res.sendStatus(200);
+// });
 
 //* middleware //
 app.use(express.json());
