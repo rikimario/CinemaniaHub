@@ -13,7 +13,7 @@ export default function FavoriteMovies({ type }) {
     try {
       const favorite = async () => {
         const response = await fetch(
-          `https://cinema-bneralsye-marios-projects-624972af.vercel.app/user/favorite/${user.email}`,
+          `http://localhost:5000/user/favorite/${user.email}`,
         );
         const data = await response.json();
         setMovies(data.movies);
