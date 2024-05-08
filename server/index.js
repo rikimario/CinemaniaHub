@@ -12,6 +12,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+app.use((req, res, next) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://cinema-hub-marios-projects-624972af.vercel.app",
+  );
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
+
 app.use("/", require("./routes/authRoutes"));
 
 // * database connection //
