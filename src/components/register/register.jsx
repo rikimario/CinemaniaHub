@@ -53,7 +53,7 @@ export default function Register() {
               <Link to={Path.Home}>
                 <div className="h-8 w-8">
                   <img
-                    src="public\cinema-svgrepo-com.svg"
+                    src="/movie-folder-video-camera-svgrepo-com.svg"
                     alt="cinema-svg"
                     style={{ transform: "scaleX(-1)" }}
                   />
