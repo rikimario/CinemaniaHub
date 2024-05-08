@@ -8,11 +8,11 @@ const PORT = process.env.PORT;
 
 const app = express();
 
+app.use(cors());
 //* middleware //
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(cors());
 
 app.use("/", require("./routes/authRoutes"));
 
