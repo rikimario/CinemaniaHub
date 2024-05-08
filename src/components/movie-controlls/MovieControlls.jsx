@@ -9,12 +9,9 @@ export default function MovieControlls({ movie, type, onRemove }) {
 
   const removeFavorite = async () => {
     try {
-      const response = await axios.put(
-        `https://cinema-hub-phi.vercel.app/user/favorite/remove`,
-        {
-          data: { email: user.email, movieId: movie.id },
-        },
-      );
+      const response = await axios.put(`/user/favorite/remove`, {
+        data: { email: user.email, movieId: movie.id },
+      });
       onRemove(movie.id);
       if (response.status.ok) {
         return response.data;
@@ -30,12 +27,9 @@ export default function MovieControlls({ movie, type, onRemove }) {
 
   const removeWatchlist = async () => {
     try {
-      const response = await axios.put(
-        `https://cinema-hub-phi.vercel.app/user/watchlist/remove`,
-        {
-          data: { email: user.email, movieId: movie.id },
-        },
-      );
+      const response = await axios.put(`/user/watchlist/remove`, {
+        data: { email: user.email, movieId: movie.id },
+      });
       onRemove(movie.id);
       if (response.status.ok) {
         return response.data;
@@ -51,12 +45,9 @@ export default function MovieControlls({ movie, type, onRemove }) {
 
   const removeWatched = async () => {
     try {
-      const response = await axios.put(
-        `https://cinema-hub-phi.vercel.app/user/watched/remove`,
-        {
-          data: { email: user.email, movieId: movie.id },
-        },
-      );
+      const response = await axios.put(`/user/watched/remove`, {
+        data: { email: user.email, movieId: movie.id },
+      });
       onRemove(movie.id);
       if (response.status.ok) {
         return response.data;

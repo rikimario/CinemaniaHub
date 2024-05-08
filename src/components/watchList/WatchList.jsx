@@ -11,9 +11,7 @@ export default function WatchList({ type }) {
   useEffect(() => {
     try {
       const watchlist = async () => {
-        const response = await fetch(
-          `https://cinema-hub-phi.vercel.app/user/watchlist/${user.email}`,
-        );
+        const response = await fetch(`/user/watchlist/${user.email}`);
         const data = await response.json();
         setMovies(data.movies);
       };
