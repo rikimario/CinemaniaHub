@@ -10,7 +10,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://cinema-hub-marios-projects-624972af.vercel.app",
   }),
 );
 //* middleware //
