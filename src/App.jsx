@@ -18,7 +18,7 @@ import axios from "axios";
 
 axios.defaults.baseURL =
   "https://cinema-hub-marios-projects-624972af.vercel.app";
-axios.defaults.withCredentials = false;
+axios.defaults.withCredentials = true;
 
 function App() {
   return (

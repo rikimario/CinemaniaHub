@@ -24,25 +24,7 @@ router.use(cors());
 router.post("/register", register);
 router.post("/login", login);
 router.get("/logout", logout);
-// router.get("/profile", getProfile);
-router.get(
-  "/profile",
-  (req, res, next) => {
-    // Set CORS headers dynamically based on the origin of the incoming request
-    res.setHeader("Access-Control-Allow-Origin", req.headers.origin);
-    res.setHeader(
-      "Access-Control-Allow-Methods",
-      "GET, POST, OPTIONS, PUT, PATCH, DELETE",
-    );
-    res.setHeader(
-      "Access-Control-Allow-Headers",
-      "Content-Type, Authorization",
-    );
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-    next();
-  },
-  getProfile,
-);
+router.get("/profile", getProfile);
 
 //* favorites
 router.post("/user/favorite", addToFavorite);
