@@ -15,7 +15,7 @@ app.use(cookieParser());
 app.use((req, res, next) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://cinema-hub-marios-projects-624972af.vercel.app",
+    "https://cinema-306b7xszt-marios-projects-624972af.vercel.app",
   );
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
