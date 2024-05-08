@@ -22,7 +22,7 @@ const {
 router.use(
   cors({
     credentials: true,
-    origin: "https://cinema-hub-marios-projects-624972af.vercel.app",
+    origin: `${process.env.BACKEND_URL}`,
   }),
 );
 // * User
