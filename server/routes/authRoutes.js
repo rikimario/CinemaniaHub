@@ -19,12 +19,7 @@ const {
 } = require("../controllers/authControllers");
 
 // middleware
-router.use(
-  cors({
-    credentials: true,
-    // origin: `${process.env.BACKEND_URL}`,
-  }),
-);
+router.use(cors());
 // * User
 router.post("/register", register);
 router.post("/login", login);
