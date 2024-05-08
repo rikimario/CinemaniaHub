@@ -13,7 +13,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://cinema-hub-phi.vercel.app", // replace with your domain
+  }),
+);
 
 app.use("/", require("./routes/authRoutes"));
 
