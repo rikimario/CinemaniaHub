@@ -19,12 +19,7 @@ const {
 } = require("../controllers/authControllers");
 
 // middleware
-router.use(
-  cors({
-    origin: "https://cinema-hub-phi.vercel.app",
-    credentials: true,
-  }),
-);
+router.use(cors());
 // * User
 router.post("/register", register);
 router.post("/login", login);
