@@ -32,8 +32,8 @@ function App() {
         <Route element={<AuthGuard />}>
           <Route path={Path.Login} element={<Login />} />
           <Route path={Path.Register} element={<Register />} />
-          <Route path={`${Path.Profile}/:username`} element={<Profile />} />
         </Route>
+        <Route path={`${Path.Profile}/:username`} element={<Profile />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
