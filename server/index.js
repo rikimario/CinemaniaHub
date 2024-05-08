@@ -9,7 +9,7 @@ const app = express();
 app.use(function (req, res, next) {
   res.header(
     "Access-Control-Allow-Origin",
-    "https://cinema-c0tn4o1v1-marios-projects-624972af.vercel.app",
+    "https://cinema-hub-phi.vercel.app",
   );
   res.header(
     "Access-Control-Allow-Headers",
