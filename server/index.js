@@ -13,13 +13,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(
-  cors({
-    origin: "https://cinema-hub-phi.vercel.app/",
-    credentials: false,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-  }),
-);
+const corsOptions = {
+  origin: "*",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 app.use("/", require("./routes/authRoutes"));
 
