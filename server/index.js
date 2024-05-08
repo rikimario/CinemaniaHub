@@ -16,7 +16,7 @@ app.use("/", require("./routes/authRoutes"));
 
 // * database connection //
 mongoose
-  .connect(process.env.MONGO_URL)
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("Database Connected"))
   .catch((err) => console.log("Database not Connected", err));
 
