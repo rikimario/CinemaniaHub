@@ -17,7 +17,7 @@ import TvDetails from "./components/TV/tv-details/TvDetails.jsx";
 import axios from "axios";
 
 axios.defaults.baseURL =
-  "https://cinema-hub-marios-projects-624972af.vercel.app";
+  "https://cinema-qkdmhn8de-marios-projects-624972af.vercel.app";
 axios.defaults.withCredentials = true;
 
 function App() {
