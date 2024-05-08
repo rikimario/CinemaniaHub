@@ -19,12 +19,7 @@ const {
 } = require("../controllers/authControllers");
 
 // middleware
-router.use(
-  cors({
-    credentials: true,
-    origin: "https://cinema-hub-marios-projects-624972af.vercel.app",
-  }),
-);
+router.use(cors());
 // * User
 router.post("/register", register);
 router.post("/login", login);
