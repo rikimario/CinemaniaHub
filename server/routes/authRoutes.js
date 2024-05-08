@@ -22,7 +22,7 @@ const {
 router.use(
   cors({
     credentials: true,
-    origin: `${process.env.BACKEND_URL}`,
+    // origin: `${process.env.BACKEND_URL}`,
   }),
 );
 // * User
