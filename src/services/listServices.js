@@ -3,7 +3,7 @@ import axios from "axios";
 export const fetchWatchlistData = async (userEmail) => {
   try {
     const response = await axios.get(
-      `http://localhost:5000/user/watchlist/${userEmail}`,
+      `https://cinema-hub-phi.vercel.app/user/watchlist/${userEmail}`,
     );
     const { movies } = response.data;
 
@@ -25,7 +25,7 @@ export const fetchWatchlistData = async (userEmail) => {
 
 export const addToWatchlist = async (userEmail, movie) => {
   try {
-    await axios.post("http://localhost:5000/user/watchlist", {
+    await axios.post("https://cinema-hub-phi.vercel.app/user/watchlist", {
       email: userEmail,
       data: movie,
     });
@@ -40,7 +40,7 @@ export const addToWatchlist = async (userEmail, movie) => {
 export const fetchFavoriteData = async (userEmail) => {
   try {
     const response = await axios.get(
-      `http://localhost:5000/user/favorite/${userEmail}`,
+      `https://cinema-hub-phi.vercel.app/favorite/${userEmail}`,
     );
     const { movies } = response.data;
 
@@ -62,7 +62,7 @@ export const fetchFavoriteData = async (userEmail) => {
 
 export const addToFavorite = async (userEmail, movie) => {
   try {
-    await axios.post("http://localhost:5000/user/favorite", {
+    await axios.post("https://cinema-hub-phi.vercel.app/user/favorite", {
       email: userEmail,
       data: movie,
     });
@@ -77,7 +77,7 @@ export const addToFavorite = async (userEmail, movie) => {
 export const fetchWatchedData = async (userEmail) => {
   try {
     const response = await axios.get(
-      `http://localhost:5000/user/watched/${userEmail}`,
+      `https://cinema-hub-phi.vercel.app/user/watched/${userEmail}`,
     );
     const { movies } = response.data;
 
@@ -99,7 +99,7 @@ export const fetchWatchedData = async (userEmail) => {
 
 export const addToWatched = async (userEmail, movie) => {
   try {
-    await axios.post("http://localhost:5000/user/watched", {
+    await axios.post("https://cinema-hub-phi.vercel.app/user/watched", {
       email: userEmail,
       data: movie,
     });

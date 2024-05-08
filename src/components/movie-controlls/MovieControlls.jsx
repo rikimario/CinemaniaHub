@@ -10,7 +10,7 @@ export default function MovieControlls({ movie, type, onRemove }) {
   const removeFavorite = async () => {
     try {
       const response = await axios.put(
-        `http://localhost:5000/user/favorite/remove`,
+        `https://cinema-hub-phi.vercel.app/user/favorite/remove`,
         {
           data: { email: user.email, movieId: movie.id },
         },
@@ -31,7 +31,7 @@ export default function MovieControlls({ movie, type, onRemove }) {
   const removeWatchlist = async () => {
     try {
       const response = await axios.put(
-        `http://localhost:5000/user/watchlist/remove`,
+        `https://cinema-hub-phi.vercel.app/user/watchlist/remove`,
         {
           data: { email: user.email, movieId: movie.id },
         },
@@ -52,7 +52,7 @@ export default function MovieControlls({ movie, type, onRemove }) {
   const removeWatched = async () => {
     try {
       const response = await axios.put(
-        `http://localhost:5000/user/watched/remove`,
+        `https://cinema-hub-phi.vercel.app/user/watched/remove`,
         {
           data: { email: user.email, movieId: movie.id },
         },
