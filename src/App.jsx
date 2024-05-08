@@ -14,11 +14,10 @@ import NotFound from "./components/not-found/NotFound.jsx";
 import Footer from "./components/footer/Footer.jsx";
 import TvDetails from "./components/TV/tv-details/TvDetails.jsx";
 
-// import axios from "axios";
+import axios from "axios";
 
-// axios.defaults.baseURL =
-//   "https://cinema-hub-marios-projects-624972af.vercel.app";
-// axios.defaults.withCredentials = true;
+axios.defaults.baseURL = "https://cinema-hub-phi.vercel.app";
+axios.defaults.withCredentials = true;
 
 function App() {
   return (
