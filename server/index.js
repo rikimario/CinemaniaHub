@@ -15,7 +15,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: "http://localhost:5000",
+    origin: "https://cinema-hub-phi.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true, // Enable credentials if needed
     allowedHeaders: ["Content-Type", "Authorization"],
