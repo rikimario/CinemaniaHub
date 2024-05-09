@@ -21,14 +21,14 @@ export function AuthContextProvider({ children }) {
 
     return () => {
       if (user) {
-        setUser();
+        setUser(null);
         localStorage.removeItem("user");
       }
     };
   }, [user]);
 
   const logout = () => {
-    setUser();
+    setUser(null);
     localStorage.removeItem("user");
     axios
       .get("/logout")
