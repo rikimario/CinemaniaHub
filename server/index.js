@@ -18,6 +18,7 @@ app.use(
     origin: "https://cinema-hub-phi.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true, // Enable credentials if needed
+    allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
 app.use("/", require("./routes/authRoutes"));

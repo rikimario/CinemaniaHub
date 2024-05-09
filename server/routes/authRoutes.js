@@ -24,6 +24,7 @@ router.use(
     credentials: true,
     origin: "https://cinema-hub-phi.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
 // * User
