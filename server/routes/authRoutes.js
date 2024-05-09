@@ -19,7 +19,7 @@ const {
 } = require("../controllers/authControllers");
 
 // middleware
-// router.use(cors());
+router.use(cors());
 // * User
 router.post("/register", register);
 router.post("/login", login);

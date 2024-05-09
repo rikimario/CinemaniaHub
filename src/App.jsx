@@ -16,7 +16,7 @@ import TvDetails from "./components/TV/tv-details/TvDetails.jsx";
 
 import axios from "axios";
 
-axios.defaults.baseURL = import.meta.env.VITE_FRONTEND_URL;
+axios.defaults.baseURL = "http://localhost:5173";
 axios.defaults.withCredentials = true;
 
 function App() {
