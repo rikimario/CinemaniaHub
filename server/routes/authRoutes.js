@@ -19,14 +19,14 @@ const {
 } = require("../controllers/authControllers");
 
 // middleware
-router.use(
-  cors({
-    credentials: true,
-    origin: "https://cinema-hub-phi.vercel.app",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  }),
-);
+// router.use(
+//   cors({
+//     credentials: true,
+//     origin: "https://cinema-hub-phi.vercel.app",
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     allowedHeaders: ["Content-Type", "Authorization"],
+//   }),
+// );
 // * User
 router.post("/register", register);
 router.post("/login", login);
