@@ -25,6 +25,7 @@ export function AuthContextProvider({ children }) {
       .get("/logout")
       .then(() => {
         console.log("Logged out successfully");
+        console.log("user", user);
         setUser(null);
         localStorage.removeItem("user");
         navigate("/");
