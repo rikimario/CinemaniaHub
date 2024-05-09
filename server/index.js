@@ -22,6 +22,9 @@ app.use(
   }),
 );
 app.use("/", require("./routes/authRoutes"));
+app.use("/", (req, res) => {
+  res.send("hello");
+});
 
 // * database connection //
 mongoose
