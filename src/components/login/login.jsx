@@ -17,7 +17,7 @@ export default function Login() {
     const { email, password } = data;
     try {
       const { data } = await axios.post(
-        "https://cinemania-hub-server.vercel.app/login",
+        "https://cinemania-hub-frontend.vercel.app/login",
         {
           email,
           password,
