@@ -18,6 +18,13 @@ export function AuthContextProvider({ children }) {
         localStorage.setItem("user", JSON.stringify(data));
       });
     }
+
+    return () => {
+      if (user) {
+        setUser();
+        localStorage.removeItem("user");
+      }
+    };
   }, [user]);
 
   const logout = () => {
