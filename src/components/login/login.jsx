@@ -16,13 +16,10 @@ export default function Login() {
     e.preventDefault();
     const { email, password } = data;
     try {
-      const { data } = await axios.post(
-        "https://cinema-hub-phi.vercel.app/login",
-        {
-          email,
-          password,
-        },
-      );
+      const { data } = await axios.post("http://localhost:5000/login", {
+        email,
+        password,
+      });
       if (data.error) {
         toast.error(data.error);
       } else {
