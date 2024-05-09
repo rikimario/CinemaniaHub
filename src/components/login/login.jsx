@@ -17,10 +17,15 @@ export default function Login() {
     const { email, password } = data;
     try {
       const { data } = await axios.post(
-        `https://cinema-hub-phi.vercel.app/login`,
+        "https://cinema-hub-phi.vercel.app/login",
         {
           email,
           password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         },
       );
       if (data.error) {
