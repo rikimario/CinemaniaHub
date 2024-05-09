@@ -24,7 +24,7 @@ export default function Profile() {
       <div className="flex gap-4 pt-32 px-11">
         <div className="relative inline-flex items-center justify-center w-32 h-32 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
           <span className="font-medium text-gray-600 text-7xl dark:text-gray-300">
-            {user.username.charAt(0).toUpperCase()}
+            {user.username}
           </span>
         </div>
 

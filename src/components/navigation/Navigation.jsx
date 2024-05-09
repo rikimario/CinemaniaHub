@@ -97,7 +97,7 @@ export default function Navigation() {
               <Link to={`${Path.Profile}/@${user.username}`}>
                 <div className="relative inline-flex items-center justify-center overflow-hidden bg-gray-100 rounded-full h-9 w-9 dark:bg-gray-600">
                   <span className="text-xl font-bold text-gray-600 dark:text-gray-300">
-                    {user.username.charAt(0).toUpperCase()}
+                    {user.username}
                   </span>
                 </div>
               </Link>
