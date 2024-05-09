@@ -22,7 +22,7 @@ const {
 router.use(
   cors({
     credentials: true,
-    origin: "http://localhost:5173",
+    origin: "https://cinema-hub-phi.vercel.app",
   }),
 );
 // * User
