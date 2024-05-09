@@ -16,10 +16,13 @@ export default function Login() {
     e.preventDefault();
     const { email, password } = data;
     try {
-      const { data } = await axios.post("/login", {
-        email,
-        password,
-      });
+      const { data } = await axios.post(
+        "https://cinemania-hub-server.vercel.app/login",
+        {
+          email,
+          password,
+        },
+      );
       if (data.error) {
         toast.error(data.error);
       } else {
