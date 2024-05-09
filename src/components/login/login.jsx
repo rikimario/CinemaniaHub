@@ -16,7 +16,7 @@ export default function Login() {
     e.preventDefault();
     const { email, password } = data;
     try {
-      const { data } = await axios.post("http://localhost:5000/login", {
+      const { data } = await axios.post("/login", {
         email,
         password,
       });

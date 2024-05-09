@@ -17,7 +17,7 @@ app.use(
   cors({
     origin: "https://cinema-hub-phi.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true, // Enable credentials if needed
+    credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
