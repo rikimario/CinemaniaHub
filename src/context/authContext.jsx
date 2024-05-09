@@ -18,22 +18,15 @@ export function AuthContextProvider({ children }) {
         localStorage.setItem("user", JSON.stringify(data));
       });
     }
-
-    return () => {
-      if (user) {
-        setUser(null);
-        localStorage.removeItem("user");
-      }
-    };
   }, [user]);
 
   const logout = () => {
-    setUser(null);
-    localStorage.removeItem("user");
     axios
       .get("/logout")
       .then(() => {
         console.log("Logged out successfully");
+        setUser(null);
+        localStorage.removeItem("user");
         navigate("/");
       })
       .catch((error) => {
