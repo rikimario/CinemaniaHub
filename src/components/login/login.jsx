@@ -16,18 +16,10 @@ export default function Login() {
     e.preventDefault();
     const { email, password } = data;
     try {
-      const { data } = await axios.post(
-        "/login",
-        {
-          email,
-          password,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        },
-      );
+      const { data } = await axios.post("/login", {
+        email,
+        password,
+      });
       if (data.error) {
         toast.error(data.error);
       } else {

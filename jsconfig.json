@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     // ...
-    "baseUrl": "https://cinema-hub-phi.vercel.app",
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }
