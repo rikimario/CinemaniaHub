@@ -19,7 +19,12 @@ const {
 } = require("../controllers/authControllers");
 
 // middleware
-// router.use(cors());
+router.use(
+  cors({
+    credentials: true,
+    origin: "http://localhost:5173",
+  }),
+);
 // * User
 router.post("/register", register);
 router.post("/login", login);

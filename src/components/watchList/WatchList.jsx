@@ -9,25 +9,25 @@ export default function WatchList({ type }) {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    try {
-      const watchlist = async () => {
-        const response = await fetch(`user/watchlist/${user.email}`);
+    const fetchWatchlist = async () => {
+      if (user) {
+        const response = await fetch(
+          `http://localhost:5000/user/watchlist/${user.email}`,
+        );
         const data = await response.json();
         setMovies(data.movies);
-      };
+      }
+    };
 
-      watchlist();
-    } catch (error) {
-      console.log(error);
-    }
-  }, [user.email]);
+    fetchWatchlist();
+  }, [user]);
 
   const removeMovie = (movieId) => {
     setMovies(movies.filter((m) => m.id !== movieId));
   };
   return (
     <>
-      <div className="pl-11 pt-6">
+      <div className="pt-6 pl-11">
         <h1 className="text-2xl">Favorite</h1>
         {movies.length > 0 ? (
           <div className="grid grid-cols-5">
@@ -36,7 +36,7 @@ export default function WatchList({ type }) {
                 {movie.number_of_episodes ? (
                   <Link to={`${Path.TvDetails}/${movie.id}`}>
                     <img
-                      className="h-full w-auto rounded-xl object-fill opacity-50 duration-300 hover:scale-105 hover:transform hover:opacity-80"
+                      className="object-fill w-auto h-full duration-300 opacity-50 rounded-xl hover:scale-105 hover:transform hover:opacity-80"
                       src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                       alt={movie.name}
                     />
@@ -44,7 +44,7 @@ export default function WatchList({ type }) {
                 ) : (
                   <Link to={`${Path.MovieDetails}/${movie.id}`}>
                     <img
-                      className="h-full w-auto rounded-xl object-fill opacity-50 duration-300 hover:scale-105 hover:transform hover:opacity-80"
+                      className="object-fill w-auto h-full duration-300 opacity-50 rounded-xl hover:scale-105 hover:transform hover:opacity-80"
                       src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                       alt={movie.title}
                     />
@@ -60,7 +60,7 @@ export default function WatchList({ type }) {
             ))}
           </div>
         ) : (
-          <p className="text-center text-2xl">The list is empty!</p>
+          <p className="text-2xl text-center">The list is empty!</p>
         )}
       </div>
     </>

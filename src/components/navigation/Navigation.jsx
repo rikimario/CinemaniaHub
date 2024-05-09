@@ -35,14 +35,14 @@ export default function Navigation() {
   };
 
   return (
-    <div className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-11 py-4 backdrop-blur-sm backdrop-brightness-50">
-      <nav className="flex w-full justify-between">
+    <div className="fixed inset-x-0 top-0 z-50 flex items-center justify-between py-4 px-11 backdrop-blur-sm backdrop-brightness-50">
+      <nav className="flex justify-between w-full">
         <div className="flex text-2xl font-bold">
           <Link to={Path.Home} className="text-[#ffc107]">
             Cinema<span className="text-3xl">Hub</span>
           </Link>
           <Link to={Path.Home}>
-            <div className="h-8 w-8">
+            <div className="w-8 h-8">
               <img
                 src="/movie-folder-video-camera-svgrepo-com.svg"
                 alt="cinema-svg"
@@ -95,9 +95,9 @@ export default function Navigation() {
           {user && (
             <>
               <Link to={`${Path.Profile}/@${user.username}`}>
-                <div className="relative inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
+                <div className="relative inline-flex items-center justify-center overflow-hidden bg-gray-100 rounded-full h-9 w-9 dark:bg-gray-600">
                   <span className="text-xl font-bold text-gray-600 dark:text-gray-300">
-                    {user.username}
+                    {user.username.charAt(0).toUpperCase()}
                   </span>
                 </div>
               </Link>

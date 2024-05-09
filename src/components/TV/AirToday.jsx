@@ -20,7 +20,7 @@ export default function AirToday() {
       )
         .then((res) => res.json())
         .then((data) => {
-          const firstTenSeries = data.results.slice(0, 10);
+          const firstTenSeries = data.results.slice(10, 20);
           setSeries(firstTenSeries);
         });
     } catch (error) {
@@ -41,7 +41,7 @@ export default function AirToday() {
             slidesToScroll: 1,
           }}
         >
-          <CarouselContent className="-ml-1 w-3/5">
+          <CarouselContent className="w-3/5 -ml-1">
             {series.map((tv, index) => (
               <CarouselItem
                 className="px-6 pl-1 md:basis-1/2 lg:basis-1/3"
@@ -53,7 +53,7 @@ export default function AirToday() {
                 >
                   <Link to={`${Path.TvDetails}/${tv.id}`}>
                     <img
-                      className="h-full w-auto rounded-xl bg-black object-fill opacity-50 duration-300  hover:transform hover:opacity-80"
+                      className="object-fill w-auto h-full duration-300 bg-black opacity-50 rounded-xl hover:transform hover:opacity-80"
                       src={`https://image.tmdb.org/t/p/w500/${tv.poster_path}`}
                       alt={tv.title}
                     />

@@ -2,7 +2,9 @@ import axios from "axios";
 
 export const fetchWatchlistData = async (userEmail) => {
   try {
-    const response = await axios.get(`/user/watchlist/${userEmail}`);
+    const response = await axios.get(
+      `http://localhost:5000/user/watchlist/${userEmail}`,
+    );
     const { movies } = response.data;
 
     // Check if movies is an array before using find()
@@ -23,7 +25,7 @@ export const fetchWatchlistData = async (userEmail) => {
 
 export const addToWatchlist = async (userEmail, movie) => {
   try {
-    await axios.post("/user/watchlist", {
+    await axios.post("http://localhost:5000/user/watchlist", {
       email: userEmail,
       data: movie,
     });
@@ -37,7 +39,9 @@ export const addToWatchlist = async (userEmail, movie) => {
 
 export const fetchFavoriteData = async (userEmail) => {
   try {
-    const response = await axios.get(`/favorite/${userEmail}`);
+    const response = await axios.get(
+      `http://localhost:5000/favorite/${userEmail}`,
+    );
     const { movies } = response.data;
 
     // Check if movies is an array before using find()
@@ -58,7 +62,7 @@ export const fetchFavoriteData = async (userEmail) => {
 
 export const addToFavorite = async (userEmail, movie) => {
   try {
-    await axios.post("/user/favorite", {
+    await axios.post("http://localhost:5000/user/favorite", {
       email: userEmail,
       data: movie,
     });
@@ -72,7 +76,9 @@ export const addToFavorite = async (userEmail, movie) => {
 
 export const fetchWatchedData = async (userEmail) => {
   try {
-    const response = await axios.get(`/user/watched/${userEmail}`);
+    const response = await axios.get(
+      `http://localhost:5000/user/watched/${userEmail}`,
+    );
     const { movies } = response.data;
 
     // Check if movies is an array before using find()
@@ -93,7 +99,7 @@ export const fetchWatchedData = async (userEmail) => {
 
 export const addToWatched = async (userEmail, movie) => {
   try {
-    await axios.post("/user/watched", {
+    await axios.post("http://localhost:5000/user/watched", {
       email: userEmail,
       data: movie,
     });
