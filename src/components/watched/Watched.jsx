@@ -11,9 +11,7 @@ export default function Watched({ movie, type }) {
   useEffect(() => {
     try {
       const watched = async () => {
-        const response = await fetch(
-          `http://localhost:5000/user/watched/${user.email}`,
-        );
+        const response = await fetch(`/user/watched/${user.email}`);
         const data = await response.json();
         setMovies(data.movies);
       };
