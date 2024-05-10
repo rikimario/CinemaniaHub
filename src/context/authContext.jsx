@@ -12,17 +12,15 @@ export function AuthContextProvider({ children }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get("/profile")
-      .then(({ data }) => {
+    if (user) {
+      axios.get("/profile").then(({ data }) => {
         setUser(data);
         localStorage.setItem("user", JSON.stringify(data));
-      })
-      .catch((error) => {
-        // Handle error fetching user profile
-        console.error("Error fetching user profile:", error);
       });
-  }, []);
+    } else {
+      localStorage.removeItem("user");
+    }
+  }, [user]);
 
   const logout = () => {
     setUser(null);
@@ -31,10 +29,10 @@ export function AuthContextProvider({ children }) {
       .get("/logout")
       .then(() => {
         console.log("Logged out successfully");
+        console.log("user", user);
         navigate("/");
       })
       .catch((error) => {
-        // Handle error logging out
         console.error("Logout failed:", error);
       });
   };
