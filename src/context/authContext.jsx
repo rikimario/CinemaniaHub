@@ -12,7 +12,7 @@ export function AuthContextProvider({ children }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user) {
+    if (user) {
       axios.get("/profile").then(({ data }) => {
         setUser(data);
         localStorage.setItem("user", JSON.stringify(data));
@@ -20,7 +20,7 @@ export function AuthContextProvider({ children }) {
     } else {
       localStorage.removeItem("user");
     }
-  }, [user]);
+  }, []);
 
   const logout = () => {
     axios
