@@ -12,14 +12,11 @@ export function AuthContextProvider({ children }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user) {
-      axios.get("/profile").then(({ data }) => {
-        setUser(data);
-        localStorage.setItem("user", JSON.stringify(data));
-      });
-    } else {
-      localStorage.removeItem("user");
-    }
+    if (!user) localStorage.removeItem("user");
+    axios.get("/profile").then(({ data }) => {
+      setUser(data);
+      localStorage.setItem("user", JSON.stringify(data));
+    });
   }, []);
 
   const logout = () => {
