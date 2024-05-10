@@ -20,7 +20,7 @@ export function AuthContextProvider({ children }) {
     } else {
       localStorage.removeItem("user");
     }
-  }, [user]);
+  }, []);
 
   const logout = () => {
     setUser(null);
