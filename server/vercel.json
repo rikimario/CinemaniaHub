@@ -4,7 +4,10 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/"
+      "dest": "/",
+      "headers": {
+        "Access-Control-Allow-Origin": "https://cinemania-hub-frontend.vercel.app"
+      }
     }
   ]
 }
