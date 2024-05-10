@@ -12,7 +12,7 @@ export function AuthContextProvider({ children }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user) {
+    if (user) {
       axios.get("/profile").then(({ data }) => {
         setUser(data);
         localStorage.setItem("user", JSON.stringify(data));
@@ -23,13 +23,13 @@ export function AuthContextProvider({ children }) {
   }, [user]);
 
   const logout = () => {
+    setUser(null);
+    localStorage.removeItem("user");
     axios
       .get("/logout")
       .then(() => {
         console.log("Logged out successfully");
         console.log("user", user);
-        setUser(null);
-        localStorage.removeItem("user");
         navigate("/");
       })
       .catch((error) => {
