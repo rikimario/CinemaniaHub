@@ -26,7 +26,7 @@ export default function Login() {
         setData({});
         toast.success("Login Successful. Welcome!");
         navigate("/");
-        window.location.reload();
+        // window.location.reload();
       }
     } catch (error) {
       console.log(error);
