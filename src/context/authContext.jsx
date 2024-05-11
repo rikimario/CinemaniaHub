@@ -10,9 +10,9 @@ export function AuthContextProvider({ children }) {
     return storedUser ? JSON.parse(storedUser) : null;
   });
   const navigate = useNavigate();
-
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
+    console.log("storedUser", storedUser);
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     } else {
