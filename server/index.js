@@ -4,8 +4,6 @@ const dotenv = require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
-const { generateToken } = require("./helpers/auth");
-
 const app = express();
 
 //* middleware //
@@ -34,6 +32,14 @@ app.use("/", require("./routes/authRoutes"));
 app.use("/", (req, res) => {
   res.send("hello");
 });
+
+if (process.env.NODE_ENV === "production") {
+  const __dirname = path.resolve();
+  app.use(express.static(path.join(__dirname, "./dist")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "build", "index.html"));
+  });
+}
 
 // * database connection //
 mongoose
