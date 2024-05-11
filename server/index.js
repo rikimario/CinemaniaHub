@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-const { generateToken } = require("./helpers/auth");
 
 const app = express();
 
