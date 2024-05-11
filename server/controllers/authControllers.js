@@ -64,20 +64,29 @@ const login = async (req, res) => {
 
     const match = await comparePassword(password, user.password);
     if (match) {
-      jwt.sign(
-        {
-          email: user.email,
-          id: user._id,
-          username: user.username,
-        },
-        process.env.JWT_SECRET,
-        {},
-        (err, token) => {
-          if (err) throw err;
-          res.cookie("token", token).json(user);
-        },
-      );
+      return res.json({
+        _id: user._id,
+        username: user.username,
+        email: user.email,
+        token: generateToken(res, user._id),
+      });
     }
+    // if (match) {
+    //   jwt.sign(
+    //     {
+    //       email: user.email,
+    //       id: user._id,
+    //       username: user.username,
+
+    //     },
+    //     process.env.JWT_SECRET,
+    //     {},
+    //     (err, token) => {
+    //       if (err) throw err;
+    //       res.cookie("token", token).json(user);
+    //     },
+    //   );
+    // }
     if (!match) {
       return res.json({
         error: "Incorrect email or password",
