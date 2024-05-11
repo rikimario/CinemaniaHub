@@ -1,9 +1,16 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
+const generateToken = (res, id) => {
+  const token = jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: "3d",
+  });
+
+  res.cookie("token", token, {
+    sameSite: "strict",
+    secure: true,
+    httpOnly: true,
+    maxAge: 3 * 24 * 60 * 60 * 1000,
   });
 };
 

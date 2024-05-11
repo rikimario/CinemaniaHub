@@ -4,6 +4,8 @@ const dotenv = require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
+const { generateToken } = require("./helpers/auth");
+
 const app = express();
 
 //* middleware //
@@ -11,23 +13,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // app.use((req, res, next) => {
-//   res.cookie("token", generateToken, {
+//   res.cookie("token", token, {
 //     sameSite: "None",
 //     secure: true,
 //     httpOnly: true,
 //   });
 //   next();
 // });
-app.options(
-  "",
-  cors({
-    origin: "https://cinemania-hub-frontend.vercel.app",
-    // origin: "http://localhost:5173",
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization"],
-  }),
-);
+
 app.use(
   cors({
     origin: "https://cinemania-hub-frontend.vercel.app",
