@@ -55,7 +55,7 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await User.findOne({ email }).lean();
+    const user = await User.findOne({ email });
     if (!user) {
       return res.json({
         error: "Incorrect email or password",
@@ -63,15 +63,28 @@ const login = async (req, res) => {
     }
 
     const match = await comparePassword(password, user.password);
+    // if (match) {
+    //   return res.json({
+    //     _id: user._id,
+    //     username: user.username,
+    //     email: user.email,
+    //     token: generateToken(res, user._id),
+    //   });
+    // }
     if (match) {
-      res.header("Access-Control-Allow-Credentials", "true");
-      res.header("Access-Control-Allow-Origin", req.headers.origin);
-      res.json({
-        _id: user._id,
-        username: user.username,
-        email: user.email,
-        token: generateToken(res, user._id),
-      });
+      jwt.sign(
+        {
+          email: user.email,
+          id: user._id,
+          username: user.username,
+        },
+        process.env.JWT_SECRET,
+        {},
+        (err, token) => {
+          if (err) throw err;
+          res.cookie("token", token).json(user);
+        },
+      );
     }
     if (!match) {
       return res.json({
