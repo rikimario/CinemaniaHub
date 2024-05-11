@@ -33,6 +33,7 @@ app.use("/", (req, res) => {
   res.send("hello");
 });
 
+// * production mode
 if (process.env.NODE_ENV === "production") {
   const __dirname = path.resolve();
   app.use(express.static(path.join(__dirname, "./dist")));
