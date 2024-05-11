@@ -11,14 +11,14 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use((req, res, next) => {
-  res.cookie("token", generateToken(user._id), {
-    sameSite: "None",
-    secure: true,
-    httpOnly: true,
-  });
-  next();
-});
+// app.use((req, res, next) => {
+//   res.cookie("token", generateToken, {
+//     sameSite: "None",
+//     secure: true,
+//     httpOnly: true,
+//   });
+//   next();
+// });
 
 app.use(
   cors({
