@@ -19,7 +19,7 @@ app.use(cookieParser());
 //   });
 //   next();
 // });
-
+app.options("*", cors());
 app.use(
   cors({
     origin: "https://cinemania-hub-frontend.vercel.app",
