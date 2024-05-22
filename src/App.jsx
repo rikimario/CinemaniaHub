@@ -16,15 +16,15 @@ import TvDetails from "./components/TV/tv-details/TvDetails.jsx";
 
 import axios from "axios";
 
-axios.defaults.baseURL = "https://cinemania-hub-server.vercel.app";
-// axios.defaults.baseURL = "http://localhost:5000";
+// axios.defaults.baseURL = "https://cinemania-hub-server.vercel.app";
+axios.defaults.baseURL = "http://localhost:5000";
 axios.defaults.withCredentials = true;
 
 function App() {
   return (
     <AuthContextProvider>
       <Navigation />
-      <Toaster position="bottom-right" toastOptions={{ duration: 2000 }} />
+      <Toaster position="top-center" toastOptions={{ duration: 4000 }} />
       <Routes>
         <Route path={Path.Home} element={<Home />} />
         <Route path={`${Path.MovieDetails}/:id`} element={<MovieDetails />} />
