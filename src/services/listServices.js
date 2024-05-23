@@ -37,7 +37,7 @@ export const addToWatchlist = async (userEmail, movie) => {
 
 export const fetchFavoriteData = async (userEmail) => {
   try {
-    const response = await axios.get(`favorite/${userEmail}`);
+    const response = await axios.get(`/user/favorite/${userEmail}`);
     const { movies } = response.data;
 
     // Check if movies is an array before using find()
