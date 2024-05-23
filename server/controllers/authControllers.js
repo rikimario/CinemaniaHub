@@ -101,15 +101,37 @@ const login = async (req, res) => {
   }
 };
 
+// const getProfile = (req, res) => {
+//   const { token } = req.cookies;
+//   if (token) {
+//     jwt.verify(token, process.env.JWT_SECRET, {}, (err, user) => {
+//       if (err) throw err;
+//       res.json(user);
+//     });
+//   } else {
+//     res.json();
+//   }
+// };
+
 const getProfile = (req, res) => {
   const { token } = req.cookies;
   if (token) {
-    jwt.verify(token, process.env.JWT_SECRET, {}, (err, user) => {
-      if (err) throw err;
-      res.json(user);
+    jwt.verify(token, process.env.JWT_SECRET, {}, async (err, decodedToken) => {
+      if (err) {
+        return res.status(401).json({ error: "Unauthorized" });
+      }
+      try {
+        const user = await User.findById(decodedToken.id);
+        if (!user) {
+          return res.status(404).json({ error: "User not found" });
+        }
+        res.json(user);
+      } catch (err) {
+        res.status(500).json({ error: "Internal server error" });
+      }
     });
   } else {
-    res.json();
+    res.status(401).json({ error: "No token provided" });
   }
 };
 
