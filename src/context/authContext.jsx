@@ -21,12 +21,11 @@ export function AuthContextProvider({ children }) {
   // }, [user]);
 
   useEffect(() => {
-    if (!user) {
-      const storedUser = localStorage.getItem("user");
-      setUser(storedUser ? JSON.parse(storedUser) : null);
+    const storedUser = localStorage.getItem("user");
+    if (!user && storedUser) {
+      setUser(JSON.parse(storedUser));
     }
-  }, [user]);
-
+  }, []);
   const logout = () => {
     axios
       .get("/logout")
