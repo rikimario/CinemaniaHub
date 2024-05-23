@@ -5,10 +5,7 @@ import { useNavigate } from "react-router-dom";
 export const AuthContext = createContext({});
 
 export function AuthContextProvider({ children }) {
-  // const [user, setUser] = useState(() => {
-  //   const storedUser = localStorage.getItem("user");
-  //   return storedUser ? JSON.parse(storedUser) : null;
-  // });
+  const [user, setUser] = useState();
   const navigate = useNavigate();
 
   // useEffect(() => {
