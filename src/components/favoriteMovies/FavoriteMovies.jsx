@@ -13,7 +13,7 @@ export default function FavoriteMovies({ type }) {
     try {
       const favorite = async () => {
         const response = await fetch(
-          `https://cinemania-hub-server.vercel.app/user/favorite/${user.email}`,
+          `${import.meta.env.VITE_SERVER_URL}/user/favorite/${user.email}`,
         );
         const data = await response.json();
         setMovies(data.movies);

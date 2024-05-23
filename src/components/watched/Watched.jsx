@@ -11,7 +11,9 @@ export default function Watched({ movie, type }) {
   useEffect(() => {
     try {
       const watched = async () => {
-        const response = await fetch(`/user/watched/${user.email}`);
+        const response = await fetch(
+          `${import.meta.env.VITE_SERVER_URL}/user/watched/${user.email}`,
+        );
         const data = await response.json();
         setMovies(data.movies);
       };

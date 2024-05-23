@@ -11,7 +11,9 @@ export default function WatchList({ type }) {
   useEffect(() => {
     const fetchWatchlist = async () => {
       if (user) {
-        const response = await fetch(`/user/watchlist/${user.email}`);
+        const response = await fetch(
+          `${import.meta.env.VITE_SERVER_URL}/user/watchlist/${user.email}`,
+        );
         const data = await response.json();
         setMovies(data.movies);
       }
