@@ -2,16 +2,16 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const generateToken = (res, id) => {
-  const token = jwt.sign({ id }, process.env.JWT_SECRET, {
+  jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: "3d",
   });
 
-  res.cookie("token", token, {
-    sameSite: "none",
-    secure: true,
-    httpOnly: true,
-    maxAge: 3 * 24 * 60 * 60 * 1000,
-  });
+  // res.cookie("token", token, {
+  //   sameSite: "none",
+  //   secure: true,
+  //   httpOnly: true,
+  //   maxAge: 3 * 24 * 60 * 60 * 1000,
+  // });
 };
 
 const hashPassword = (password) => {
