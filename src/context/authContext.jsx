@@ -25,7 +25,7 @@ export function AuthContextProvider({ children }) {
     if (!user) {
       fetchProfile();
     }
-  }, []);
+  }, [user]);
 
   const logout = async () => {
     try {
