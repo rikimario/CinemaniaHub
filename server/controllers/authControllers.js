@@ -104,37 +104,14 @@ const login = async (req, res) => {
 const getProfile = (req, res) => {
   const { token } = req.cookies;
   if (token) {
-    jwt.verify(token, process.env.JWT_SECRET, {}, (err, decodedToken) => {
-      if (err) {
-        return res.status(401).json({ error: "Invalid token" });
-      }
-      // Assuming you need to fetch the full user profile from the database
-      User.findById(decodedToken.id, (err, user) => {
-        if (err) {
-          return res.status(500).json({ error: "Internal server error" });
-        }
-        if (!user) {
-          return res.status(404).json({ error: "User not found" });
-        }
-        res.json(user);
-      });
+    jwt.verify(token, process.env.JWT_SECRET, {}, (err, user) => {
+      if (err) throw err;
+      res.json(user);
     });
   } else {
-    res.status(401).json({ error: "No token provided" });
+    res.json();
   }
 };
-
-// const getProfile = (req, res) => {
-//   const { token } = req.cookies;
-//   if (token) {
-//     jwt.verify(token, process.env.JWT_SECRET, {}, (err, user) => {
-//       if (err) throw err;
-//       res.json(user);
-//     });
-//   } else {
-//     res.json();
-//   }
-// };
 
 const logout = (req, res) => {
   // Clear the token cookie
