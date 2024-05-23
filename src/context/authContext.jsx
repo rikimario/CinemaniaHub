@@ -11,14 +11,14 @@ export function AuthContextProvider({ children }) {
   });
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (!user) {
-  //     axios.get("/profile").then(({ data }) => {
-  //       setUser(data);
-  //       localStorage.setItem("user", JSON.stringify(data));
-  //     });
-  //   }
-  // }, [user]);
+  useEffect(() => {
+    if (!user) {
+      axios.get("/profile").then(({ data }) => {
+        setUser(data);
+        localStorage.setItem("user", JSON.stringify(data));
+      });
+    }
+  }, [user]);
 
   // useEffect(() => {
   //   const storedUser = localStorage.getItem("user");
