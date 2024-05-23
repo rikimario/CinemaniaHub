@@ -12,9 +12,7 @@ export default function FavoriteMovies({ type }) {
   useEffect(() => {
     try {
       const favorite = async () => {
-        const response = await fetch(
-          `http://localhost:5000/user/favorite/${user.email}`,
-        );
+        const response = await fetch(`/user/favorite/${user.email}`);
         const data = await response.json();
         setMovies(data.movies);
       };
@@ -31,7 +29,7 @@ export default function FavoriteMovies({ type }) {
 
   return (
     <>
-      <div className="pt-6 pl-11">
+      <div className="pl-11 pt-6">
         <h1 className="text-2xl">Favorite</h1>
         {movies.length > 0 ? (
           <div className="grid grid-cols-5">
@@ -40,7 +38,7 @@ export default function FavoriteMovies({ type }) {
                 {movie.number_of_episodes ? (
                   <Link to={`${Path.TvDetails}/${movie.id}`}>
                     <img
-                      className="object-fill w-auto h-full duration-300 opacity-50 rounded-xl hover:scale-105 hover:transform hover:opacity-80"
+                      className="h-full w-auto rounded-xl object-fill opacity-50 duration-300 hover:scale-105 hover:transform hover:opacity-80"
                       src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                       alt={movie.name}
                     />
@@ -48,7 +46,7 @@ export default function FavoriteMovies({ type }) {
                 ) : (
                   <Link to={`${Path.MovieDetails}/${movie.id}`}>
                     <img
-                      className="object-fill w-auto h-full duration-300 opacity-50 rounded-xl hover:scale-105 hover:transform hover:opacity-80"
+                      className="h-full w-auto rounded-xl object-fill opacity-50 duration-300 hover:scale-105 hover:transform hover:opacity-80"
                       src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                       alt={movie.title}
                     />
@@ -64,7 +62,7 @@ export default function FavoriteMovies({ type }) {
             ))}
           </div>
         ) : (
-          <p className="text-2xl text-center">The list is empty!</p>
+          <p className="text-center text-2xl">The list is empty!</p>
         )}
       </div>
     </>
