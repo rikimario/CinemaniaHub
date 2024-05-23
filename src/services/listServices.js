@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const fetchWatchlistData = async (userEmail) => {
   try {
-    const response = await axios.get(`/user/watchlist/${userEmail}`);
+    const response = await axios.get(`user/watchlist/${userEmail}`);
     const { movies } = response.data;
 
     // Check if movies is an array before using find()
@@ -23,7 +23,7 @@ export const fetchWatchlistData = async (userEmail) => {
 
 export const addToWatchlist = async (userEmail, movie) => {
   try {
-    await axios.post("/user/watchlist", {
+    await axios.post("user/watchlist", {
       email: userEmail,
       data: movie,
     });
