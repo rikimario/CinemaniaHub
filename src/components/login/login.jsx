@@ -26,7 +26,7 @@ export default function Login() {
         setData({});
         toast.success("Login Successful. Welcome!");
         navigate("/");
-        window.location.reload();
+        // window.location.reload();
       }
     } catch (error) {
       console.log(error);
@@ -35,7 +35,7 @@ export default function Login() {
 
   return (
     <div
-      className="inset-0 z-50 flex items-center justify-center h-screen bg-opacity-25 "
+      className="inset-0 z-50 flex h-screen items-center justify-center bg-opacity-25 "
       id="login"
     >
       <div className="flex w-[600px] flex-col">
@@ -51,7 +51,7 @@ export default function Login() {
                 Cinema<span className="text-3xl">Hub</span>
               </Link>
               <Link to={Path.Home}>
-                <div className="w-8 h-8">
+                <div className="h-8 w-8">
                   <img
                     src="/movie-folder-video-camera-svgrepo-com.svg"
                     alt="cinema-svg"
