@@ -12,13 +12,41 @@ export function AuthContextProvider({ children }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user) {
-      axios.get("/profile").then(({ data }) => {
+    const fetchProfile = async () => {
+      try {
+        const { data } = await axios.get("/profile");
         setUser(data);
         localStorage.setItem("user", JSON.stringify(data));
-      });
+      } catch (error) {
+        console.error("Failed to fetch profile", error);
+      }
+    };
+
+    if (!user) {
+      fetchProfile();
     }
   }, []);
+
+  const logout = async () => {
+    try {
+      await axios.get("/logout");
+      console.log("Logged out successfully");
+      setUser(null);
+      localStorage.removeItem("user");
+      navigate("/");
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  };
+
+  // useEffect(() => {
+  //   if (!user) {
+  //     axios.get("/profile").then(({ data }) => {
+  //       setUser(data);
+  //       localStorage.setItem("user", JSON.stringify(data));
+  //     });
+  //   }
+  // }, []);
 
   // useEffect(() => {
   //   const storedUser = localStorage.getItem("user");
@@ -26,20 +54,20 @@ export function AuthContextProvider({ children }) {
   //     setUser(JSON.parse(storedUser));
   //   }
   // }, []);
-  const logout = () => {
-    axios
-      .get("/logout")
-      .then(() => {
-        console.log("Logged out successfully");
-        console.log("user", user);
-        setUser(null);
-        localStorage.removeItem("user");
-        navigate("/");
-      })
-      .catch((error) => {
-        console.error("Logout failed:", error);
-      });
-  };
+  // const logout = () => {
+  //   axios
+  //     .get("/logout")
+  //     .then(() => {
+  //       console.log("Logged out successfully");
+  //       console.log("user", user);
+  //       setUser(null);
+  //       localStorage.removeItem("user");
+  //       navigate("/");
+  //     })
+  //     .catch((error) => {
+  //       console.error("Logout failed:", error);
+  //     });
+  // };
   return (
     <AuthContext.Provider value={{ user, setUser, logout }}>
       {children}
