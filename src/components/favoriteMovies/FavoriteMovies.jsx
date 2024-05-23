@@ -12,7 +12,7 @@ export default function FavoriteMovies({ type }) {
   useEffect(() => {
     try {
       const favorite = async () => {
-        const response = await fetch(`/user/favorite/${user.email}`);
+        const response = await fetch(`user/favorite/${user.email}`);
         const data = await response.json();
         setMovies(data.movies);
       };
