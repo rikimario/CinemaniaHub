@@ -9,7 +9,10 @@ export function AuthContextProvider({ children }) {
     const storedUser = localStorage.getItem("user");
     return storedUser ? JSON.parse(storedUser) : null;
   });
-  const [loggedOut, setLoggedOut] = useState(false);
+  const [loggedOut, setLoggedOut] = useState(() => {
+    const storedLoggedOut = localStorage.getItem("loggedOut");
+    return storedLoggedOut === "true"; // Convert string to boolean
+  });
   const navigate = useNavigate();
 
   // useEffect(() => {
@@ -28,6 +31,7 @@ export function AuthContextProvider({ children }) {
           setUser(data);
           localStorage.setItem("user", JSON.stringify(data));
           setLoggedOut(false);
+          localStorage.setItem("loggedOut", "false"); // Persist state
         } else {
           setUser(null);
           localStorage.removeItem("user");
@@ -54,6 +58,7 @@ export function AuthContextProvider({ children }) {
         setUser(null);
         localStorage.removeItem("user");
         setLoggedOut(true);
+        localStorage.setItem("loggedOut", "true"); // Persist loggedOut state
         navigate("/");
       })
       .catch((error) => {
