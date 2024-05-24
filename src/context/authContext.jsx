@@ -9,10 +9,7 @@ export function AuthContextProvider({ children }) {
     const storedUser = localStorage.getItem("user");
     return storedUser ? JSON.parse(storedUser) : null;
   });
-  const [loggedOut, setLoggedOut] = useState(() => {
-    const storedLoggedOut = localStorage.getItem("loggedOut");
-    return storedLoggedOut === "true"; // Convert string to boolean
-  });
+
   const navigate = useNavigate();
 
   // useEffect(() => {
@@ -30,8 +27,6 @@ export function AuthContextProvider({ children }) {
         if (data && data.email) {
           setUser(data);
           localStorage.setItem("user", JSON.stringify(data));
-          setLoggedOut(false);
-          localStorage.setItem("loggedOut", "false"); // Persist state
         } else {
           setUser(null);
           localStorage.removeItem("user");
@@ -43,43 +38,18 @@ export function AuthContextProvider({ children }) {
       }
     };
 
-    // Fetch the profile only if there is no user in the state
-    if (!user && !loggedOut) {
+    if (!user) {
       fetchProfile();
     }
-  }, [user, loggedOut]);
-
-  const login = async (credentials) => {
-    try {
-      const { data } = await axios.post("/login", credentials);
-      if (data.error) {
-        console.error("Login error:", data.error);
-        return;
-      }
-      if (data && data.email) {
-        setUser(data);
-        localStorage.setItem("user", JSON.stringify(data));
-        setLoggedOut(false); // Reset loggedOut state on successful login
-        localStorage.setItem("loggedOut", "false"); // Persist state
-        navigate("/profile"); // Navigate to a different route on successful login
-      } else {
-        console.error("Login failed: Invalid user data");
-      }
-    } catch (error) {
-      console.error("Login failed:", error);
-    }
-  };
+  }, [user]);
 
   const logout = () => {
     axios
       .get("/logout")
       .then(() => {
         console.log("Logged out successfully");
-        console.log("user", user);
         setUser(null);
         localStorage.removeItem("user");
-        setLoggedOut(true);
-        localStorage.setItem("loggedOut", "true"); // Persist loggedOut state
         navigate("/");
       })
       .catch((error) => {
