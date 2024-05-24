@@ -41,7 +41,7 @@ export function AuthContextProvider({ children }) {
     if (!user || user === "null") {
       fetchProfile();
     }
-  }, [user]);
+  }, []);
 
   const logout = () => {
     axios
