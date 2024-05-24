@@ -38,7 +38,7 @@ export function AuthContextProvider({ children }) {
       }
     };
 
-    if (!user) {
+    if (!user || user === "null") {
       fetchProfile();
     }
   }, [user]);
