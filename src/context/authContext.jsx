@@ -50,6 +50,10 @@ export function AuthContextProvider({ children }) {
         console.log("Logged out successfully");
         setUser(null);
         localStorage.removeItem("user");
+        document.cookie =
+          "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie =
+          "other_cookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         navigate("/");
       })
       .catch((error) => {
