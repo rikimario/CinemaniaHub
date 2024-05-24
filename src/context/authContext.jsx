@@ -49,6 +49,27 @@ export function AuthContextProvider({ children }) {
     }
   }, [user, loggedOut]);
 
+  const login = async (credentials) => {
+    try {
+      const { data } = await axios.post("/login", credentials);
+      if (data.error) {
+        console.error("Login error:", data.error);
+        return;
+      }
+      if (data && data.email) {
+        setUser(data);
+        localStorage.setItem("user", JSON.stringify(data));
+        setLoggedOut(false); // Reset loggedOut state on successful login
+        localStorage.setItem("loggedOut", "false"); // Persist state
+        navigate("/profile"); // Navigate to a different route on successful login
+      } else {
+        console.error("Login failed: Invalid user data");
+      }
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
+  };
+
   const logout = () => {
     axios
       .get("/logout")
@@ -66,7 +87,7 @@ export function AuthContextProvider({ children }) {
       });
   };
   return (
-    <AuthContext.Provider value={{ user, setUser, logout }}>
+    <AuthContext.Provider value={{ user, setUser, logout, login }}>
       {children}
     </AuthContext.Provider>
   );
