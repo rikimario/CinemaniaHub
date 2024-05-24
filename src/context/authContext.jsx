@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom";
 export const AuthContext = createContext({});
 
 export function AuthContextProvider({ children }) {
-  // const [user, setUser] = useState(() => {
-  //   const storedUser = localStorage.getItem("user");
-  //   return storedUser ? JSON.parse(storedUser) : null;
-  // });
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(() => {
+    const storedUser = localStorage.getItem("user");
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
+  const [loggedOut, setLoggedOut] = useState(false);
   const navigate = useNavigate();
 
   // useEffect(() => {
@@ -27,6 +27,7 @@ export function AuthContextProvider({ children }) {
         if (data && data.email) {
           setUser(data);
           localStorage.setItem("user", JSON.stringify(data));
+          setLoggedOut(false);
         } else {
           setUser(null);
           localStorage.removeItem("user");
@@ -39,10 +40,10 @@ export function AuthContextProvider({ children }) {
     };
 
     // Fetch the profile only if there is no user in the state
-    if (!user) {
+    if (!user && !loggedOut) {
       fetchProfile();
     }
-  }, [user]);
+  }, [user, loggedOut]);
 
   const logout = () => {
     axios
@@ -52,6 +53,7 @@ export function AuthContextProvider({ children }) {
         console.log("user", user);
         setUser(null);
         localStorage.removeItem("user");
+        setLoggedOut(true);
         navigate("/");
       })
       .catch((error) => {
