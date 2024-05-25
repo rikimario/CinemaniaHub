@@ -20,34 +20,29 @@ export function AuthContextProvider({ children }) {
   //     });
   //   }
   // }, []);
+
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (!user && storedUser) {
-      setUser(JSON.parse(storedUser));
+    const fetchProfile = async () => {
+      try {
+        const { data } = await axios.get("/profile");
+        if (data && data.email) {
+          setUser(data);
+          localStorage.setItem("user", JSON.stringify(data));
+        } else {
+          setUser(null);
+          localStorage.removeItem("user");
+        }
+      } catch (error) {
+        console.error("Failed to fetch profile:", error);
+        setUser(null);
+        localStorage.removeItem("user");
+      }
+    };
+
+    if (!user || user === "null") {
+      fetchProfile();
     }
   }, []);
-  // useEffect(() => {
-  //   const fetchProfile = async () => {
-  //     try {
-  //       const { data } = await axios.get("/profile");
-  //       if (data && data.email) {
-  //         setUser(data);
-  //         localStorage.setItem("user", JSON.stringify(data));
-  //       } else {
-  //         setUser(null);
-  //         localStorage.removeItem("user");
-  //       }
-  //     } catch (error) {
-  //       console.error("Failed to fetch profile:", error);
-  //       setUser(null);
-  //       localStorage.removeItem("user");
-  //     }
-  //   };
-
-  //   if (!user || user === "null") {
-  //     fetchProfile();
-  //   }
-  // }, []);
 
   const logout = () => {
     axios
