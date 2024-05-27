@@ -51,7 +51,6 @@ export function AuthContextProvider({ children }) {
         console.log("Logged out successfully");
         setUser(null);
         localStorage.removeItem("user");
-        localStorage.removeItem("token");
 
         navigate("/");
       })
