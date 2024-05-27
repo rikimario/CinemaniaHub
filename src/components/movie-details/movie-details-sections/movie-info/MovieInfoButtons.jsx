@@ -16,7 +16,6 @@ export default function MovieInfoButtons({ user, movies }) {
           const isInWatchlist =
             watchlistData.find((item) => item.id === movies.id) !== undefined;
           setIsInWatchlist(isInWatchlist);
-          localStorage.setItem("watchlist", JSON.stringify(watchlistData));
         }
       }
     };
@@ -32,7 +31,6 @@ export default function MovieInfoButtons({ user, movies }) {
           const isInWatched =
             watchedData.find((item) => item.id === movies.id) !== undefined;
           setIsInWatched(isInWatched);
-          localStorage.setItem("watched", JSON.stringify(watchedData));
         }
       }
     };
@@ -60,7 +58,7 @@ export default function MovieInfoButtons({ user, movies }) {
     }
   };
   return (
-    <div className="flex w-60 flex-col gap-4 p-6">
+    <div className="flex flex-col gap-4 p-6 w-60">
       {user && (
         <>
           {isInWatchlist ? (

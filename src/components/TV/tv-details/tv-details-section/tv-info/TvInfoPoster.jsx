@@ -15,7 +15,6 @@ export default function TvInfoPoster({ user, series }) {
           const isInFavorite =
             favoriteData.find((item) => item.id === series.id) !== undefined;
           setIsInFavorite(isInFavorite);
-          localStorage.setItem("favorite", JSON.stringify(favoriteData));
         }
       }
     };

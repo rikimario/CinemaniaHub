@@ -19,7 +19,6 @@ export default function HomeButtons({ id, movie }) {
           const isInWatchlist =
             watchlistData.find((item) => item.id === movie.id) !== undefined;
           setIsInWatchlist(isInWatchlist);
-          localStorage.setItem("watchlist", JSON.stringify(watchlistData));
         }
       }
     };
@@ -38,7 +37,7 @@ export default function HomeButtons({ id, movie }) {
   };
 
   return (
-    <div className="relative z-40 space-x-4 pt-8 lg:flex">
+    <div className="relative z-40 pt-8 space-x-4 lg:flex">
       <Link to={`${Path.MovieDetails}/${id}`} className="text-black">
         <Button variant="outline">Read More</Button>
       </Link>
@@ -63,7 +62,7 @@ export default function HomeButtons({ id, movie }) {
                 className="bg-[#ffc107] text-black hover:text-white"
               >
                 Add to Watchlist
-                <div className="absolute right-0 top-0 ">
+                <div className="absolute top-0 right-0 ">
                   <ion-icon name="bookmark-outline" size="small"></ion-icon>
                 </div>
               </Button>

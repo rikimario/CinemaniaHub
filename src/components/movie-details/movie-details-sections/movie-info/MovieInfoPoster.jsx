@@ -15,7 +15,6 @@ export default function MovieInfoPoster({ movies, user }) {
           const isInFavorite =
             favoriteData.find((item) => item.id === movies.id) !== undefined;
           setIsInFavorite(isInFavorite);
-          localStorage.setItem("favorite", JSON.stringify(favoriteData));
         }
       }
     };
