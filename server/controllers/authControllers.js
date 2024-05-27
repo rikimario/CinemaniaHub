@@ -137,10 +137,7 @@ const getProfile = (req, res) => {
 
 const logout = (req, res) => {
   // Clear the token cookie
-  res.clearCookie("token", {
-    httpOnly: true,
-    sameSite: "Strict",
-  });
+  res.clearCookie("token");
   res.status(200).json({ message: "Logged out successfully", success: true });
 };
 
