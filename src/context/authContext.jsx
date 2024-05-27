@@ -42,21 +42,18 @@ export function AuthContextProvider({ children }) {
     if (!user) {
       fetchProfile();
     }
-  }, []);
+  }, [user]);
 
-  const logout = () => {
-    axios
-      .get("/logout")
-      .then(() => {
-        console.log("Logged out successfully");
-        setUser(null);
-        localStorage.removeItem("user");
-
-        navigate("/");
-      })
-      .catch((error) => {
-        console.error("Logout failed:", error);
-      });
+  const logout = async () => {
+    try {
+      await axios.post("/logout", {}, { withCredentials: true });
+      console.log("Logged out successfully");
+      setUser(null);
+      localStorage.removeItem("user");
+      navigate("/");
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
   };
   return (
     <AuthContext.Provider value={{ user, setUser, logout }}>
