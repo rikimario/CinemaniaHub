@@ -37,7 +37,7 @@ export default function HomeButtons({ id, movie }) {
   };
 
   return (
-    <div className="relative z-40 pt-8 space-x-4 lg:flex">
+    <div className="relative z-40 flex pt-4 space-x-4 lg:flex lg:pt-8">
       <Link to={`${Path.MovieDetails}/${id}`} className="text-black">
         <Button variant="outline">Read More</Button>
       </Link>

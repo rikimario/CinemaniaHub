@@ -43,22 +43,27 @@ export default function Home() {
           <CarouselContent>
             {movies.map((movie, index) => (
               <CarouselItem key={index}>
-                <div className="relative max-h-[760px]" key={movie.id}>
+                <div
+                  className="relative max-h-[560px] md:max-h-[760px]"
+                  key={movie.id}
+                >
                   <img
-                    className="h-screen w-full bg-black opacity-50"
+                    className="object-cover w-full h-screen bg-black opacity-50"
                     src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
                     alt={movie.title}
                   />
                   <div className="absolute bottom-20 pl-11 lg:bottom-24">
-                    <h1 className="text-3xl text-white md:text-4xl lg:text-6xl">
+                    <h1 className="text-xl text-white md:text-4xl lg:text-6xl">
                       {movie.title}
                     </h1>
                     <p className="pt-2 text-[#9CA4AB]">
                       Release Date: {movie.release_date}
                     </p>
-                    <div className="">
-                      <p className="lg:2/3 flex overflow-hidden pr-11 pt-8 text-lg leading-8 md:w-2/3 lg:text-xl">
-                        {movie.overview}
+                    <div>
+                      <p className="flex pt-4 overflow-hidden leading-8 text-md lg:2/3 pr-11 md:w-2/3 lg:pt-8 lg:text-xl">
+                        {movie.overview.length > 200
+                          ? `${movie.overview.slice(0, 107)}...`
+                          : movie.overview}
                       </p>
 
                       <HomeButtons
@@ -78,7 +83,7 @@ export default function Home() {
 
       <NowPlaying />
       <Upcoming />
-      <div className="px-32">
+      <div className="px-16 lg:px-32">
         <Separator />
       </div>
       <NowPlayingTv />

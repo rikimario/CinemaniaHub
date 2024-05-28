@@ -29,7 +29,7 @@ export default function PopularTv() {
   }, []);
 
   return (
-    <div className="pt-12 lg:px-32">
+    <div className="px-16 pt-12 lg:px-32">
       <h1 className="pb-4 text-2xl text-white">
         <span className="font-bold text-[#ffc107]">|</span> Popular on TV
       </h1>
@@ -41,10 +41,10 @@ export default function PopularTv() {
             slidesToScroll: 1,
           }}
         >
-          <CarouselContent className="-ml-1 w-3/5">
+          <CarouselContent className="w-3/5 -ml-1">
             {series.map((tv, index) => (
               <CarouselItem
-                className="px-6 pl-1 md:basis-1/2 lg:basis-1/3"
+                className="px-6 pl-1 basis-1/2 lg:basis-1/3"
                 key={index}
               >
                 <div
@@ -53,7 +53,7 @@ export default function PopularTv() {
                 >
                   <Link to={`${Path.TvDetails}/${tv.id}`}>
                     <img
-                      className="h-full w-auto rounded-xl bg-black object-fill opacity-50 duration-300  hover:transform hover:opacity-80"
+                      className="object-fill w-auto h-full duration-300 bg-black opacity-50 rounded-xl hover:transform hover:opacity-80"
                       src={`https://image.tmdb.org/t/p/w500/${tv.poster_path}`}
                       alt={tv.title}
                     />

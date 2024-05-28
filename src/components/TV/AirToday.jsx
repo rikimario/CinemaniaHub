@@ -29,7 +29,7 @@ export default function AirToday() {
   }, []);
 
   return (
-    <div className="pt-12 lg:px-32">
+    <div className="px-16 pt-12 lg:px-32">
       <h1 className="pb-4 text-2xl text-white">
         <span className="font-bold text-[#ffc107]">|</span> Airing Today on TV
       </h1>
@@ -44,7 +44,7 @@ export default function AirToday() {
           <CarouselContent className="w-3/5 -ml-1">
             {series.map((tv, index) => (
               <CarouselItem
-                className="px-6 pl-1 md:basis-1/2 lg:basis-1/3"
+                className="px-6 pl-1 basis-1/2 lg:basis-1/3"
                 key={index}
               >
                 <div
