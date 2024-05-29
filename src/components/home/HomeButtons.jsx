@@ -37,9 +37,14 @@ export default function HomeButtons({ id, movie }) {
   };
 
   return (
-    <div className="relative z-40 flex pt-4 space-x-4 lg:flex lg:pt-8">
+    <div className="relative z-40 flex space-x-4 pt-4 lg:flex lg:pt-8">
       <Link to={`${Path.MovieDetails}/${id}`} className="text-black">
-        <Button variant="outline">Read More</Button>
+        <Button
+          variant="outline"
+          className="h-6 rounded-md px-3 md:h-10 md:px-4 md:py-2 lg:h-10 lg:px-4 lg:py-2"
+        >
+          Read More
+        </Button>
       </Link>
       {user && (
         <>
@@ -47,7 +52,7 @@ export default function HomeButtons({ id, movie }) {
             <div className="relative">
               <Button
                 disabled
-                className="bg-[#ffc107] text-black hover:text-white"
+                className="h-6 rounded-md bg-[#ffc107] px-3 text-black hover:text-white md:h-10 md:px-4 md:py-2 lg:h-10 lg:px-4 lg:py-2"
               >
                 In Watchlist
                 <div className="absolute right-0 top-0 text-[#555]">
@@ -59,10 +64,10 @@ export default function HomeButtons({ id, movie }) {
             <div className="relative">
               <Button
                 onClick={() => handleAddToWatchlist()}
-                className="bg-[#ffc107] text-black hover:text-white"
+                className="h-6 rounded-md bg-[#ffc107] px-4 text-black hover:text-white md:h-10 md:py-2 lg:h-10  lg:py-2"
               >
                 Add to Watchlist
-                <div className="absolute top-0 right-0 ">
+                <div className="absolute right-0 top-0 ">
                   <ion-icon name="bookmark-outline" size="small"></ion-icon>
                 </div>
               </Button>

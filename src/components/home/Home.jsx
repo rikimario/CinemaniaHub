@@ -31,7 +31,7 @@ export default function Home() {
   const plugin = useRef(Autoplay({ delay: 4000 }));
   return (
     <>
-      <div className="relative max-h-[760px] overflow-hidden backdrop-blur-2xl before:absolute before:bottom-[-20px] before:left-0 before:z-50 before:h-[45px] before:w-screen before:bg-[#0d0c0f] before:blur-lg">
+      <div className="relative backdrop-blur-2xl before:absolute before:bottom-[-20px] before:left-0 before:z-50 before:h-[45px] before:w-screen before:bg-[#0d0c0f] before:blur-lg">
         <Carousel
           plugins={[plugin.current]}
           opts={{
@@ -45,21 +45,21 @@ export default function Home() {
               <CarouselItem key={index}>
                 <div className="relative max-h-[760px]" key={movie.id}>
                   <img
-                    className="h-screen w-full bg-black object-cover opacity-50"
+                    className="h-full w-full bg-black object-cover opacity-50"
                     src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
                     alt={movie.title}
                   />
-                  <div className="absolute bottom-20 pl-11 lg:bottom-24">
-                    <h1 className="text-xl text-white md:text-4xl lg:text-6xl">
+                  <div className="absolute bottom-5 pl-6 md:bottom-20 md:pl-11 lg:bottom-24 lg:pl-11">
+                    <h1 className="text-sm text-white md:text-2xl lg:text-3xl">
                       {movie.title}
                     </h1>
-                    <p className="pt-2 text-[#9CA4AB]">
+                    <p className="pt-2 text-[0.5rem] text-[#9CA4AB] md:text-sm">
                       Release Date: {movie.release_date}
                     </p>
                     <div>
-                      <p className="text-md lg:2/3 flex overflow-hidden pr-11 pt-4 leading-8 md:w-2/3 lg:pt-8 lg:text-xl">
-                        {movie.overview.length > 200
-                          ? `${movie.overview.slice(0, 107)}...`
+                      <p className="lg:2/3 flex overflow-hidden overflow-ellipsis pr-11 pt-4 text-xs leading-5 md:w-2/3 md:leading-8 lg:pt-8 lg:text-xl lg:leading-8">
+                        {movie.overview.length > 120
+                          ? `${movie.overview.slice(0, 70)}...`
                           : movie.overview}
                       </p>
 
