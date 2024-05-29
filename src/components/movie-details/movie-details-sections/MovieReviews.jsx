@@ -18,8 +18,8 @@ export default function MovieReviews() {
   }, [movieId]);
 
   return (
-    <div className="px-44 pb-10">
-      <h2 className="p-4 text-2xl">
+    <div className="pb-10">
+      <h2 className="p-4 lg:text-2xl">
         <span className="font-bold text-[#ffc107]">|</span> Users reviews
       </h2>
 

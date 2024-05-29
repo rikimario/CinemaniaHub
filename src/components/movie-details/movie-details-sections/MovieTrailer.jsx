@@ -20,9 +20,13 @@ export default function MovieTrailer() {
       });
   }, [movieId]);
   return (
-    <div className="px-44 pb-10 pt-44">
-      <div className="pb-2">
-        <YouTube videoId={trailer} opts={{ width: "100%", height: "700px" }} />
+    <div className="pb-10 pt-24 md:pb-10 md:pt-44">
+      <div className="h-64 pb-2 md:h-80 lg:h-[34rem]">
+        <YouTube
+          videoId={trailer}
+          opts={{ width: "100%", height: "100%" }}
+          className="h-full"
+        />
       </div>
     </div>
   );

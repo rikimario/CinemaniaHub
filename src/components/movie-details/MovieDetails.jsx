@@ -11,13 +11,13 @@ export default function MovieDetails() {
   const { id: movieId } = useParams();
 
   return (
-    <>
+    <div className="overflow-hidden px-2 md:px-12 lg:px-32">
       <MovieTrailer id={movieId} />
       <MovieInfo id={movieId} />
       <MovieImgSlider id={movieId} />
       <MovieTopCast id={movieId} />
       <MoreLikeThis id={movieId} />
       <MovieReviews id={movieId} />
-    </>
+    </div>
   );
 }

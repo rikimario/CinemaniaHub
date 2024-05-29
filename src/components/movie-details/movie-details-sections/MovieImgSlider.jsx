@@ -25,12 +25,12 @@ export default function MovieImgSlider() {
       );
   }, [movieId]);
   return (
-    <div className="px-44 pb-10">
-      <h2 className="p-4 text-2xl">
+    <div className="pb-10">
+      <h2 className="p-4 lg:text-2xl">
         <span className="font-bold text-[#ffc107]">|</span> Photos
       </h2>
       <div className="rounded-lg bg-neutral-900">
-        <Carousel className="w-full">
+        <Carousel className="w-full px-10">
           <CarouselContent className="-ml-1">
             {images &&
               images.map((image, index) => (
@@ -39,7 +39,7 @@ export default function MovieImgSlider() {
                   className="pl-1 md:basis-1/2 lg:basis-1/3"
                 >
                   <img
-                    className="flex w-full items-center justify-center p-6"
+                    className="flex w-full items-center justify-center p-2 md:p-4 lg:p-6"
                     key={image.file_path}
                     src={`https://image.tmdb.org/t/p/w500${image.file_path}`}
                     alt=""

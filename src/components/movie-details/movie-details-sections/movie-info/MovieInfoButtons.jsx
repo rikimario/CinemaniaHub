@@ -58,7 +58,7 @@ export default function MovieInfoButtons({ user, movies }) {
     }
   };
   return (
-    <div className="flex flex-col gap-4 p-6 w-60">
+    <div className="flex flex-col gap-4 md:w-32 lg:w-60 lg:p-3">
       {user && (
         <>
           {isInWatchlist ? (
@@ -80,7 +80,7 @@ export default function MovieInfoButtons({ user, movies }) {
                 className="w-full bg-[#ffc107] text-black hover:text-white"
               >
                 Add to Watchlist
-                <div className="absolute right-0 top-[0.4rem] ">
+                <div className="absolute right-0 top-[0.4rem]">
                   <ion-icon name="bookmark-outline" size="small"></ion-icon>
                 </div>
               </Button>
@@ -109,7 +109,7 @@ export default function MovieInfoButtons({ user, movies }) {
                 className="w-full bg-[#ffc107] text-black hover:text-white"
               >
                 Add to Watched
-                <div className="absolute right-0 top-[0.4rem] ">
+                <div className="absolute right-0 top-[0.4rem]">
                   <ion-icon name="bookmark-outline" size="small"></ion-icon>
                 </div>
               </Button>

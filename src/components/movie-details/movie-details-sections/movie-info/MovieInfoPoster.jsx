@@ -32,9 +32,9 @@ export default function MovieInfoPoster({ movies, user }) {
     }
   };
   return (
-    <div className="m-w-[500px]">
+    <div className="">
       <img
-        className="max-w-[250px] rounded-lg"
+        className="rounded-lg lg:max-w-[200px]"
         src={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`}
         alt=""
       />
@@ -48,7 +48,7 @@ export default function MovieInfoPoster({ movies, user }) {
               >
                 In Favorite
                 <div className="absolute right-0 top-[0.4rem] text-[#555]">
-                  <ion-icon name="bookmark" size="large"></ion-icon>
+                  <ion-icon name="bookmark" size="small"></ion-icon>
                 </div>
               </Button>
             </div>
@@ -59,8 +59,8 @@ export default function MovieInfoPoster({ movies, user }) {
                 className="w-full bg-[#ffc107] text-black hover:text-white"
               >
                 Add to Favorite
-                <div className="absolute right-0 top-[0.4rem] ">
-                  <ion-icon name="bookmark-outline" size="large"></ion-icon>
+                <div className="absolute right-0 top-[0.4rem]">
+                  <ion-icon name="bookmark-outline" size="small"></ion-icon>
                 </div>
               </Button>
             </div>

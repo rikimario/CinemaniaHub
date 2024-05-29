@@ -25,8 +25,8 @@ export default function MovieInfo() {
   }, [movieId]);
 
   return (
-    <div className="px-44 pb-10">
-      <div className="flex rounded-lg bg-neutral-900 p-2">
+    <div className="lg:pb-10">
+      <div className="rounded-lg bg-neutral-900 p-2 md:flex lg:flex">
         <MovieInfoPoster user={user} movies={movies} />
         <MovieInfoSection movies={movies} />
         {user && <MovieInfoButtons user={user} movies={movies} />}

@@ -17,12 +17,12 @@ export default function MovieTopCast() {
       );
   }, [movieId]);
   return (
-    <div className=" px-44 pb-10">
-      <h2 className="p-4 text-2xl">
+    <div className="pb-10">
+      <h2 className="p-4 lg:text-2xl">
         <span className="font-bold text-[#ffc107]">|</span> Top Cast
       </h2>
 
-      <div className="grid grid-cols-2 gap-4 rounded-lg bg-neutral-900 p-4">
+      <div className="grid gap-4 rounded-lg bg-neutral-900 p-4 md:grid-cols-2">
         {casts &&
           casts.map((cast) => (
             <div className="flex">
