@@ -43,12 +43,9 @@ export default function Home() {
           <CarouselContent>
             {movies.map((movie, index) => (
               <CarouselItem key={index}>
-                <div
-                  className="relative max-h-[560px] md:max-h-[760px]"
-                  key={movie.id}
-                >
+                <div className="relative max-h-[760px]" key={movie.id}>
                   <img
-                    className="object-cover w-full h-screen bg-black opacity-50"
+                    className="h-screen w-full bg-black object-cover opacity-50"
                     src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
                     alt={movie.title}
                   />
@@ -60,7 +57,7 @@ export default function Home() {
                       Release Date: {movie.release_date}
                     </p>
                     <div>
-                      <p className="flex pt-4 overflow-hidden leading-8 text-md lg:2/3 pr-11 md:w-2/3 lg:pt-8 lg:text-xl">
+                      <p className="text-md lg:2/3 flex overflow-hidden pr-11 pt-4 leading-8 md:w-2/3 lg:pt-8 lg:text-xl">
                         {movie.overview.length > 200
                           ? `${movie.overview.slice(0, 107)}...`
                           : movie.overview}
