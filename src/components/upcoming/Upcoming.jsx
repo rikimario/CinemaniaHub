@@ -44,10 +44,10 @@ export default function Upcoming() {
           <CarouselContent className="-ml-1 w-3/5">
             {movies.map((movie, index) => (
               <CarouselItem
-                className="basis-1/2 px-6 pl-1 lg:basis-1/3"
+                className="basis-1/2 px-6 pl-1 lg:basis-1/4"
                 key={index}
               >
-                <div className="h-28 md:h-[18rem] lg:h-[27rem]" key={index}>
+                <div className="h-28 md:h-[18rem] lg:h-72" key={index}>
                   <Link to={`${Path.MovieDetails}/${movie.id}`}>
                     <img
                       className="h-full w-auto rounded-xl bg-black object-fill opacity-50 duration-300 hover:transform hover:opacity-80"
