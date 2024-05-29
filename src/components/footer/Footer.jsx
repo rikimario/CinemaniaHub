@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <div className="pt-32">
-      <div className="bg-neutral-900 md:h-96 md:px-16 lg:h-96 lg:px-32">
+      <div className="bg-neutral-900 md:h-96 md:px-12 lg:h-96 lg:px-20">
         <div className="grid justify-around pt-10 text-center md:grid-cols-5 lg:grid-cols-5">
           <div className="text-2xl font-bold">
             <div className="flex justify-center text-lg font-bold lg:text-2xl">
@@ -41,25 +41,25 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="pt-10 text-base text-[#bbbbbb] md:pt-20 md:text-sm">
+            <div className="px-10 pt-10 text-base text-[#bbbbbb] md:px-0 md:pt-20 md:text-sm">
               Copyright &copy; 2024 by CinemaHub, Inc. All rights reserved
             </div>
           </div>
 
           <div>
-            <h2 className="md:text-md pt-10 text-xl font-extrabold text-[#555] md:pt-0 lg:pt-0">
+            <h2 className="md:text-md pt-10 text-lg font-extrabold text-[#555] md:pl-4 md:pt-0 lg:pl-0 lg:pt-0">
               Contact us
             </h2>
-            <p className="lg:text-md text-md px-6 pt-5 text-[#bbbbbb] md:text-sm lg:px-12 lg:pt-10">
+            <p className="lg:text-md text-md px-6 pt-5 text-[#bbbbbb] md:text-sm lg:px-5 lg:pt-10">
               623 Harrison St., 2nd Floor, San Francisco, CA 94107
             </p>
-            <p className="px-6 pt-5 text-base text-[#bbbbbb] md:pt-[3.2rem] md:text-sm lg:px-12 lg:pt-[3.2rem]">
+            <p className="px-6 pt-5 text-base text-[#bbbbbb] md:pt-[3.2rem] md:text-sm lg:px-8 lg:pt-[3.2rem]">
               415-201-6370 hello@cinemahub.com
             </p>
           </div>
 
           <div>
-            <h2 className="md:text-md pt-10 text-xl font-extrabold text-[#555] md:pt-0 lg:pt-0">
+            <h2 className="md:text-md pt-10 text-lg font-extrabold text-[#555] md:pt-0 lg:pt-0">
               Company
             </h2>
             <p className="cursor-pointer px-6 pt-5 text-lg text-[#bbbbbb] hover:text-[#767676] lg:px-12 lg:text-xl">
@@ -77,7 +77,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h2 className="md:text-md pt-10 text-xl font-extrabold text-[#555] md:pt-0 lg:pt-0">
+            <h2 className="md:text-md pt-10 text-lg font-extrabold text-[#555] md:pt-0 lg:pt-0">
               Account
             </h2>
             <Link to={Path.Register}>
@@ -99,7 +99,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h2 className="md:text-md pt-10 text-xl font-extrabold text-[#555] md:pt-0 lg:pt-0">
+            <h2 className="md:text-md pt-10 text-lg font-extrabold text-[#555] md:pt-0 lg:pt-0">
               Resources
             </h2>
             <p className="text-md cursor-pointer px-6 pt-5 text-[#bbbbbb] hover:text-[#767676] lg:px-12 lg:text-xl">

@@ -52,7 +52,7 @@ export default function HomeButtons({ id, movie }) {
             <div className="relative">
               <Button
                 disabled
-                className="h-6 rounded-md bg-[#ffc107] px-3 text-black hover:text-white md:h-10 md:px-4 md:py-2 lg:h-10 lg:px-4 lg:py-2"
+                className="h-6 rounded-md bg-[#ffc107] px-4 text-black hover:text-white md:h-10 md:py-2 lg:h-10  lg:py-2"
               >
                 In Watchlist
                 <div className="absolute right-0 top-0 text-[#555]">

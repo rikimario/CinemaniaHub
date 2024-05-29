@@ -31,7 +31,7 @@ export default function Home() {
   const plugin = useRef(Autoplay({ delay: 4000 }));
   return (
     <>
-      <div className="relative backdrop-blur-2xl before:absolute before:bottom-[-20px] before:left-0 before:z-50 before:h-[45px] before:w-screen before:bg-[#0d0c0f] before:blur-lg">
+      <div className="relative overflow-hidden backdrop-blur-2xl before:absolute before:bottom-[-20px] before:left-0 before:z-50 before:h-[45px] before:w-screen before:bg-[#0d0c0f] before:blur-lg">
         <Carousel
           plugins={[plugin.current]}
           opts={{
@@ -45,7 +45,7 @@ export default function Home() {
               <CarouselItem key={index}>
                 <div className="relative max-h-[760px]" key={movie.id}>
                   <img
-                    className="h-full w-full bg-black object-cover opacity-50"
+                    className="h-96 w-full bg-black object-cover opacity-50 md:h-full lg:h-full"
                     src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
                     alt={movie.title}
                   />
@@ -80,7 +80,7 @@ export default function Home() {
 
       <NowPlaying />
       <Upcoming />
-      <div className="px-16 lg:px-32">
+      <div className="px-12 lg:px-32">
         <Separator />
       </div>
       <NowPlayingTv />

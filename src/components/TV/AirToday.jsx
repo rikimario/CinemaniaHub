@@ -29,8 +29,8 @@ export default function AirToday() {
   }, []);
 
   return (
-    <div className="px-16 pt-12 lg:px-32">
-      <h1 className="pb-4 text-2xl text-white">
+    <div className="px-12 pt-12 lg:px-32">
+      <h1 className="pb-4 text-white lg:text-2xl">
         <span className="font-bold text-[#ffc107]">|</span> Airing Today on TV
       </h1>
       <div className="">
@@ -41,19 +41,16 @@ export default function AirToday() {
             slidesToScroll: 1,
           }}
         >
-          <CarouselContent className="w-3/5 -ml-1">
+          <CarouselContent className="-ml-1 w-3/5">
             {series.map((tv, index) => (
               <CarouselItem
-                className="px-6 pl-1 basis-1/2 lg:basis-1/3"
+                className="basis-1/2 px-6 pl-1 lg:basis-1/3"
                 key={index}
               >
-                <div
-                  className="h-[12rem] md:h-[18rem] lg:h-[27rem]"
-                  key={index}
-                >
+                <div className="h-28 md:h-[18rem] lg:h-[27rem]" key={index}>
                   <Link to={`${Path.TvDetails}/${tv.id}`}>
                     <img
-                      className="object-fill w-auto h-full duration-300 bg-black opacity-50 rounded-xl hover:transform hover:opacity-80"
+                      className="h-full w-auto rounded-xl bg-black object-fill opacity-50 duration-300 hover:transform hover:opacity-80"
                       src={`https://image.tmdb.org/t/p/w500/${tv.poster_path}`}
                       alt={tv.title}
                     />
