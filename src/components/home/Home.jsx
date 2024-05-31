@@ -45,11 +45,11 @@ export default function Home() {
               <CarouselItem key={index}>
                 <div className="relative max-h-[760px]" key={movie.id}>
                   <img
-                    className="h-96 w-full bg-black object-cover opacity-50 md:h-full lg:h-full"
+                    className="object-cover w-full bg-black opacity-50 h-96 md:h-full lg:h-full"
                     src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
                     alt={movie.title}
                   />
-                  <div className="absolute bottom-5 pl-6 md:bottom-20 md:pl-11 lg:bottom-24 lg:pl-11">
+                  <div className="absolute pl-6 bottom-5 md:bottom-20 md:pl-11 lg:bottom-24 lg:pl-11">
                     <h1 className="text-sm text-white md:text-2xl lg:text-3xl">
                       {movie.title}
                     </h1>
@@ -57,7 +57,7 @@ export default function Home() {
                       Release Date: {movie.release_date}
                     </p>
                     <div>
-                      <p className="lg:2/3 flex overflow-hidden overflow-ellipsis pr-11 pt-4 text-xs leading-5 md:w-2/3 md:leading-8 lg:pt-8 lg:text-xl lg:leading-8">
+                      <p className="flex pt-4 overflow-hidden text-xs leading-5 lg:2/3 overflow-ellipsis pr-11 md:w-2/3 md:leading-8 lg:pt-8 lg:text-xl lg:leading-8">
                         {movie.overview.length > 120
                           ? `${movie.overview.slice(0, 70)}...`
                           : movie.overview}
@@ -80,7 +80,7 @@ export default function Home() {
 
       <NowPlaying />
       <Upcoming />
-      <div className="px-12 lg:px-32">
+      <div className="px-4 overflow-hidden md:px-12 lg:px-32">
         <Separator />
       </div>
       <NowPlayingTv />
