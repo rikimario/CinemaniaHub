@@ -1,10 +1,12 @@
 export default function MovieInfoSection({ movies }) {
   return (
     <div className="p-4 lg:p-2">
-      <h1 className="pb-4 md:text-base lg:text-2xl">{movies.title}</h1>
-      <p className="md:text-xs md:leading-5">{movies.overview}</p>
+      <h1 className="pb-4 text-xl text-pretty md:text-base lg:text-2xl">
+        {movies.title}
+      </h1>
+      <p className="text-sm md:text-xs md:leading-5">{movies.overview}</p>
 
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-2 gap-4">
         <div>
           <div className="flex items-center pt-4">
             <h2 className="self-center pr-2 text-base lg:text-lg">Genres:</h2>
@@ -30,7 +32,7 @@ export default function MovieInfoSection({ movies }) {
 
         <div>
           <div className="flex items-center pt-4">
-            <h2 className="self-center pr-2 text-base lg:text-lg">
+            <h2 className="self-center pr-1 text-base lg:text-lg">
               Release date:
             </h2>
             <p className="self-center text-sm text-[#767676] lg:text-base">

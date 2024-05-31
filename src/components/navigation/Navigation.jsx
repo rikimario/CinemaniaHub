@@ -36,7 +36,7 @@ export default function Navigation() {
 
   return (
     <div className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-4 backdrop-blur-sm backdrop-brightness-50 md:px-6 lg:px-11 lg:py-4">
-      <nav className="flex w-full items-center justify-between">
+      <nav className="flex items-center justify-between w-full">
         <div className="flex font-bold lg:text-2xl">
           <Link
             to={Path.Home}
@@ -45,7 +45,7 @@ export default function Navigation() {
             Cinema<span className="text-xs md:text-2xl lg:text-3xl">Hub</span>
           </Link>
           <Link to={Path.Home}>
-            <div className="h-4 w-4 lg:h-8 lg:w-8">
+            <div className="w-4 h-4 lg:h-8 lg:w-8">
               <img
                 src="/movie-folder-video-camera-svgrepo-com.svg"
                 alt="cinema-svg"
@@ -84,7 +84,7 @@ export default function Navigation() {
           </ul>
         </div>
 
-        <div className="flex items-center space-x-4 py-2">
+        <div className="flex items-center py-2 space-x-4">
           {!user && (
             <Link to={Path.Login}>
               <Button
@@ -98,7 +98,7 @@ export default function Navigation() {
           {user && (
             <>
               <Link to={`${Path.Profile}/@${user.username}`}>
-                <div className="relative inline-flex h-5 w-5 items-center justify-center overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600 md:h-9 md:w-9 lg:h-9 lg:w-9">
+                <div className="relative inline-flex items-center justify-center w-5 h-5 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600 md:h-9 md:w-9 lg:h-9 lg:w-9">
                   <span className="text-xs font-bold text-gray-600 dark:text-gray-300 md:text-xl lg:text-xl">
                     {user.username.charAt(0).toUpperCase()}
                   </span>

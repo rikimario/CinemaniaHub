@@ -34,7 +34,7 @@ export default function MovieInfoPoster({ movies, user }) {
   return (
     <div className="">
       <img
-        className="rounded-lg lg:max-w-[200px]"
+        className="rounded-lg md:max-w-[200px]"
         src={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`}
         alt=""
       />

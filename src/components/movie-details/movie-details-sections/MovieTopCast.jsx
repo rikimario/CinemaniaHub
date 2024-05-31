@@ -22,12 +22,12 @@ export default function MovieTopCast() {
         <span className="font-bold text-[#ffc107]">|</span> Top Cast
       </h2>
 
-      <div className="grid gap-4 rounded-lg bg-neutral-900 p-4 md:grid-cols-2">
+      <div className="grid gap-4 p-4 rounded-lg bg-neutral-900 md:grid-cols-2">
         {casts &&
           casts.map((cast) => (
             <div className="flex">
               <img
-                className="h-32 w-32 rounded-full object-cover p-1"
+                className="object-cover w-32 h-32 p-1 rounded-full"
                 key={cast.id}
                 src={
                   cast.profile_path
@@ -36,7 +36,7 @@ export default function MovieTopCast() {
                 }
                 alt={cast.name}
               />
-              <div className="flex flex-col items-center justify-center pl-2">
+              <div className="flex flex-col justify-center pl-2 text-start">
                 <p className="text-xl">{cast.name}</p>
                 <p className="text-md text-[#9CA4AB]">{cast.character}</p>
               </div>

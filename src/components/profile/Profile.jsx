@@ -21,21 +21,21 @@ export default function Profile() {
   };
   return (
     <div className="overflow-hidden">
-      <div className="flex gap-4 px-11 pt-32">
-        <div className="relative inline-flex h-32 w-32 items-center justify-center overflow-hidden rounded-full bg-gray-100 dark:bg-gray-600">
-          <span className="text-7xl font-medium text-gray-600 dark:text-gray-300">
+      <div className="flex gap-4 pt-32 px-11">
+        <div className="relative inline-flex items-center justify-center w-12 h-12 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600 md:h-32 md:w-32">
+          <span className="text-2xl font-medium text-gray-600 dark:text-gray-300 md:text-7xl">
             {user.username.charAt(0).toUpperCase()}
           </span>
         </div>
 
         <div className="flex flex-col justify-center">
-          <h1 className="text-3xl font-medium">{user.username}</h1>
+          <h1 className="text-xl font-medium md:text-3xl">{user.username}</h1>
           <p className="text-[#9CA4AB]">{user.email}</p>
         </div>
       </div>
 
       <div className="pt-4">
-        <div className="flex gap-2 pb-2 pl-11">
+        <div className="flex gap-2 pb-2 pl-4 md:pl-11">
           <ToggleGroup type="single">
             <ToggleGroupItem value="favorite">
               <Button
