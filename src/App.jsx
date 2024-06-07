@@ -15,6 +15,7 @@ import Footer from "./components/footer/Footer.jsx";
 import TvDetails from "./components/TV/tv-details/TvDetails.jsx";
 
 import axios from "axios";
+import ScrollToTop from "./components/scroll-to-top/ScrollToTop.jsx";
 
 axios.defaults.baseURL = "https://cinemania-hub-server.vercel.app";
 // axios.defaults.baseURL = "http://localhost:5000";
@@ -23,6 +24,7 @@ axios.defaults.withCredentials = true;
 function App() {
   return (
     <AuthContextProvider>
+      <ScrollToTop />
       <Navigation />
       <Toaster position="top-center" toastOptions={{ duration: 4000 }} />
       <Routes>
